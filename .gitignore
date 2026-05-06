@@ -7,6 +7,14 @@
 build/1panel-agent
 build/1panel-core
 
+
+
+.vscode
+
+
+.idea
+
+
 # Mac
 .DS_Store
 
