@@ -61,7 +61,7 @@
     "devDependencies": {
         "@types/node": "^20.14.8",
         "@types/uuid": "^10.0.0",
-        "@typescript-eslint/eslint-plugin": "^8.58.1",
+        "@typescript-eslint/eslint-plugin": "^8.59.2",
         "@typescript-eslint/parser": "^8.58.1",
         "@vitejs/plugin-vue": "^6.0.1",
         "@vitejs/plugin-vue-jsx": "^5.1.1",
