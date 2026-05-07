@@ -222,7 +222,7 @@ import sys, json
 data = json.load(sys.stdin)
 for asset in data.get('assets', []):
     name = asset['name']
-    if name.endswith('.tar.gz') and f'linux-${sys.argv[1]}.' in name:
+    if name.endswith('.tar.gz') and f'linux-{{sys.argv[1]}}.' in name:
         print(name)
         sys.exit(0)
 print('', end='')
