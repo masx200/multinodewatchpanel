@@ -1,0 +1,92 @@
+name: Build On Push (Git Hash Release)
+
+on:
+  push:
+    branches:
+      - main
+      - master
+      - develop
+    tags:
+      - '!*'  # 明确排除 tag 触发的版本
+
+jobs:
+  build-and-release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Get Git Short Hash
+        id: hash
+        run: echo "SHORT_HASH=$(git rev-parse --short HEAD)" >> $GITHUB_OUTPUT
+
+      - name: Get Commit Message
+        id: commit
+        run: echo "MESSAGE=$(git log -1 --pretty=%B | head -n 1 | tr '[:space:]' '-' | tr -cd '[:alnum:]-_')" >> $GITHUB_OUTPUT
+
+      - name: Generate Release Tag
+        id: tag
+        run: |
+          TAG="sha-${SHORT_HASH}"
+          echo "TAG=$TAG" >> $GITHUB_OUTPUT
+          echo "TAG_NAME=$TAG" >> $GITHUB_OUTPUT
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24.11.1'
+
+      - name: Build Web
+        run: |
+          cd frontend && npm install && npm run build:pro
+        env:
+          NODE_OPTIONS: --max-old-space-size=8192
+
+      - name: Setup Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: '1.25'
+          cache-dependency-path: |
+            core/go.sum
+            agent/go.sum
+
+      - name: Build Release
+        uses: goreleaser/goreleaser-action@v6
+        with:
+          distribution: goreleaser
+          version: '~> v2'
+          args: release --skip=publish --clean
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Delete Existing Release (if exists)
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          if gh release view ${{ steps.tag.outputs.TAG_NAME }} &>/dev/null; then
+            gh release delete ${{ steps.tag.outputs.TAG_NAME }} --yes
+          fi
+
+      - name: Upload Assets to GitHub Release
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: ${{ steps.tag.outputs.TAG_NAME }}
+          name: "Build ${{ steps.hash.outputs.SHORT_HASH }}"
+          body: |
+            ## Commit Info
+            - **SHA**: ${{ github.sha }}
+            - **Branch**: ${{ github.ref_name }}
+            - **Message**: ${{ steps.commit.outputs.MESSAGE }}
+
+            ## Changes
+            Triggered by commit `${{ github.sha }}`
+          draft: false
+          prerelease: false
+          files: |
+            dist/*.tar.gz
+            dist/checksums.txt
+          target_commitish: ${{ github.sha }}
+
+    
