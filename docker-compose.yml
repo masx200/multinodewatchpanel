@@ -1,0 +1,94 @@
+services:
+  multinodewatchpanel:
+
+    cap_drop:
+      - "AUDIT_CONTROL"
+      - "BLOCK_SUSPEND"
+      - "DAC_READ_SEARCH"
+      - "IPC_LOCK"
+      - "IPC_OWNER"
+      - "LEASE"
+      - "LINUX_IMMUTABLE"
+      - "MAC_ADMIN"
+      - "MAC_OVERRIDE"
+      - "NET_ADMIN"
+      - "NET_BROADCAST"
+      - "SYSLOG"
+      - "SYS_ADMIN"
+      - "SYS_BOOT"
+      - "SYS_MODULE"
+      - "SYS_NICE"
+      - "SYS_PACCT"
+      - "SYS_PTRACE"
+      - "SYS_RAWIO"
+      - "SYS_RESOURCE"
+      - "SYS_TIME"
+      - "SYS_TTY_CONFIG"
+      - "WAKE_ALARM"
+
+    container_name: "multinodewatchpanel"
+
+    entrypoint:
+      - "bash"
+      - "/app/entrypoint.sh"
+
+    environment:
+      - "PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+      - "TZ=Asia/Shanghai"
+      - "LANG=C.UTF-8"
+      - "LC_ALL=C.UTF-8"
+      - "PANEL_EDITION=cn"
+      - "INSTALL_MODE=stable"
+      - "LANGUAGE=zh"
+      - "PANEL_BASE_DIR=/app"
+      - "PANEL_PORT=9999"
+      - "PANEL_ENTRANCE=entrance"
+      - "PANEL_USERNAME=1panel"
+      - "PANEL_PASSWORD=1panel_password"
+
+    hostname: "5b699a60ac13"
+
+    image: "69aq5glrbl.masx200.ddns-ip.net/masx200/multinodewatchpanel:sha-c459ac0"
+
+    ipc: "private"
+
+    labels:
+      org.opencontainers.image.created: "2026-05-07T09:36:22.781Z"
+      org.opencontainers.image.description: "Free multi-node monitoring panel based on 1Panel"
+      org.opencontainers.image.licenses: "GPL-3.0"
+      org.opencontainers.image.revision: "c459ac04defae616e9b2519d2009884acdc4d2b4"
+      org.opencontainers.image.source: "https://github.com/masx200/multinodewatchpanel"
+      org.opencontainers.image.title: "1Panel Multi-Node Watch"
+      org.opencontainers.image.url: "https://github.com/masx200/multinodewatchpanel"
+      org.opencontainers.image.version: "main"
+
+    logging:
+      driver: "json-file"
+      options: {}
+
+    network_mode: "bridge"
+
+    ports:
+      - "9999:9999/tcp"
+
+    privileged: true
+
+    restart: "always"
+
+    security_opt:
+      - "label=disable"
+
+    stdin_open: true
+
+    tty: true
+
+    volumes:
+
+      - "/etc/docker/daemon.json:/etc/docker/daemon.json"
+      - "/media/debian/eca4cac3-803e-4567-bc15-44366f11fc1f/data/docker:/media/debian/eca4cac3-803e-4567-bc15-44366f11fc1f/data/docker"
+      - "/root/docker/1panel/app/1panel:/app/1panel"
+      - "/var/run/docker.sock:/var/run/docker.sock"
+
+    working_dir: "/app"
+
+version: "3.6"

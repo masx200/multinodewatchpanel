@@ -59,3 +59,6 @@ ENTRYPOINT ["bash", "/app/entrypoint.sh"]
 
 
 RUN bash "/app/install.sh"
+
+
+copy ./etc/1panel /etc/1panel
