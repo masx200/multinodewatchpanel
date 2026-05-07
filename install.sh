@@ -217,27 +217,32 @@ echo "正在从 GitHub Release ${VERSION} 查询 ${architecture} 架构的安装
 ASSET_INFO=$(curl -fsSL "https://api.github.com/repos/${GITHUB_REPO}/releases/tags/${VERSION}")
 
 # 从 API 返回的 JSON 中提取匹配 linux-${architecture}.tar.gz 的 asset name
-package_file_name=$(echo "${ASSET_INFO}" | python3 -c "
+cat > /tmp/find_asset.py << 'PYEOF'
 import sys, json
 data = json.load(sys.stdin)
+arch = sys.argv[1] if len(sys.argv) > 1 else ''
 for asset in data.get('assets', []):
     name = asset['name']
-    if name.endswith('.tar.gz') and f'linux-{{sys.argv[1]}}.' in name:
+    if name.endswith('.tar.gz') and ('linux-' + arch + '.') in name:
         print(name)
         sys.exit(0)
 print('', end='')
 sys.exit(1)
-" "${architecture}")
+PYEOF
+package_file_name=$(echo "${ASSET_INFO}" | python3 /tmp/find_asset.py "${architecture}")
+rm -f /tmp/find_asset.py
 
 if [[ -z "${package_file_name}" ]]; then
     echo "错误：在 Release ${VERSION} 中未找到 linux-${architecture} 架构的安装包。"
     echo "可用的 assets："
-    echo "${ASSET_INFO}" | python3 -c "
+    cat > /tmp/list_assets.py << 'PYEOF'
 import sys, json
 data = json.load(sys.stdin)
 for asset in data.get('assets', []):
-    print(f'  - {asset[\"name\"]}')
-" 2>/dev/null || echo "  (无法解析)"
+    print('  - ' + asset['name'])
+PYEOF
+    echo "${ASSET_INFO}" | python3 /tmp/list_assets.py 2>/dev/null || echo "  (无法解析)"
+    rm -f /tmp/list_assets.py
     exit 1
 fi
 
