@@ -27,7 +27,8 @@ type PanelClientOptions struct {
 	ServerName          string
 }
 
-// PanelClient 1Panel API 客户端
+// PanelClient 1Panel Agent API 客户端
+// BaseURL 应指向 agent 的 API 根路径，例如 http://host:port/api/v2
 type PanelClient struct {
 	BaseURL    string
 	APIKey     string
@@ -45,7 +46,8 @@ func NewPanelClientWithOptions(host string, port int, apiKey string, opts PanelC
 	if strings.EqualFold(opts.Security, "tls") {
 		scheme = "https"
 	}
-	baseURL := fmt.Sprintf("%s://%s:%d", scheme, host, port)
+	// BaseURL 包含 /api/v2 前缀，agent 端 basePath 为 /api/v2
+	baseURL := fmt.Sprintf("%s://%s:%d/api/v2", scheme, host, port)
 
 	transport := buildTransport(opts)
 	return &PanelClient{
@@ -150,7 +152,7 @@ func (c *PanelClient) doRequest(method, path string, body interface{}) ([]byte, 
 	return respData, nil
 }
 
-// parseResponse 解析 1Panel 标准响应
+// parseResponse 解析 1Panel 标准响应 { code, message, data }
 func parseResponse(data []byte, result interface{}) error {
 	var wrapper struct {
 		Code    int             `json:"code"`
@@ -169,110 +171,226 @@ func parseResponse(data []byte, result interface{}) error {
 	return json.Unmarshal(wrapper.Data, result)
 }
 
-// ---- 数据类型定义 ----
+// ============================================================
+// 数据类型定义（基于 1Panel Agent Swagger 文档）
+// ============================================================
 
+// OsInfo 操作系统信息
+// GET /dashboard/base/os
 type OsInfo struct {
 	OS             string `json:"os"`
 	Platform       string `json:"platform"`
 	PlatformFamily string `json:"platformFamily"`
 	KernelVersion  string `json:"kernelVersion"`
 	KernelArch     string `json:"kernelArch"`
-	Hostname       string `json:"hostname"`
-	Uptime         uint64 `json:"uptime"`
+	DiskSize       int64  `json:"diskSize"`
+	PrettyDistro   string `json:"prettyDistro"`
 }
 
+// DashboardBase 仪表盘基础信息
+// GET /dashboard/base/:ioOption/:netOption
 type DashboardBase struct {
-	CPULogicalCount  int    `json:"cpuLogicalCount"`
-	CPUPhysicalCount int    `json:"cpuPhysicalCount"`
-	MemoryTotal      uint64 `json:"memoryTotal"`
-	SwapTotal        uint64 `json:"swapTotal"`
-	DiskTotal        uint64 `json:"diskTotal"`
-	LoadAverage      string `json:"loadAverage"`
-	SystemVersion    string `json:"systemVersion"`
-	DockerVersion    string `json:"dockerVersion"`
+	AppInstalledNumber  int               `json:"appInstalledNumber"`
+	CPUCores            int               `json:"cpuCores"`
+	CPULogicalCores     int               `json:"cpuLogicalCores"`
+	CPUMhz              float64           `json:"cpuMhz"`
+	CPUModelName        string            `json:"cpuModelName"`
+	CronjobNumber       int               `json:"cronjobNumber"`
+	CurrentInfo         *DashboardCurrent `json:"currentInfo"`
+	DatabaseNumber      int               `json:"databaseNumber"`
+	Hostname            string            `json:"hostname"`
+	IPv4Addr            string            `json:"ipV4Addr"`
+	KernelArch          string            `json:"kernelArch"`
+	KernelVersion       string            `json:"kernelVersion"`
+	OS                  string            `json:"os"`
+	Platform            string            `json:"platform"`
+	PlatformFamily      string            `json:"platformFamily"`
+	PlatformVersion     string            `json:"platformVersion"`
+	PrettyDistro        string            `json:"prettyDistro"`
+	SystemProxy         string            `json:"systemProxy"`
+	VirtualizationSystem string           `json:"virtualizationSystem"`
+	WebsiteNumber       int               `json:"websiteNumber"`
 }
 
+// DashboardCurrent 仪表盘实时指标
+// GET /dashboard/current/:ioOption/:netOption
 type DashboardCurrent struct {
-	CPUPercent      float64 `json:"cpuPercent"`
-	MemoryUsed      uint64  `json:"memoryUsed"`
-	MemoryPercent   float64 `json:"memoryPercent"`
-	SwapUsed        uint64  `json:"swapUsed"`
-	DiskUsed        uint64  `json:"diskUsed"`
-	DiskPercent     float64 `json:"diskPercent"`
-	NetworkUpload   float64 `json:"networkUpload"`
-	NetworkDownload float64 `json:"networkDownload"`
-	IORead          float64 `json:"ioRead"`
-	IOWrite         float64 `json:"ioWrite"`
-	Load1           float64 `json:"load1"`
-	Load5           float64 `json:"load5"`
-	Load15          float64 `json:"load15"`
+	CPUTotal             int             `json:"cpuTotal"`
+	CPUUsed              float64         `json:"cpuUsed"`
+	CPUUsedPercent       float64         `json:"cpuUsedPercent"`
+	CPUDetailedPercent   []float64       `json:"cpuDetailedPercent"`
+	MemoryTotal          int64           `json:"memoryTotal"`
+	MemoryUsed           int64           `json:"memoryUsed"`
+	MemoryUsedPercent    float64         `json:"memoryUsedPercent"`
+	MemoryAvailable      int64           `json:"memoryAvailable"`
+	MemoryCache          int64           `json:"memoryCache"`
+	MemoryFree           int64           `json:"memoryFree"`
+	MemoryShard          int64           `json:"memoryShard"`
+	SwapMemoryTotal      int64           `json:"swapMemoryTotal"`
+	SwapMemoryUsed       int64           `json:"swapMemoryUsed"`
+	SwapMemoryUsedPercent float64        `json:"swapMemoryUsedPercent"`
+	SwapMemoryAvailable  int64           `json:"swapMemoryAvailable"`
+	IOReadBytes          int64           `json:"ioReadBytes"`
+	IOWriteBytes         int64           `json:"ioWriteBytes"`
+	IOReadTime           int64           `json:"ioReadTime"`
+	IOWriteTime          int64           `json:"ioWriteTime"`
+	IOCount              int             `json:"ioCount"`
+	LoadUsagePercent     float64         `json:"loadUsagePercent"`
+	Load1                float64         `json:"load1"`
+	Load5                float64         `json:"load5"`
+	Load15               float64         `json:"load15"`
+	NetBytesRecv         int64           `json:"netBytesRecv"`
+	NetBytesSent         int64           `json:"netBytesSent"`
+	Procs                int             `json:"procs"`
+	Uptime               int64           `json:"uptime"`
+	TimeSinceUptime      string          `json:"timeSinceUptime"`
+	ShotTime             string          `json:"shotTime"`
+	DiskData             []DiskInfo      `json:"diskData"`
+	GPUData              []GPUInfo       `json:"gpuData"`
+	TopCPUItems          []Process       `json:"topCPUItems"`
+	TopMemItems          []Process       `json:"topMemItems"`
 }
 
+// DiskInfo 磁盘信息
+type DiskInfo struct {
+	Device            string  `json:"device"`
+	Path              string  `json:"path"`
+	Type              string  `json:"type"`
+	Total             int64   `json:"total"`
+	Used              int64   `json:"used"`
+	Free              int64   `json:"free"`
+	UsedPercent       float64 `json:"usedPercent"`
+	InodesTotal       int64   `json:"inodesTotal"`
+	InodesUsed        int64   `json:"inodesUsed"`
+	InodesFree        int64   `json:"inodesFree"`
+	InodesUsedPercent float64 `json:"inodesUsedPercent"`
+}
+
+// GPUInfo GPU 信息
+type GPUInfo struct {
+	Index            int    `json:"index"`
+	ProductName      string `json:"productName"`
+	Temperature      string `json:"temperature"`
+	FanSpeed         string `json:"fanSpeed"`
+	GPUUtil          string `json:"gpuUtil"`
+	MemoryUsage      string `json:"memoryUsage"`
+	MemTotal         string `json:"memTotal"`
+	MemUsed          string `json:"memUsed"`
+	PowerUsage       string `json:"powerUsage"`
+	MaxPowerLimit    string `json:"maxPowerLimit"`
+	PerformanceState string `json:"performanceState"`
+}
+
+// Process 进程信息（Top CPU/Memory）
 type Process struct {
-	PID    int32   `json:"pid"`
-	Name   string  `json:"name"`
-	CPU    float64 `json:"cpu"`
-	Memory float32 `json:"memory"`
+	PID     int32   `json:"pid"`
+	Name    string  `json:"name"`
+	Cmd     string  `json:"cmd"`
+	Percent float64 `json:"percent"`
+	Memory  int64   `json:"memory"`
+	User    string  `json:"user"`
 }
 
+// ContainerStatus 容器状态汇总
+// GET /containers/status
 type ContainerStatus struct {
-	Total   int `json:"total"`
-	Running int `json:"running"`
-	Stopped int `json:"stopped"`
-	Paused  int `json:"paused"`
+	ContainerCount      int `json:"containerCount"`
+	Running             int `json:"running"`
+	Paused              int `json:"paused"`
+	Exited              int `json:"exited"`
+	Created             int `json:"created"`
+	Dead                int `json:"dead"`
+	Restarting          int `json:"restarting"`
+	Removing            int `json:"removing"`
+	ImageCount          int `json:"imageCount"`
+	NetworkCount        int `json:"networkCount"`
+	VolumeCount         int `json:"volumeCount"`
+	ComposeCount        int `json:"composeCount"`
+	ComposeTemplateCount int `json:"composeTemplateCount"`
+	RepoCount           int `json:"repoCount"`
 }
 
+// ContainerInfo 容器详情
 type ContainerInfo struct {
 	ContainerID string  `json:"containerID"`
 	Name        string  `json:"name"`
+	ImageID     string  `json:"imageID"`
 	ImageName   string  `json:"imageName"`
 	State       string  `json:"state"`
 	Status      string  `json:"status"`
 	CPUPercent  float64 `json:"cpuPercent"`
 	MemUsage    float64 `json:"memUsage"`
 	MemLimit    float64 `json:"memLimit"`
+	NetworkMode string  `json:"networkMode"`
+	IPAddress   string  `json:"ipAddress"`
+	Ports       string  `json:"ports"`
+	CreateTime  string  `json:"createTime"`
+	IsFromApp   string  `json:"isFromApp"`
+	Compose     string  `json:"compose"`
 }
 
+// ContainerStats 容器资源统计
 type ContainerStats struct {
-	CPUPercent float64 `json:"cpuPercent"`
-	MemUsage   float64 `json:"memUsage"`
-	MemLimit   float64 `json:"memLimit"`
-	MemPercent float64 `json:"memPercent"`
-	IORead     float64 `json:"ioRead"`
-	IOWrite    float64 `json:"ioWrite"`
-	NetInput   float64 `json:"netInput"`
-	NetOutput  float64 `json:"netOutput"`
+	CPUTotalUsage int64   `json:"cpuTotalUsage"`
+	SystemUsage   int64   `json:"systemUsage"`
+	CPUPercent    float64 `json:"cpuPercent"`
+	PerCPUUsage   float64 `json:"percpuUsage"`
+	MemoryCache   int64   `json:"memoryCache"`
+	MemoryUsage   int64   `json:"memoryUsage"`
+	MemoryLimit   int64   `json:"memoryLimit"`
+	MemoryPercent float64 `json:"memoryPercent"`
 }
 
-type MonitorData struct {
-	Date  interface{} `json:"date"`
-	Value interface{} `json:"value"`
-}
-
-type ListContainerReq struct {
-	Page     int    `json:"page"`
-	PageSize int    `json:"pageSize"`
-	Name     string `json:"name"`
-}
-
+// MonitorSearchReq 监控历史查询请求（发往 agent 的）
+// POST /hosts/monitor/search
 type MonitorSearchReq struct {
-	Param     string `json:"param"`
-	Info      string `json:"info"`
 	StartTime string `json:"startTime"`
 	EndTime   string `json:"endTime"`
+	Param     string `json:"param"`
+	IO        string `json:"io"`
+	Network   string `json:"network"`
 }
 
-// ---- API 方法 ----
+// MonitorSearchResult 监控历史查询结果
+// agent 返回的是单个对象 { date: [...], value: [...] }，不是数组
+type MonitorSearchResult struct {
+	Date  []string          `json:"date"`
+	Value []json.RawMessage `json:"value"`
+}
 
-// Ping 测试连接
+// PageContainerReq 容器列表分页查询请求
+// POST /containers/search
+type PageContainerReq struct {
+	Page            int    `json:"page"`
+	PageSize        int    `json:"pageSize"`
+	Name            string `json:"name"`
+	State           string `json:"state"`     // required, oneof: all|created|running|paused|restarting|removing|exited|dead
+	OrderBy         string `json:"orderBy"`    // required, oneof: name|createdAt|state
+	Order           string `json:"order"`      // required, oneof: null|ascending|descending
+	Filters         string `json:"filters"`
+	ExcludeAppStore bool   `json:"excludeAppStore"`
+}
+
+// PageResult 分页结果
+type PageResult struct {
+	Items json.RawMessage `json:"items"`
+	Total int64           `json:"total"`
+}
+
+// ============================================================
+// API 方法
+// ============================================================
+
+// Ping 测试连接（调用 /dashboard/base/os 验证 API Key 有效性）
 func (c *PanelClient) Ping() error {
-	_, err := c.doRequest("POST", "/api/v2/dashboard/os", nil)
+	_, err := c.doRequest("GET", "/dashboard/base/os", nil)
 	return err
 }
 
 // GetDashboardOS 获取操作系统信息
+// GET /dashboard/base/os
 func (c *PanelClient) GetDashboardOS() (*OsInfo, error) {
-	data, err := c.doRequest("POST", "/api/v2/dashboard/os", nil)
+	data, err := c.doRequest("GET", "/dashboard/base/os", nil)
 	if err != nil {
 		return nil, err
 	}
@@ -283,10 +401,12 @@ func (c *PanelClient) GetDashboardOS() (*OsInfo, error) {
 	return &result, nil
 }
 
-// GetDashboardBase 获取基础信息
+// GetDashboardBase 获取仪表盘基础信息（含 currentInfo）
+// GET /dashboard/base/:ioOption/:netOption
+// ioOption/netOption 为磁盘/网卡过滤选项，传 "-" 表示不限
 func (c *PanelClient) GetDashboardBase(ioOption, netOption string) (*DashboardBase, error) {
-	payload := map[string]string{"ioOption": ioOption, "netOption": netOption}
-	data, err := c.doRequest("POST", "/api/v2/dashboard/base/search", payload)
+	path := fmt.Sprintf("/dashboard/base/%s/%s", ioOption, netOption)
+	data, err := c.doRequest("GET", path, nil)
 	if err != nil {
 		return nil, err
 	}
@@ -298,9 +418,10 @@ func (c *PanelClient) GetDashboardBase(ioOption, netOption string) (*DashboardBa
 }
 
 // GetDashboardCurrent 获取当前实时指标
+// GET /dashboard/current/:ioOption/:netOption
 func (c *PanelClient) GetDashboardCurrent(ioOption, netOption string) (*DashboardCurrent, error) {
-	payload := map[string]string{"ioOption": ioOption, "netOption": netOption}
-	data, err := c.doRequest("POST", "/api/v2/dashboard/current", payload)
+	path := fmt.Sprintf("/dashboard/current/%s/%s", ioOption, netOption)
+	data, err := c.doRequest("GET", path, nil)
 	if err != nil {
 		return nil, err
 	}
@@ -312,8 +433,9 @@ func (c *PanelClient) GetDashboardCurrent(ioOption, netOption string) (*Dashboar
 }
 
 // GetTopCPU 获取 CPU 占用 Top 进程
+// GET /dashboard/current/top/cpu
 func (c *PanelClient) GetTopCPU() ([]Process, error) {
-	data, err := c.doRequest("GET", "/api/v2/dashboard/process/top/cpu", nil)
+	data, err := c.doRequest("GET", "/dashboard/current/top/cpu", nil)
 	if err != nil {
 		return nil, err
 	}
@@ -325,8 +447,9 @@ func (c *PanelClient) GetTopCPU() ([]Process, error) {
 }
 
 // GetTopMemory 获取内存占用 Top 进程
+// GET /dashboard/current/top/mem
 func (c *PanelClient) GetTopMemory() ([]Process, error) {
-	data, err := c.doRequest("GET", "/api/v2/dashboard/process/top/mem", nil)
+	data, err := c.doRequest("GET", "/dashboard/current/top/mem", nil)
 	if err != nil {
 		return nil, err
 	}
@@ -338,8 +461,9 @@ func (c *PanelClient) GetTopMemory() ([]Process, error) {
 }
 
 // GetContainerStatus 获取容器状态汇总
+// GET /containers/status
 func (c *PanelClient) GetContainerStatus() (*ContainerStatus, error) {
-	data, err := c.doRequest("GET", "/api/v2/containers/status", nil)
+	data, err := c.doRequest("GET", "/containers/status", nil)
 	if err != nil {
 		return nil, err
 	}
@@ -350,25 +474,60 @@ func (c *PanelClient) GetContainerStatus() (*ContainerStatus, error) {
 	return &result, nil
 }
 
-// ListContainers 获取容器列表
-func (c *PanelClient) ListContainers(req ListContainerReq) ([]ContainerInfo, error) {
-	data, err := c.doRequest("POST", "/api/v2/containers/search", req)
+// ListContainers 获取容器列表（分页）
+// POST /containers/search
+func (c *PanelClient) ListContainers(req PageContainerReq) (*PageResult, error) {
+	data, err := c.doRequest("POST", "/containers/search", req)
 	if err != nil {
 		return nil, err
 	}
-	var wrapper struct {
-		Items []ContainerInfo `json:"items"`
-		Total int64           `json:"total"`
-	}
-	if err := parseResponse(data, &wrapper); err != nil {
+	var result PageResult
+	if err := parseResponse(data, &result); err != nil {
 		return nil, err
 	}
-	return wrapper.Items, nil
+	return &result, nil
+}
+
+// ListContainersSimple 获取容器列表（简化参数，默认查全部，按创建时间降序）
+func (c *PanelClient) ListContainersSimple(page, pageSize int) (*PageResult, error) {
+	return c.ListContainers(PageContainerReq{
+		Page:     page,
+		PageSize: pageSize,
+		State:    "all",
+		OrderBy:  "createdAt",
+		Order:    "descending",
+	})
+}
+
+// ListAllContainers 获取所有容器列表（不分页，最多 1000 个）
+func (c *PanelClient) ListAllContainers() (*PageResult, error) {
+	return c.ListContainers(PageContainerReq{
+		Page:     1,
+		PageSize: 1000,
+		State:    "all",
+		OrderBy:  "createdAt",
+		Order:    "descending",
+	})
+}
+
+// GetContainerStatsList 获取所有运行容器的资源统计
+// GET /containers/list/stats
+func (c *PanelClient) GetContainerStatsList() ([]ContainerStats, error) {
+	data, err := c.doRequest("GET", "/containers/list/stats", nil)
+	if err != nil {
+		return nil, err
+	}
+	var result []ContainerStats
+	if err := parseResponse(data, &result); err != nil {
+		return nil, err
+	}
+	return result, nil
 }
 
 // GetContainerStats 获取单个容器资源统计
+// GET /containers/stats/:id
 func (c *PanelClient) GetContainerStats(containerID string) (*ContainerStats, error) {
-	data, err := c.doRequest("GET", "/api/v2/containers/stats/"+containerID, nil)
+	data, err := c.doRequest("GET", "/containers/stats/"+containerID, nil)
 	if err != nil {
 		return nil, err
 	}
@@ -380,19 +539,17 @@ func (c *PanelClient) GetContainerStats(containerID string) (*ContainerStats, er
 }
 
 // SearchMonitor 查询历史监控数据
-func (c *PanelClient) SearchMonitor(req MonitorSearchReq) ([]MonitorData, error) {
-	data, err := c.doRequest("POST", "/api/v2/monitor/search", req)
+// POST /hosts/monitor/search
+// param: cpu | memory | load | disk | io | network | gpu
+// 返回的是 { date: []string, value: []object } 结构
+func (c *PanelClient) SearchMonitor(req MonitorSearchReq) (*MonitorSearchResult, error) {
+	data, err := c.doRequest("POST", "/hosts/monitor/search", req)
 	if err != nil {
 		return nil, err
 	}
-	var result []MonitorData
+	var result MonitorSearchResult
 	if err := parseResponse(data, &result); err != nil {
 		return nil, err
 	}
-	return result, nil
-}
-
-// ListContainersSimple 获取容器列表（简化参数）
-func (c *PanelClient) ListContainersSimple(page, pageSize int) ([]ContainerInfo, error) {
-	return c.ListContainers(ListContainerReq{Page: page, PageSize: pageSize})
+	return &result, nil
 }

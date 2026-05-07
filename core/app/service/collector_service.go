@@ -105,7 +105,7 @@ func (c *CollectorService) collectNode(node model.HostNode) {
 		return
 	}
 
-	current, err := client.GetDashboardCurrent("", "")
+	current, err := client.GetDashboardCurrent("-", "-")
 	if err != nil {
 		global.LOG.Warnf("collector: collect node %d failed: %v", node.ID, err)
 		_ = c.nodeRepo.UpdateStatus(node.ID, 2, nil)
@@ -116,13 +116,13 @@ func (c *CollectorService) collectNode(node model.HostNode) {
 	_ = c.nodeRepo.UpdateStatus(node.ID, 1, &now)
 
 	records := []model.MonitorHistory{
-		{NodeID: node.ID, MetricType: "cpu", MetricValue: current.CPUPercent, RecordedAt: now},
-		{NodeID: node.ID, MetricType: "memory", MetricValue: current.MemoryPercent, RecordedAt: now},
-		{NodeID: node.ID, MetricType: "disk", MetricValue: current.DiskPercent, RecordedAt: now},
-		{NodeID: node.ID, MetricType: "net_upload", MetricValue: current.NetworkUpload, RecordedAt: now},
-		{NodeID: node.ID, MetricType: "net_download", MetricValue: current.NetworkDownload, RecordedAt: now},
-		{NodeID: node.ID, MetricType: "io_read", MetricValue: current.IORead, RecordedAt: now},
-		{NodeID: node.ID, MetricType: "io_write", MetricValue: current.IOWrite, RecordedAt: now},
+		{NodeID: node.ID, MetricType: "cpu", MetricValue: current.CPUUsedPercent, RecordedAt: now},
+		{NodeID: node.ID, MetricType: "memory", MetricValue: current.MemoryUsedPercent, RecordedAt: now},
+		{NodeID: node.ID, MetricType: "load1", MetricValue: current.Load1, RecordedAt: now},
+		{NodeID: node.ID, MetricType: "net_upload", MetricValue: float64(current.NetBytesSent), RecordedAt: now},
+		{NodeID: node.ID, MetricType: "net_download", MetricValue: float64(current.NetBytesRecv), RecordedAt: now},
+		{NodeID: node.ID, MetricType: "io_read", MetricValue: float64(current.IOReadBytes), RecordedAt: now},
+		{NodeID: node.ID, MetricType: "io_write", MetricValue: float64(current.IOWriteBytes), RecordedAt: now},
 	}
 
 	if err := c.monitorRepo.BatchCreate(records); err != nil {

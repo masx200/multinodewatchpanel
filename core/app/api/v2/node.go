@@ -1,11 +1,12 @@
 package v2
 
 import (
-	"fmt"
+	"encoding/json"
 	"time"
 
 	"github.com/1Panel-dev/1Panel/core/app/api/v2/helper"
 	"github.com/1Panel-dev/1Panel/core/app/dto"
+	"github.com/1Panel-dev/1Panel/core/utils"
 	"github.com/gin-gonic/gin"
 )
 
@@ -128,34 +129,42 @@ func (b *BaseApi) GetNodeDashboard(c *gin.Context) {
 		return
 	}
 
-	current, err := client.GetDashboardCurrent("", "")
+	current, err := client.GetDashboardCurrent("-", "-")
 	if err != nil {
 		helper.InternalServer(c, err)
 		return
 	}
-	osInfo, _ := client.GetDashboardOS()
+	base, _ := client.GetDashboardBase("-", "-")
 
 	dashboard := dto.NodeDashboard{
 		NodeID:   nodeInfo.ID,
 		NodeName: nodeInfo.Name,
 		Status:   nodeInfo.Status,
-		CPU:      current.CPUPercent,
-		Memory:   current.MemoryPercent,
-		Disk:     current.DiskPercent,
-		NetUp:    current.NetworkUpload,
-		NetDown:  current.NetworkDownload,
-		IORead:   current.IORead,
-		IOWrite:  current.IOWrite,
+		CPU:      current.CPUUsedPercent,
+		Memory:   current.MemoryUsedPercent,
 		Load1:    current.Load1,
 		Load5:    current.Load5,
 		Load15:   current.Load15,
 	}
-	if osInfo != nil {
-		dashboard.Hostname = osInfo.Hostname
-		dashboard.Uptime = osInfo.Uptime
-		dashboard.OSVersion = fmt.Sprintf("%s %s", osInfo.Platform, osInfo.PlatformFamily)
+	// 从 DiskData 计算总体磁盘使用率
+	if len(current.DiskData) > 0 {
+		var totalUsed, totalAll float64
+		for _, d := range current.DiskData {
+			totalUsed += d.UsedPercent
+			totalAll++
+		}
+		dashboard.Disk = totalUsed / totalAll
 	}
-	helper.SuccessWithData(c, dashboard)
+	dashboard.NetUp = float64(current.NetBytesSent)
+	dashboard.NetDown = float64(current.NetBytesRecv)
+	dashboard.IORead = float64(current.IOReadBytes)
+	dashboard.IOWrite = float64(current.IOWriteBytes)
+
+	if base != nil {
+		dashboard.Hostname = base.Hostname
+		dashboard.Uptime = uint64(base.CurrentInfo.Uptime)
+		dashboard.OSVersion = base.PrettyDistro
+	}
 }
 
 // @Tags Node
@@ -180,7 +189,12 @@ func (b *BaseApi) GetNodeContainers(c *gin.Context) {
 		helper.InternalServer(c, err)
 		return
 	}
-	helper.SuccessWithData(c, result)
+	var containers []utils.ContainerInfo
+	if err := json.Unmarshal(result.Items, &containers); err != nil {
+		helper.InternalServer(c, err)
+		return
+	}
+	helper.SuccessWithData(c, containers)
 }
 
 // @Tags Node
