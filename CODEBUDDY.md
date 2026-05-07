@@ -50,7 +50,7 @@ Initialization sequence for each service is in `server/server.go` → `init/` pa
 make build_all
 
 # Individual targets
-make build_frontend          # cd frontend && npm install && npm run build:pro
+make build_frontend          # cd frontend && pnpm install && npm run build:pro
 make build_core_on_linux     # CGO_ENABLED=0 go build -o build/1panel-core core/cmd/server/main.go
 make build_agent_on_linux    # CGO_ENABLED=0 go build -o build/1panel-agent agent/cmd/server/main.go
 

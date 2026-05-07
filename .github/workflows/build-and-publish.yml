@@ -3,7 +3,7 @@ name: Build And Publish (OSS + R2)
 on:
   push:
     tags:
-      - 'v*'
+      - "v*"
 
 jobs:
   create-release:
@@ -15,18 +15,18 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: '24.11.1'
+          node-version: "24.11.1"
 
       - name: Build Web
         run: |
-          cd frontend && npm install && npm run build:pro
+          cd frontend && pnpm install && npm run build:pro
         env:
           NODE_OPTIONS: --max-old-space-size=8192
 
       - name: Setup Go
         uses: actions/setup-go@v5
         with:
-          go-version: '1.25'
+          go-version: "1.25"
           cache-dependency-path: |
             core/go.sum
             agent/go.sum
@@ -35,7 +35,7 @@ jobs:
         uses: goreleaser/goreleaser-action@v6
         with:
           distribution: goreleaser
-          version: '~> v2'
+          version: "~> v2"
           args: release --skip=publish --clean
 
       - name: Upload Assets
@@ -53,7 +53,7 @@ jobs:
           endpoint: ${{ secrets.OSS_ENDPOINT }}
           access-key-id: ${{ secrets.OSS_ACCESS_KEY_ID }}
           access-key-secret: ${{ secrets.OSS_ACCESS_KEY_SECRET }}
-          ossutil-version: '1.7.18'
+          ossutil-version: "1.7.18"
 
       - name: Upload Assets to OSS
         run: |

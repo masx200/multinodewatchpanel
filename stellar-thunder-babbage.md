@@ -497,7 +497,7 @@ go build -o multinode-watchpanel ./cmd/server
 
 # 启动前端
 cd frontend
-npm install
+pnpm install
 npm run dev
 ```
 

@@ -26,7 +26,7 @@ upx_bin:
 	upx $(BUILD_PATH)/$(AGENT_NAME)
 
 build_frontend:
-	cd $(WEB_PATH) && npm install && npm run build:pro
+	cd $(WEB_PATH) && pnpm install && npm run build:pro
 
 build_core_on_linux:
 	cd $(CORE_PATH) \
