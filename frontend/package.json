@@ -30,6 +30,7 @@
         "@tailwindcss/postcss": "^4.2.4",
         "@vue-office/docx": "^1.6.2",
         "@vue-office/excel": "^1.7.8",
+        "@vue/runtime-core": "^3.5.34",
         "@vue/runtime-dom": "^3.5.34",
         "@vue/shared": "^3.5.34",
         "@vueuse/core": "^12.8.2",
