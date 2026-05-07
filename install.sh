@@ -200,7 +200,6 @@ if [[ -n "${VERSION}" ]]; then
 else
     echo "未手动指定版本号，尝试获取最新版本。"
     # 尝试从 GitHub 获取最新 release tag
-    # GitHub API 返回最新 release tag（不含 sha- 前缀的正式版本）
     VERSION=$(curl -fsSL "https://api.github.com/repos/${GITHUB_REPO}/releases/latest" | grep '"tag_name"' | sed -E 's/.*"([^"]+)".*/\1/')
     if [[ "x${VERSION}" == "x" ]]; then
         echo "获取最新版本失败，请手动指定 VERSION 环境变量。"
@@ -210,15 +209,49 @@ else
     fi
 fi
 
-# 构建下载链接
-# Release archive name pattern: 1panel-v{VERSION}-linux-{ARCH}.tar.gz
-package_file_name="1panel-v${VERSION}-linux-${architecture}.tar.gz"
+# 通过 GitHub Release API 查询匹配当前架构的实际 asset 文件名
+# goreleaser snapshot 模式生成的文件名包含 SNAPSHOT 和 commit hash，
+# 格式类似：1panel-vsha-98575f3-SNAPSHOT-c023714-linux-amd64.tar.gz
+# 因此不能拼接文件名，必须从 API 获取实际的 asset name
+echo "正在从 GitHub Release ${VERSION} 查询 ${architecture} 架构的安装包..."
+ASSET_INFO=$(curl -fsSL "https://api.github.com/repos/${GITHUB_REPO}/releases/tags/${VERSION}")
+
+# 从 API 返回的 JSON 中提取匹配 linux-${architecture}.tar.gz 的 asset name
+package_file_name=$(echo "${ASSET_INFO}" | python3 -c "
+import sys, json
+data = json.load(sys.stdin)
+for asset in data.get('assets', []):
+    name = asset['name']
+    if name.endswith('.tar.gz') and f'linux-${sys.argv[1]}.' in name:
+        print(name)
+        sys.exit(0)
+print('', end='')
+sys.exit(1)
+" "${architecture}")
+
+if [[ -z "${package_file_name}" ]]; then
+    echo "错误：在 Release ${VERSION} 中未找到 linux-${architecture} 架构的安装包。"
+    echo "可用的 assets："
+    echo "${ASSET_INFO}" | python3 -c "
+import sys, json
+data = json.load(sys.stdin)
+for asset in data.get('assets', []):
+    print(f'  - {asset[\"name\"]}')
+" 2>/dev/null || echo "  (无法解析)"
+    exit 1
+fi
+
+echo "找到安装包：${package_file_name}"
+
+# 推断解压后的目录名：去掉 .tar.gz 后缀
+extracted_dir="${package_file_name%.tar.gz}"
+
+# 构建下载链接（使用 gh-proxy 加速）
 package_download_url="https://gh-proxy.com/https://github.com/${GITHUB_REPO}/releases/download/${VERSION}/${package_file_name}"
 
 # 检查本地是否已存在安装包，若有则直接解压安装
 if [[ -f "${package_file_name}" ]]; then
     echo "检测到本地安装包，直接解压安装。"
-    extracted_dir="1panel-v${VERSION}-linux-${architecture}"
     rm -rf "${extracted_dir}"
     tar zxf "${package_file_name}"
     cd "${extracted_dir}"
@@ -237,7 +270,6 @@ if [[ ! -f "${package_file_name}" ]] || [[ ! -s "${package_file_name}" ]]; then
 fi
 
 # 解压安装包
-extracted_dir="1panel-v${VERSION}-linux-${architecture}"
 tar zxf "${package_file_name}"
 if [[ $? != 0 ]]; then
     echo "解压安装包失败，下载文件可能不完整或已损坏。"
