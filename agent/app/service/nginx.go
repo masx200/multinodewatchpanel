@@ -4,8 +4,8 @@ import (
 	"bufio"
 	"encoding/json"
 	"fmt"
-	"github.com/1Panel-dev/1Panel/agent/utils/nginx"
-	"github.com/1Panel-dev/1Panel/agent/utils/nginx/parser"
+	"github.com/masx200/multinodewatchpanel/agent/utils/nginx"
+	"github.com/masx200/multinodewatchpanel/agent/utils/nginx/parser"
 	"io"
 	"net/http"
 	"os"
@@ -14,20 +14,20 @@ import (
 	"strings"
 	"time"
 
-	"github.com/1Panel-dev/1Panel/agent/app/task"
-	"github.com/1Panel-dev/1Panel/agent/buserr"
-	"github.com/1Panel-dev/1Panel/agent/global"
-	"github.com/1Panel-dev/1Panel/agent/utils/cmd"
+	"github.com/masx200/multinodewatchpanel/agent/app/task"
+	"github.com/masx200/multinodewatchpanel/agent/buserr"
+	"github.com/masx200/multinodewatchpanel/agent/global"
+	"github.com/masx200/multinodewatchpanel/agent/utils/cmd"
 	"github.com/subosito/gotenv"
 
-	"github.com/1Panel-dev/1Panel/agent/utils/compose"
+	"github.com/masx200/multinodewatchpanel/agent/utils/compose"
 
-	"github.com/1Panel-dev/1Panel/agent/app/dto/request"
-	"github.com/1Panel-dev/1Panel/agent/app/dto/response"
+	"github.com/masx200/multinodewatchpanel/agent/app/dto/request"
+	"github.com/masx200/multinodewatchpanel/agent/app/dto/response"
 
-	"github.com/1Panel-dev/1Panel/agent/app/dto"
-	"github.com/1Panel-dev/1Panel/agent/constant"
-	"github.com/1Panel-dev/1Panel/agent/utils/files"
+	"github.com/masx200/multinodewatchpanel/agent/app/dto"
+	"github.com/masx200/multinodewatchpanel/agent/constant"
+	"github.com/masx200/multinodewatchpanel/agent/utils/files"
 )
 
 type NginxService struct {

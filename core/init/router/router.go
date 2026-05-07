@@ -7,17 +7,17 @@ import (
 	"path/filepath"
 	"strings"
 
-	"github.com/1Panel-dev/1Panel/core/app/service"
-	"github.com/1Panel-dev/1Panel/core/cmd/server/docs"
-	"github.com/1Panel-dev/1Panel/core/cmd/server/web"
-	"github.com/1Panel-dev/1Panel/core/global"
-	"github.com/1Panel-dev/1Panel/core/i18n"
-	"github.com/1Panel-dev/1Panel/core/init/swagger"
-	"github.com/1Panel-dev/1Panel/core/middleware"
-	rou "github.com/1Panel-dev/1Panel/core/router"
-	"github.com/1Panel-dev/1Panel/core/utils/security"
 	"github.com/gin-contrib/gzip"
 	"github.com/gin-gonic/gin"
+	"github.com/masx200/multinodewatchpanel/core/app/service"
+	"github.com/masx200/multinodewatchpanel/core/cmd/server/docs"
+	"github.com/masx200/multinodewatchpanel/core/cmd/server/web"
+	"github.com/masx200/multinodewatchpanel/core/global"
+	"github.com/masx200/multinodewatchpanel/core/i18n"
+	"github.com/masx200/multinodewatchpanel/core/init/swagger"
+	"github.com/masx200/multinodewatchpanel/core/middleware"
+	rou "github.com/masx200/multinodewatchpanel/core/router"
+	"github.com/masx200/multinodewatchpanel/core/utils/security"
 )
 
 var (

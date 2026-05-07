@@ -3,10 +3,10 @@ package repo
 import (
 	"context"
 
-	"github.com/1Panel-dev/1Panel/agent/constant"
-	"github.com/1Panel-dev/1Panel/agent/global"
+	"github.com/masx200/multinodewatchpanel/agent/constant"
+	"github.com/masx200/multinodewatchpanel/agent/global"
 
-	"github.com/1Panel-dev/1Panel/agent/app/model"
+	"github.com/masx200/multinodewatchpanel/agent/app/model"
 	"gorm.io/gorm"
 )
 

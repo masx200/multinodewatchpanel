@@ -1,8 +1,8 @@
 package client
 
 import (
-	"github.com/1Panel-dev/1Panel/agent/app/task"
 	_ "github.com/jackc/pgx/v5/stdlib"
+	"github.com/masx200/multinodewatchpanel/agent/app/task"
 )
 
 type DBInfo struct {

@@ -4,9 +4,9 @@ import (
 	"net/http"
 	"strings"
 
-	"github.com/1Panel-dev/1Panel/core/app/dto"
-	"github.com/1Panel-dev/1Panel/core/buserr"
 	"github.com/gin-gonic/gin"
+	"github.com/masx200/multinodewatchpanel/core/app/dto"
+	"github.com/masx200/multinodewatchpanel/core/buserr"
 )
 
 var whiteUrlList = map[string]struct{}{

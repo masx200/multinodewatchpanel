@@ -7,12 +7,12 @@ import (
 	"strings"
 	"time"
 
-	"github.com/1Panel-dev/1Panel/agent/app/dto"
-	"github.com/1Panel-dev/1Panel/agent/app/dto/request"
-	"github.com/1Panel-dev/1Panel/agent/buserr"
-	"github.com/1Panel-dev/1Panel/agent/constant"
-	"github.com/1Panel-dev/1Panel/agent/global"
-	"github.com/1Panel-dev/1Panel/agent/utils/cmd"
+	"github.com/masx200/multinodewatchpanel/agent/app/dto"
+	"github.com/masx200/multinodewatchpanel/agent/app/dto/request"
+	"github.com/masx200/multinodewatchpanel/agent/buserr"
+	"github.com/masx200/multinodewatchpanel/agent/constant"
+	"github.com/masx200/multinodewatchpanel/agent/global"
+	"github.com/masx200/multinodewatchpanel/agent/utils/cmd"
 )
 
 var agentMarkdownFileNames = []string{"AGENTS.md", "SOUL.md", "USER.md", "IDENTITY.md", "TOOLS.md", "HEARTBEAT.md", "BOOT.md", "BOOTSTRAP.md"}

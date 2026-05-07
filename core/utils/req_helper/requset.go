@@ -10,9 +10,9 @@ import (
 	"strings"
 	"time"
 
-	"github.com/1Panel-dev/1Panel/core/buserr"
-	"github.com/1Panel-dev/1Panel/core/global"
-	"github.com/1Panel-dev/1Panel/core/utils/xpack"
+	"github.com/masx200/multinodewatchpanel/core/buserr"
+	"github.com/masx200/multinodewatchpanel/core/global"
+	"github.com/masx200/multinodewatchpanel/core/utils/xpack"
 )
 
 func HandleRequest(url, method string, timeout int) (int, []byte, error) {

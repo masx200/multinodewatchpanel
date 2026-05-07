@@ -5,9 +5,9 @@ package xpack
 import (
 	"net/http"
 
-	"github.com/1Panel-dev/1Panel/core/utils/ssh"
-	edition "github.com/1Panel-dev/1Panel/core/xpack/edition"
 	"github.com/gin-gonic/gin"
+	"github.com/masx200/multinodewatchpanel/core/utils/ssh"
+	edition "github.com/masx200/multinodewatchpanel/core/xpack/edition"
 )
 
 func Proxy(c *gin.Context, currentNode string) {

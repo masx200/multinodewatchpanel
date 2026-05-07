@@ -6,8 +6,8 @@ import (
 	"database/sql"
 	"errors"
 
-	"github.com/1Panel-dev/1Panel/agent/global"
 	"github.com/go-sql-driver/mysql"
+	"github.com/masx200/multinodewatchpanel/agent/global"
 )
 
 type DBInfo struct {

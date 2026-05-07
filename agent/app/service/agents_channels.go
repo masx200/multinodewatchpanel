@@ -9,15 +9,15 @@ import (
 	"strings"
 	"time"
 
-	"github.com/1Panel-dev/1Panel/agent/app/dto"
-	"github.com/1Panel-dev/1Panel/agent/app/model"
-	"github.com/1Panel-dev/1Panel/agent/app/task"
-	"github.com/1Panel-dev/1Panel/agent/buserr"
-	"github.com/1Panel-dev/1Panel/agent/constant"
-	"github.com/1Panel-dev/1Panel/agent/global"
-	"github.com/1Panel-dev/1Panel/agent/utils/cmd"
-	"github.com/1Panel-dev/1Panel/agent/utils/common"
-	"github.com/1Panel-dev/1Panel/agent/utils/compose"
+	"github.com/masx200/multinodewatchpanel/agent/app/dto"
+	"github.com/masx200/multinodewatchpanel/agent/app/model"
+	"github.com/masx200/multinodewatchpanel/agent/app/task"
+	"github.com/masx200/multinodewatchpanel/agent/buserr"
+	"github.com/masx200/multinodewatchpanel/agent/constant"
+	"github.com/masx200/multinodewatchpanel/agent/global"
+	"github.com/masx200/multinodewatchpanel/agent/utils/cmd"
+	"github.com/masx200/multinodewatchpanel/agent/utils/common"
+	"github.com/masx200/multinodewatchpanel/agent/utils/compose"
 )
 
 type openclawPluginPackage struct {

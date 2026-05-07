@@ -12,8 +12,8 @@ import (
 	"time"
 	"unicode/utf8"
 
-	providercatalog "github.com/1Panel-dev/1Panel/agent/app/provider"
-	"github.com/1Panel-dev/1Panel/agent/global"
+	providercatalog "github.com/masx200/multinodewatchpanel/agent/app/provider"
+	"github.com/masx200/multinodewatchpanel/agent/global"
 )
 
 const (

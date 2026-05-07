@@ -2,8 +2,8 @@ package middleware
 
 import (
 	"encoding/base64"
-	"github.com/1Panel-dev/1Panel/core/app/repo"
 	"github.com/gin-gonic/gin"
+	"github.com/masx200/multinodewatchpanel/core/app/repo"
 )
 
 func SetPasswordPublicKey() gin.HandlerFunc {

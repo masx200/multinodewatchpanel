@@ -2,8 +2,8 @@ package dto
 
 import (
 	"context"
-	"github.com/1Panel-dev/1Panel/agent/app/model"
-	"github.com/1Panel-dev/1Panel/agent/app/task"
+	"github.com/masx200/multinodewatchpanel/agent/app/model"
+	"github.com/masx200/multinodewatchpanel/agent/app/task"
 )
 
 type AppDatabase struct {

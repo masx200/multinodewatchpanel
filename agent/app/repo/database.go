@@ -5,9 +5,9 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/1Panel-dev/1Panel/agent/app/model"
-	"github.com/1Panel-dev/1Panel/agent/global"
-	"github.com/1Panel-dev/1Panel/agent/utils/encrypt"
+	"github.com/masx200/multinodewatchpanel/agent/app/model"
+	"github.com/masx200/multinodewatchpanel/agent/global"
+	"github.com/masx200/multinodewatchpanel/agent/utils/encrypt"
 	"gorm.io/gorm"
 )
 

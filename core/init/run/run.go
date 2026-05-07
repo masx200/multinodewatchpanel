@@ -1,11 +1,11 @@
 package run
 
 import (
-	"github.com/1Panel-dev/1Panel/core/app/dto"
-	"github.com/1Panel-dev/1Panel/core/app/repo"
-	"github.com/1Panel-dev/1Panel/core/app/service"
-	"github.com/1Panel-dev/1Panel/core/constant"
-	"github.com/1Panel-dev/1Panel/core/global"
+	"github.com/masx200/multinodewatchpanel/core/app/dto"
+	"github.com/masx200/multinodewatchpanel/core/app/repo"
+	"github.com/masx200/multinodewatchpanel/core/app/service"
+	"github.com/masx200/multinodewatchpanel/core/constant"
+	"github.com/masx200/multinodewatchpanel/core/global"
 )
 
 func Init() {

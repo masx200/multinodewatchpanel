@@ -3,8 +3,8 @@ package response
 import (
 	"time"
 
-	"github.com/1Panel-dev/1Panel/agent/app/dto"
-	"github.com/1Panel-dev/1Panel/agent/app/model"
+	"github.com/masx200/multinodewatchpanel/agent/app/dto"
+	"github.com/masx200/multinodewatchpanel/agent/app/model"
 )
 
 type WebsiteDTO struct {

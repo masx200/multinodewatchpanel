@@ -10,10 +10,10 @@ import (
 	"strings"
 	"time"
 
-	"github.com/1Panel-dev/1Panel/agent/global"
-	"github.com/1Panel-dev/1Panel/agent/utils/ai_tools/gpu/common"
-	"github.com/1Panel-dev/1Panel/agent/utils/ai_tools/gpu/schema"
-	"github.com/1Panel-dev/1Panel/agent/utils/cmd"
+	"github.com/masx200/multinodewatchpanel/agent/global"
+	"github.com/masx200/multinodewatchpanel/agent/utils/ai_tools/gpu/common"
+	"github.com/masx200/multinodewatchpanel/agent/utils/ai_tools/gpu/schema"
+	"github.com/masx200/multinodewatchpanel/agent/utils/cmd"
 )
 
 type NvidiaSMI struct{}

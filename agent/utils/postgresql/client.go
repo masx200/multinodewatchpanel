@@ -8,9 +8,9 @@ import (
 	"net/url"
 	"time"
 
-	"github.com/1Panel-dev/1Panel/agent/buserr"
-	"github.com/1Panel-dev/1Panel/agent/utils/postgresql/client"
 	_ "github.com/jackc/pgx/v5/stdlib"
+	"github.com/masx200/multinodewatchpanel/agent/buserr"
+	"github.com/masx200/multinodewatchpanel/agent/utils/postgresql/client"
 )
 
 type PostgresqlClient interface {

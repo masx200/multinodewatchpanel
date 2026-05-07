@@ -5,10 +5,10 @@ import (
 	"sync"
 	"time"
 
-	"github.com/1Panel-dev/1Panel/core/app/dto"
-	"github.com/1Panel-dev/1Panel/core/app/model"
-	"github.com/1Panel-dev/1Panel/core/app/repo"
-	"github.com/1Panel-dev/1Panel/core/utils"
+	"github.com/masx200/multinodewatchpanel/core/app/dto"
+	"github.com/masx200/multinodewatchpanel/core/app/model"
+	"github.com/masx200/multinodewatchpanel/core/app/repo"
+	"github.com/masx200/multinodewatchpanel/core/utils"
 	"gorm.io/gorm"
 )
 
@@ -59,13 +59,13 @@ func (s *NodeService) Create(req dto.NodeCreate) error {
 
 func (s *NodeService) Update(id uint, req dto.NodeUpdate) error {
 	updates := map[string]interface{}{
-		"name":                   req.Name,
-		"host":                   req.Host,
-		"port":                   req.Port,
-		"tags":                   req.Tags,
-		"server_name":            req.ServerName,
-		"security":               req.Security,
-		"allow_insecure":         req.AllowInsecure,
+		"name":                    req.Name,
+		"host":                    req.Host,
+		"port":                    req.Port,
+		"tags":                    req.Tags,
+		"server_name":             req.ServerName,
+		"security":                req.Security,
+		"allow_insecure":          req.AllowInsecure,
 		"pinned_peer_cert_sha256": req.PinnedPeerCertSHA256,
 	}
 	if req.APIKey != "" {

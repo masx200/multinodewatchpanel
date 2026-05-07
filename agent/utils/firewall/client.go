@@ -6,10 +6,10 @@ import (
 	"os"
 	"strings"
 
-	"github.com/1Panel-dev/1Panel/agent/constant"
-	"github.com/1Panel-dev/1Panel/agent/global"
-	"github.com/1Panel-dev/1Panel/agent/utils/cmd"
-	"github.com/1Panel-dev/1Panel/agent/utils/firewall/client"
+	"github.com/masx200/multinodewatchpanel/agent/constant"
+	"github.com/masx200/multinodewatchpanel/agent/global"
+	"github.com/masx200/multinodewatchpanel/agent/utils/cmd"
+	"github.com/masx200/multinodewatchpanel/agent/utils/firewall/client"
 )
 
 type FirewallClient interface {

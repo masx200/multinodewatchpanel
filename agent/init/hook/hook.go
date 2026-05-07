@@ -4,15 +4,15 @@ import (
 	"os"
 	"strings"
 
-	"github.com/1Panel-dev/1Panel/agent/app/dto"
-	"github.com/1Panel-dev/1Panel/agent/app/model"
-	"github.com/1Panel-dev/1Panel/agent/app/repo"
-	"github.com/1Panel-dev/1Panel/agent/app/service"
-	"github.com/1Panel-dev/1Panel/agent/constant"
-	"github.com/1Panel-dev/1Panel/agent/global"
-	"github.com/1Panel-dev/1Panel/agent/utils/alert_push"
-	"github.com/1Panel-dev/1Panel/agent/utils/cmd"
-	"github.com/1Panel-dev/1Panel/agent/utils/xpack"
+	"github.com/masx200/multinodewatchpanel/agent/app/dto"
+	"github.com/masx200/multinodewatchpanel/agent/app/model"
+	"github.com/masx200/multinodewatchpanel/agent/app/repo"
+	"github.com/masx200/multinodewatchpanel/agent/app/service"
+	"github.com/masx200/multinodewatchpanel/agent/constant"
+	"github.com/masx200/multinodewatchpanel/agent/global"
+	"github.com/masx200/multinodewatchpanel/agent/utils/alert_push"
+	"github.com/masx200/multinodewatchpanel/agent/utils/cmd"
+	"github.com/masx200/multinodewatchpanel/agent/utils/xpack"
 )
 
 func Init() {

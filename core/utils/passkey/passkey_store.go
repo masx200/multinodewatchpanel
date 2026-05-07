@@ -6,19 +6,19 @@ import (
 	"sync"
 	"time"
 
-	"github.com/1Panel-dev/1Panel/core/utils/common"
 	"github.com/go-webauthn/webauthn/webauthn"
+	"github.com/masx200/multinodewatchpanel/core/utils/common"
 )
 
 const (
-	PasskeyUserIDSettingKey        = "PasskeyUserID"
-	PasskeyCredentialSettingKey    = "PasskeyCredentials"
-	PasskeyMaxCredentials          = 5
-	PasskeySessionTTL              = 5 * time.Minute
-	PasskeySessionKindLogin        = "login"
-	PasskeySessionKindRegister     = "register"
-	PasskeyCredentialNameDefault   = "Passkey"
-	PasskeySessionStoreMaxEntries  = 1024
+	PasskeyUserIDSettingKey       = "PasskeyUserID"
+	PasskeyCredentialSettingKey   = "PasskeyCredentials"
+	PasskeyMaxCredentials         = 5
+	PasskeySessionTTL             = 5 * time.Minute
+	PasskeySessionKindLogin       = "login"
+	PasskeySessionKindRegister    = "register"
+	PasskeyCredentialNameDefault  = "Passkey"
+	PasskeySessionStoreMaxEntries = 1024
 )
 
 var passkeySessions = newPasskeySessionStore()

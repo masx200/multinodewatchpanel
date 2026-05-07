@@ -10,9 +10,9 @@ import (
 	"syscall"
 	"time"
 
-	"github.com/1Panel-dev/1Panel/agent/app/dto/request"
-	"github.com/1Panel-dev/1Panel/agent/utils/common"
-	"github.com/1Panel-dev/1Panel/agent/utils/websocket"
+	"github.com/masx200/multinodewatchpanel/agent/app/dto/request"
+	"github.com/masx200/multinodewatchpanel/agent/utils/common"
+	"github.com/masx200/multinodewatchpanel/agent/utils/websocket"
 	"github.com/shirou/gopsutil/v4/net"
 	"github.com/shirou/gopsutil/v4/process"
 )

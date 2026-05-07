@@ -10,13 +10,13 @@ import (
 	"strings"
 	"sync"
 
-	"github.com/1Panel-dev/1Panel/agent/global"
+	"github.com/masx200/multinodewatchpanel/agent/global"
 	"gorm.io/gorm"
 
-	"github.com/1Panel-dev/1Panel/agent/app/dto"
-	"github.com/1Panel-dev/1Panel/agent/constant"
-	"github.com/1Panel-dev/1Panel/agent/i18n"
 	"github.com/gin-gonic/gin"
+	"github.com/masx200/multinodewatchpanel/agent/app/dto"
+	"github.com/masx200/multinodewatchpanel/agent/constant"
+	"github.com/masx200/multinodewatchpanel/agent/i18n"
 	"github.com/pkg/errors"
 )
 

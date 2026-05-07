@@ -3,8 +3,8 @@
 package server
 
 import (
-	xpack "github.com/1Panel-dev/1Panel/core/xpack"
-	xpackEE "github.com/1Panel-dev/1Panel/core/xpack-ee"
+	xpack "github.com/masx200/multinodewatchpanel/core/xpack"
+	xpackEE "github.com/masx200/multinodewatchpanel/core/xpack-ee"
 )
 
 func InitOthers() {

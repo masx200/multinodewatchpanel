@@ -7,9 +7,9 @@ import (
 	"strings"
 	"time"
 
-	"github.com/1Panel-dev/1Panel/core/server"
-	cmdUtils "github.com/1Panel-dev/1Panel/core/utils/cmd"
 	"github.com/glebarez/sqlite"
+	"github.com/masx200/multinodewatchpanel/core/server"
+	cmdUtils "github.com/masx200/multinodewatchpanel/core/utils/cmd"
 	"github.com/spf13/cobra"
 	"gorm.io/gorm"
 )

@@ -3,10 +3,10 @@ package cron
 import (
 	"time"
 
-	"github.com/1Panel-dev/1Panel/core/app/service"
-	"github.com/1Panel-dev/1Panel/core/global"
-	"github.com/1Panel-dev/1Panel/core/init/cron/job"
-	"github.com/1Panel-dev/1Panel/core/utils/common"
+	"github.com/masx200/multinodewatchpanel/core/app/service"
+	"github.com/masx200/multinodewatchpanel/core/global"
+	"github.com/masx200/multinodewatchpanel/core/init/cron/job"
+	"github.com/masx200/multinodewatchpanel/core/utils/common"
 	"github.com/robfig/cron/v3"
 )
 

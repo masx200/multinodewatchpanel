@@ -2,8 +2,8 @@ package repo
 
 import (
 	"context"
-	"github.com/1Panel-dev/1Panel/agent/app/model"
-	"github.com/1Panel-dev/1Panel/agent/global"
+	"github.com/masx200/multinodewatchpanel/agent/app/model"
+	"github.com/masx200/multinodewatchpanel/agent/global"
 	"gorm.io/gorm"
 	"gorm.io/gorm/clause"
 )

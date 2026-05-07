@@ -9,8 +9,8 @@ import (
 	"fmt"
 	"io"
 
-	"github.com/1Panel-dev/1Panel/agent/app/model"
-	"github.com/1Panel-dev/1Panel/agent/global"
+	"github.com/masx200/multinodewatchpanel/agent/app/model"
+	"github.com/masx200/multinodewatchpanel/agent/global"
 )
 
 func StringEncryptWithBase64(text string) (string, error) {

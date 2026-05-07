@@ -7,12 +7,12 @@ import (
 	"net/url"
 	"strconv"
 
-	"github.com/1Panel-dev/1Panel/agent/app/model"
+	"github.com/masx200/multinodewatchpanel/agent/app/model"
 
-	"github.com/1Panel-dev/1Panel/agent/app/api/v2/helper"
-	"github.com/1Panel-dev/1Panel/agent/app/dto"
-	"github.com/1Panel-dev/1Panel/agent/app/dto/request"
 	"github.com/gin-gonic/gin"
+	"github.com/masx200/multinodewatchpanel/agent/app/api/v2/helper"
+	"github.com/masx200/multinodewatchpanel/agent/app/dto"
+	"github.com/masx200/multinodewatchpanel/agent/app/dto/request"
 )
 
 // @Tags Website SSL

@@ -9,15 +9,15 @@ import (
 	"strings"
 	"time"
 
-	"github.com/1Panel-dev/1Panel/core/app/api/v2/helper"
-	"github.com/1Panel-dev/1Panel/core/app/dto"
-	"github.com/1Panel-dev/1Panel/core/app/service"
-	"github.com/1Panel-dev/1Panel/core/global"
-	"github.com/1Panel-dev/1Panel/core/utils/ssh"
-	"github.com/1Panel-dev/1Panel/core/utils/terminal"
-	"github.com/1Panel-dev/1Panel/core/utils/xpack"
 	"github.com/gin-gonic/gin"
 	"github.com/gorilla/websocket"
+	"github.com/masx200/multinodewatchpanel/core/app/api/v2/helper"
+	"github.com/masx200/multinodewatchpanel/core/app/dto"
+	"github.com/masx200/multinodewatchpanel/core/app/service"
+	"github.com/masx200/multinodewatchpanel/core/global"
+	"github.com/masx200/multinodewatchpanel/core/utils/ssh"
+	"github.com/masx200/multinodewatchpanel/core/utils/terminal"
+	"github.com/masx200/multinodewatchpanel/core/utils/xpack"
 	"github.com/pkg/errors"
 )
 

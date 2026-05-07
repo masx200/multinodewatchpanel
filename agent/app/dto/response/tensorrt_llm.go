@@ -1,8 +1,8 @@
 package response
 
 import (
-	"github.com/1Panel-dev/1Panel/agent/app/dto/request"
-	"github.com/1Panel-dev/1Panel/agent/app/model"
+	"github.com/masx200/multinodewatchpanel/agent/app/dto/request"
+	"github.com/masx200/multinodewatchpanel/agent/app/model"
 )
 
 type TensorRTLLMsRes struct {

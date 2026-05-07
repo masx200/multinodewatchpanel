@@ -1,8 +1,8 @@
 package router
 
 import (
-	v2 "github.com/1Panel-dev/1Panel/core/app/api/v2"
-	"github.com/1Panel-dev/1Panel/core/middleware"
+	v2 "github.com/masx200/multinodewatchpanel/core/app/api/v2"
+	"github.com/masx200/multinodewatchpanel/core/middleware"
 
 	"github.com/gin-gonic/gin"
 )

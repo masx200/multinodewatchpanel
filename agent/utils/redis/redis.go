@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/1Panel-dev/1Panel/agent/global"
 	"github.com/go-redis/redis"
+	"github.com/masx200/multinodewatchpanel/agent/global"
 )
 
 type DBInfo struct {

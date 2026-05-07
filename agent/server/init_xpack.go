@@ -3,7 +3,7 @@
 package server
 
 import (
-	xpack "github.com/1Panel-dev/1Panel/agent/xpack"
+	xpack "github.com/masx200/multinodewatchpanel/agent/xpack"
 )
 
 func InitOthers() {

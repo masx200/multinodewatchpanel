@@ -1,12 +1,12 @@
 package v2
 
 import (
-	"github.com/1Panel-dev/1Panel/agent/app/api/v2/helper"
-	"github.com/1Panel-dev/1Panel/agent/app/dto"
-	"github.com/1Panel-dev/1Panel/agent/utils/ai_tools/gpu"
-	"github.com/1Panel-dev/1Panel/agent/utils/ai_tools/gpu/common"
-	"github.com/1Panel-dev/1Panel/agent/utils/ai_tools/xpu"
 	"github.com/gin-gonic/gin"
+	"github.com/masx200/multinodewatchpanel/agent/app/api/v2/helper"
+	"github.com/masx200/multinodewatchpanel/agent/app/dto"
+	"github.com/masx200/multinodewatchpanel/agent/utils/ai_tools/gpu"
+	"github.com/masx200/multinodewatchpanel/agent/utils/ai_tools/gpu/common"
+	"github.com/masx200/multinodewatchpanel/agent/utils/ai_tools/xpu"
 )
 
 // @Tags AI

@@ -3,7 +3,7 @@ package firewall
 import (
 	"fmt"
 
-	"github.com/1Panel-dev/1Panel/core/utils/cmd"
+	"github.com/masx200/multinodewatchpanel/core/utils/cmd"
 )
 
 func UpdatePort(oldPort, newPort string) error {

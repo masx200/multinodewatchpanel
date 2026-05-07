@@ -16,13 +16,13 @@ import (
 	"strings"
 	"time"
 
-	"github.com/1Panel-dev/1Panel/core/app/model"
-	"github.com/1Panel-dev/1Panel/core/app/repo"
-	"github.com/1Panel-dev/1Panel/core/cmd/server/docs"
-	"github.com/1Panel-dev/1Panel/core/constant"
-	"github.com/1Panel-dev/1Panel/core/global"
 	"github.com/gin-gonic/gin"
 	"github.com/glebarez/sqlite"
+	"github.com/masx200/multinodewatchpanel/core/app/model"
+	"github.com/masx200/multinodewatchpanel/core/app/repo"
+	"github.com/masx200/multinodewatchpanel/core/cmd/server/docs"
+	"github.com/masx200/multinodewatchpanel/core/constant"
+	"github.com/masx200/multinodewatchpanel/core/global"
 	"gorm.io/gorm"
 )
 

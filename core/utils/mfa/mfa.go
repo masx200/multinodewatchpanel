@@ -6,7 +6,7 @@ import (
 	"strconv"
 	"time"
 
-	"github.com/1Panel-dev/1Panel/core/global"
+	"github.com/masx200/multinodewatchpanel/core/global"
 	"github.com/skip2/go-qrcode"
 	"github.com/xlzd/gotp"
 )

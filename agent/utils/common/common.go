@@ -16,9 +16,9 @@ import (
 
 	"github.com/gin-gonic/gin"
 
-	"github.com/1Panel-dev/1Panel/agent/buserr"
-	"github.com/1Panel-dev/1Panel/agent/utils/cmd"
-	"github.com/1Panel-dev/1Panel/agent/utils/re"
+	"github.com/masx200/multinodewatchpanel/agent/buserr"
+	"github.com/masx200/multinodewatchpanel/agent/utils/cmd"
+	"github.com/masx200/multinodewatchpanel/agent/utils/re"
 	"golang.org/x/net/idna"
 )
 
@@ -353,7 +353,7 @@ func IsValidIP(ip string) bool {
 //
 // This is required because some flows pass the host portion of a URL
 // (e.g. "[::1]") rather than a bare IP address. Rejecting that form
-// caused 1Panel-dev/1Panel#12646 — the panel SSL self-sign workflow
+// caused masx200/multinodewatchpanel#12646 — the panel SSL self-sign workflow
 // reported “domain format invalid” for IPv6 hosts.
 func ParseIPLoose(s string) net.IP {
 	trimmed := strings.TrimSpace(s)

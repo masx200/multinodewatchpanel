@@ -7,9 +7,9 @@ import (
 	"sort"
 	"strings"
 
-	"github.com/1Panel-dev/1Panel/core/global"
-	"github.com/1Panel-dev/1Panel/core/utils/cmd"
-	fileUtils "github.com/1Panel-dev/1Panel/core/utils/files"
+	"github.com/masx200/multinodewatchpanel/core/global"
+	"github.com/masx200/multinodewatchpanel/core/utils/cmd"
+	fileUtils "github.com/masx200/multinodewatchpanel/core/utils/files"
 )
 
 func Init() {

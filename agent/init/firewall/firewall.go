@@ -4,14 +4,14 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/1Panel-dev/1Panel/agent/app/dto"
-	"github.com/1Panel-dev/1Panel/agent/app/repo"
-	"github.com/1Panel-dev/1Panel/agent/app/service"
-	"github.com/1Panel-dev/1Panel/agent/constant"
-	"github.com/1Panel-dev/1Panel/agent/global"
-	"github.com/1Panel-dev/1Panel/agent/utils/firewall"
-	firewallClient "github.com/1Panel-dev/1Panel/agent/utils/firewall/client"
-	"github.com/1Panel-dev/1Panel/agent/utils/firewall/client/iptables"
+	"github.com/masx200/multinodewatchpanel/agent/app/dto"
+	"github.com/masx200/multinodewatchpanel/agent/app/repo"
+	"github.com/masx200/multinodewatchpanel/agent/app/service"
+	"github.com/masx200/multinodewatchpanel/agent/constant"
+	"github.com/masx200/multinodewatchpanel/agent/global"
+	"github.com/masx200/multinodewatchpanel/agent/utils/firewall"
+	firewallClient "github.com/masx200/multinodewatchpanel/agent/utils/firewall/client"
+	"github.com/masx200/multinodewatchpanel/agent/utils/firewall/client/iptables"
 )
 
 func Init() {

@@ -7,8 +7,8 @@ import (
 	"path"
 	"time"
 
-	"github.com/1Panel-dev/1Panel/agent/global"
 	"github.com/glebarez/sqlite"
+	"github.com/masx200/multinodewatchpanel/agent/global"
 	"gorm.io/gorm"
 	"gorm.io/gorm/logger"
 )

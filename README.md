@@ -11,11 +11,11 @@
 </p>
 
 <p align="center">
-  <a href="https://www.gnu.org/licenses/gpl-3.0.html"><img src="https://shields.io/github/license/1Panel-dev/1Panel?color=%231890FF" alt="License: GPL v3"></a>
-  <a href="https://app.codacy.com/gh/1Panel-dev/1Panel"><img src="https://app.codacy.com/project/badge/Grade/da67574fd82b473992781d1386b937ef" alt="Codacy"></a>
+  <a href="https://www.gnu.org/licenses/gpl-3.0.html"><img src="https://shields.io/github/license/masx200/multinodewatchpanel?color=%231890FF" alt="License: GPL v3"></a>
+  <a href="https://app.codacy.com/gh/masx200/multinodewatchpanel"><img src="https://app.codacy.com/project/badge/Grade/da67574fd82b473992781d1386b937ef" alt="Codacy"></a>
   <a href="https://discord.gg/bUpUqWqdRr"><img src="https://img.shields.io/discord/1318846410149335080?logo=discord&labelColor=%20%235462eb&logoColor=%20%23f5f5f5&color=%20%235462eb" alt="Discord"></a>
-  <a href="https://github.com/1Panel-dev/1Panel/releases"><img src="https://img.shields.io/github/v/release/1Panel-dev/1Panel" alt="GitHub release"></a>
-  <a href="https://github.com/1Panel-dev/1Panel"><img src="https://img.shields.io/github/stars/1Panel-dev/1Panel?color=%231890FF&style=flat-square" alt="Stars"></a>
+  <a href="https://github.com/masx200/multinodewatchpanel/releases"><img src="https://img.shields.io/github/v/release/masx200/multinodewatchpanel" alt="GitHub release"></a>
+  <a href="https://github.com/masx200/multinodewatchpanel"><img src="https://img.shields.io/github/stars/masx200/multinodewatchpanel?color=%231890FF&style=flat-square" alt="Stars"></a>
 </p>
 
 <p align="center">
@@ -39,40 +39,55 @@
 
 ## What is 1Panel?
 
-1Panel is a modern, open-source VPS control panel — and the only one with **native AI agent support**. Run Ollama models, deploy OpenClaw agents, and manage your entire server stack from one clean web interface. No CLI memorization required.
+1Panel is a modern, open-source VPS control panel — and the only one with
+**native AI agent support**. Run Ollama models, deploy OpenClaw agents, and
+manage your entire server stack from one clean web interface. No CLI
+memorization required.
 
-👉 Watch the [2-minute introduction](https://www.youtube.com/watch?v=Jl_wqp-XA08)
+👉 Watch the
+[2-minute introduction](https://www.youtube.com/watch?v=Jl_wqp-XA08)
 
 ## Why 1Panel?
 
-| | 1Panel | cPanel / Plesk | aaPanel | Webmin |
-|--|--------|----------------|---------|--------|
-| Free & open source | ✅ | ❌ | Partial | ✅ |
-| Native AI agent runtime | ✅ | ❌ | ❌ | ❌ |
-| One-click app marketplace | ✅ 165+ apps | ❌ | ✅ | ❌ |
-| Modern UI (post-2020) | ✅ | ❌ | Partial | ❌ |
-| Docker / container management | ✅ | ❌ | ❌ | ❌ |
-| Active development | ✅ | ✅ | ✅ | Slow |
+|                               | 1Panel       | cPanel / Plesk | aaPanel | Webmin |
+| ----------------------------- | ------------ | -------------- | ------- | ------ |
+| Free & open source            | ✅           | ❌             | Partial | ✅     |
+| Native AI agent runtime       | ✅           | ❌             | ❌      | ❌     |
+| One-click app marketplace     | ✅ 165+ apps | ❌             | ✅      | ❌     |
+| Modern UI (post-2020)         | ✅           | ❌             | Partial | ❌     |
+| Docker / container management | ✅           | ❌             | ❌      | ❌     |
+| Active development            | ✅           | ✅             | ✅      | Slow   |
 
 ## Key Features
 
-- **AI Agent Runtime**: Deploy Ollama LLMs, spin up OpenClaw personal agents, and monitor GPU utilization — all from the dashboard. No separate AI stack to manage.
-- **One-Click Website Deployment**: Launch production-ready websites with automatic domain binding, SSL provisioning, and Nginx config — zero manual setup.
-- **App Marketplace**: 165+ trusted open-source apps (Nextcloud, Bitwarden, Umami, NocoBase, and more) installed and updated with a single click.
-- **Docker & Container Management**: Create, start, stop, and inspect containers, images, networks, and volumes through a visual UI — no CLI juggling.
-- **Security Out of the Box**: Firewall rules, fail2ban, container isolation, WAF, and audit logs — configured and running from day one.
-- **Backup & Restore**: Schedule automated backups to AWS S3, Cloudflare R2, or local storage. Restore any snapshot in one click.
+- **AI Agent Runtime**: Deploy Ollama LLMs, spin up OpenClaw personal agents,
+  and monitor GPU utilization — all from the dashboard. No separate AI stack to
+  manage.
+- **One-Click Website Deployment**: Launch production-ready websites with
+  automatic domain binding, SSL provisioning, and Nginx config — zero manual
+  setup.
+- **App Marketplace**: 165+ trusted open-source apps (Nextcloud, Bitwarden,
+  Umami, NocoBase, and more) installed and updated with a single click.
+- **Docker & Container Management**: Create, start, stop, and inspect
+  containers, images, networks, and volumes through a visual UI — no CLI
+  juggling.
+- **Security Out of the Box**: Firewall rules, fail2ban, container isolation,
+  WAF, and audit logs — configured and running from day one.
+- **Backup & Restore**: Schedule automated backups to AWS S3, Cloudflare R2, or
+  local storage. Restore any snapshot in one click.
 
 ## Quick Start
 
-> **Requirements:** Linux VPS (Debian / Ubuntu / CentOS / Rocky), 1 GB RAM, internet access.  
+> **Requirements:** Linux VPS (Debian / Ubuntu / CentOS / Rocky), 1 GB RAM,
+> internet access.\
 > Takes ~60 seconds.
 
 ```bash
 bash -c "$(curl -sSL https://resource.1panel.pro/v2/quick_start.sh)"
 ```
 
-After installation, open `http://<your-server-ip>:<port>/<security-path>` in your browser.  
+After installation, open `http://<your-server-ip>:<port>/<security-path>` in
+your browser.\
 Run `1pctl user-info` via SSH if you need to retrieve your access credentials.
 
 ## Screenshot
@@ -81,35 +96,42 @@ Run `1pctl user-info` via SSH if you need to retrieve your access credentials.
 
 ## Pro Edition
 
-1Panel OSS is free forever. Pro adds features built for teams and production workloads:
+1Panel OSS is free forever. Pro adds features built for teams and production
+workloads:
 
-| Feature | OSS | Pro |
-|---------|:---:|:---:|
-| One-click app installs | ✅ | ✅ |
-| AI agents (OpenClaw) | 1 agent | Unlimited |
-| WAF & advanced security | Basic | ✅ |
-| Website tamper protection | ❌ | ✅ |
-| Website uptime monitoring | ❌ | ✅ |
-| Multi-node management | ❌ | ✅ |
-| Custom logo & theme | ❌ | ✅ |
-| Priority support | ❌ | ✅ |
+| Feature                   |   OSS   |    Pro    |
+| ------------------------- | :-----: | :-------: |
+| One-click app installs    |   ✅    |    ✅     |
+| AI agents (OpenClaw)      | 1 agent | Unlimited |
+| WAF & advanced security   |  Basic  |    ✅     |
+| Website tamper protection |   ❌    |    ✅     |
+| Website uptime monitoring |   ❌    |    ✅     |
+| Multi-node management     |   ❌    |    ✅     |
+| Custom logo & theme       |   ❌    |    ✅     |
+| Priority support          |   ❌    |    ✅     |
 
-**From $80/year.** [Compare plans & start 30-day free trial →](https://1panel.pro/pricing)
+**From $80/year.**
+[Compare plans & start 30-day free trial →](https://1panel.pro/pricing)
 
 ## Star History
 
-[![Star History Chart](https://api.star-history.com/svg?repos=1Panel-dev/1Panel&type=Date)](https://star-history.com/#1Panel-dev/1Panel&Date)
+[![Star History Chart](https://api.star-history.com/svg?repos=masx200/multinodewatchpanel&type=Date)](https://star-history.com/#masx200/multinodewatchpanel&Date)
 
 ## Community & Support
 
-- **Discord** — [Join the community](https://discord.gg/bUpUqWqdRr) for help, feature requests, and show-and-tell
+- **Discord** — [Join the community](https://discord.gg/bUpUqWqdRr) for help,
+  feature requests, and show-and-tell
 - **Docs** — [1panel.pro/docs](https://1panel.pro/docs)
-- **Issues** — [GitHub Issues](https://github.com/1Panel-dev/1Panel/issues) for bug reports
+- **Issues** —
+  [GitHub Issues](https://github.com/masx200/multinodewatchpanel/issues) for bug
+  reports
 
 ## Security
 
-Found a vulnerability? Please read [SECURITY.md](/SECURITY.md) before disclosing.
+Found a vulnerability? Please read [SECURITY.md](/SECURITY.md) before
+disclosing.
 
 ## License
 
-Licensed under the [GNU General Public License v3.0](https://www.gnu.org/licenses/gpl-3.0.html).
+Licensed under the
+[GNU General Public License v3.0](https://www.gnu.org/licenses/gpl-3.0.html).

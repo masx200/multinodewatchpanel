@@ -14,8 +14,8 @@ import (
 
 	"github.com/gin-gonic/gin"
 
-	"github.com/1Panel-dev/1Panel/core/app/dto"
-	"github.com/1Panel-dev/1Panel/core/i18n"
+	"github.com/masx200/multinodewatchpanel/core/app/dto"
+	"github.com/masx200/multinodewatchpanel/core/i18n"
 )
 
 func NewLocalClient(reqUrl, reqMethod string, body io.Reader, ctx *gin.Context) (interface{}, error) {

@@ -1,8 +1,8 @@
 package dto
 
 import (
-	"github.com/1Panel-dev/1Panel/agent/app/model"
-	"github.com/1Panel-dev/1Panel/agent/utils/nginx/components"
+	"github.com/masx200/multinodewatchpanel/agent/app/model"
+	"github.com/masx200/multinodewatchpanel/agent/utils/nginx/components"
 )
 
 type NginxFull struct {

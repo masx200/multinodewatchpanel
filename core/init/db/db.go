@@ -3,8 +3,8 @@ package db
 import (
 	"path"
 
-	"github.com/1Panel-dev/1Panel/core/global"
-	"github.com/1Panel-dev/1Panel/core/utils/common"
+	"github.com/masx200/multinodewatchpanel/core/global"
+	"github.com/masx200/multinodewatchpanel/core/utils/common"
 )
 
 func Init() {

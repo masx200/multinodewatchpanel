@@ -1,6 +1,6 @@
 package v2
 
-import "github.com/1Panel-dev/1Panel/agent/app/service"
+import "github.com/masx200/multinodewatchpanel/agent/app/service"
 
 type ApiGroup struct {
 	BaseApi

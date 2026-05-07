@@ -1,8 +1,8 @@
 package request
 
 import (
-	"github.com/1Panel-dev/1Panel/agent/app/dto"
-	"github.com/1Panel-dev/1Panel/agent/utils/files"
+	"github.com/masx200/multinodewatchpanel/agent/app/dto"
+	"github.com/masx200/multinodewatchpanel/agent/utils/files"
 )
 
 type FileOption struct {

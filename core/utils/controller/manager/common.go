@@ -5,8 +5,8 @@ import (
 	"strings"
 	"time"
 
-	"github.com/1Panel-dev/1Panel/core/utils/cmd"
-	"github.com/1Panel-dev/1Panel/core/utils/ssh"
+	"github.com/masx200/multinodewatchpanel/core/utils/cmd"
+	"github.com/masx200/multinodewatchpanel/core/utils/ssh"
 )
 
 func handlerErr(out string, err error) error {

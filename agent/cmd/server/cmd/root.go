@@ -1,7 +1,7 @@
 package cmd
 
 import (
-	"github.com/1Panel-dev/1Panel/agent/server"
+	"github.com/masx200/multinodewatchpanel/agent/server"
 	"github.com/spf13/cobra"
 )
 

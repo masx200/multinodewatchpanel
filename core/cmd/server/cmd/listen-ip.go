@@ -3,8 +3,8 @@ package cmd
 import (
 	"fmt"
 
-	"github.com/1Panel-dev/1Panel/core/constant"
-	"github.com/1Panel-dev/1Panel/core/i18n"
+	"github.com/masx200/multinodewatchpanel/core/constant"
+	"github.com/masx200/multinodewatchpanel/core/i18n"
 	"github.com/spf13/cobra"
 )
 

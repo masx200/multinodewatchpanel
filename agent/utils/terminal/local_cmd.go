@@ -7,8 +7,8 @@ import (
 	"time"
 	"unsafe"
 
-	"github.com/1Panel-dev/1Panel/agent/global"
 	"github.com/creack/pty"
+	"github.com/masx200/multinodewatchpanel/agent/global"
 	"github.com/pkg/errors"
 )
 

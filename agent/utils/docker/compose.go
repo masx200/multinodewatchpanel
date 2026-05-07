@@ -14,7 +14,7 @@ import (
 	"github.com/joho/godotenv"
 	"gopkg.in/yaml.v3"
 
-	"github.com/1Panel-dev/1Panel/agent/utils/re"
+	"github.com/masx200/multinodewatchpanel/agent/utils/re"
 )
 
 type ComposeService struct {

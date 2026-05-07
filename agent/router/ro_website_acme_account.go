@@ -1,8 +1,8 @@
 package router
 
 import (
-	v2 "github.com/1Panel-dev/1Panel/agent/app/api/v2"
 	"github.com/gin-gonic/gin"
+	v2 "github.com/masx200/multinodewatchpanel/agent/app/api/v2"
 )
 
 type WebsiteAcmeAccountRouter struct {

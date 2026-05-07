@@ -3,7 +3,7 @@ package middleware
 import (
 	"net/http"
 
-	"github.com/1Panel-dev/1Panel/core/app/repo"
+	"github.com/masx200/multinodewatchpanel/core/app/repo"
 )
 
 func LoadErrCode() int {

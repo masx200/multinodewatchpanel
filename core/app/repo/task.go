@@ -3,8 +3,8 @@ package repo
 import (
 	"context"
 
-	"github.com/1Panel-dev/1Panel/core/app/model"
-	"github.com/1Panel-dev/1Panel/core/global"
+	"github.com/masx200/multinodewatchpanel/core/app/model"
+	"github.com/masx200/multinodewatchpanel/core/global"
 	"gorm.io/gorm"
 )
 

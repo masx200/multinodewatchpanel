@@ -8,17 +8,17 @@ import (
 	"strings"
 	"time"
 
-	"github.com/1Panel-dev/1Panel/core/app/dto"
-	"github.com/1Panel-dev/1Panel/core/app/model"
-	"github.com/1Panel-dev/1Panel/core/app/repo"
-	"github.com/1Panel-dev/1Panel/core/buserr"
-	"github.com/1Panel-dev/1Panel/core/constant"
-	"github.com/1Panel-dev/1Panel/core/global"
-	"github.com/1Panel-dev/1Panel/core/utils/cloud_storage"
-	"github.com/1Panel-dev/1Panel/core/utils/encrypt"
-	"github.com/1Panel-dev/1Panel/core/utils/req_helper/proxy_local"
-	"github.com/1Panel-dev/1Panel/core/utils/xpack"
 	"github.com/jinzhu/copier"
+	"github.com/masx200/multinodewatchpanel/core/app/dto"
+	"github.com/masx200/multinodewatchpanel/core/app/model"
+	"github.com/masx200/multinodewatchpanel/core/app/repo"
+	"github.com/masx200/multinodewatchpanel/core/buserr"
+	"github.com/masx200/multinodewatchpanel/core/constant"
+	"github.com/masx200/multinodewatchpanel/core/global"
+	"github.com/masx200/multinodewatchpanel/core/utils/cloud_storage"
+	"github.com/masx200/multinodewatchpanel/core/utils/encrypt"
+	"github.com/masx200/multinodewatchpanel/core/utils/req_helper/proxy_local"
+	"github.com/masx200/multinodewatchpanel/core/utils/xpack"
 )
 
 type BackupService struct{}

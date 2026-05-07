@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/1Panel-dev/1Panel/core/cmd/server/cmd"
-	_ "github.com/1Panel-dev/1Panel/core/cmd/server/docs"
+	"github.com/masx200/multinodewatchpanel/core/cmd/server/cmd"
+	_ "github.com/masx200/multinodewatchpanel/core/cmd/server/docs"
 )
 
 // @title 1Panel

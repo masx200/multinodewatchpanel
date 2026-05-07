@@ -20,16 +20,16 @@ import (
 	"sync"
 	"time"
 
-	"github.com/1Panel-dev/1Panel/agent/buserr"
+	"github.com/masx200/multinodewatchpanel/agent/buserr"
 
-	"github.com/1Panel-dev/1Panel/agent/constant"
-	"github.com/1Panel-dev/1Panel/agent/utils/cmd"
-	"github.com/1Panel-dev/1Panel/agent/utils/req_helper"
 	cZip "github.com/klauspost/compress/zip"
+	"github.com/masx200/multinodewatchpanel/agent/constant"
+	"github.com/masx200/multinodewatchpanel/agent/utils/cmd"
+	"github.com/masx200/multinodewatchpanel/agent/utils/req_helper"
 	"golang.org/x/text/encoding/simplifiedchinese"
 	"golang.org/x/text/transform"
 
-	"github.com/1Panel-dev/1Panel/agent/global"
+	"github.com/masx200/multinodewatchpanel/agent/global"
 	"github.com/mholt/archiver/v4"
 	"github.com/spf13/afero"
 )

@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	"github.com/1Panel-dev/1Panel/agent/cmd/server/cmd"
+	"github.com/masx200/multinodewatchpanel/agent/cmd/server/cmd"
 	"os"
 )
 

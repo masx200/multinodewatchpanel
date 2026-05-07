@@ -9,7 +9,7 @@ import (
 
 	cosSDK "github.com/tencentyun/cos-go-sdk-v5"
 
-	"github.com/1Panel-dev/1Panel/agent/utils/re"
+	"github.com/masx200/multinodewatchpanel/agent/utils/re"
 )
 
 type cosClient struct {

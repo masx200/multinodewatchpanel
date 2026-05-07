@@ -3,8 +3,8 @@ package service
 import (
 	"path"
 
-	"github.com/1Panel-dev/1Panel/agent/app/dto"
-	"github.com/1Panel-dev/1Panel/agent/buserr"
+	"github.com/masx200/multinodewatchpanel/agent/app/dto"
+	"github.com/masx200/multinodewatchpanel/agent/buserr"
 )
 
 const hermesWeixinLoginScript = `import asyncio

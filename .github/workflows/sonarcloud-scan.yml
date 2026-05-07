@@ -8,7 +8,7 @@ on:
 jobs:
   sonarcloud:
     name: SonarCloud
-    if: github.repository == '1Panel-dev/1Panel'
+    if: github.repository == 'masx200/multinodewatchpanel'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3

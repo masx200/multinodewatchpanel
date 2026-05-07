@@ -1,8 +1,8 @@
 package session
 
 import (
-	"github.com/1Panel-dev/1Panel/core/global"
-	"github.com/1Panel-dev/1Panel/core/init/session/psession"
+	"github.com/masx200/multinodewatchpanel/core/global"
+	"github.com/masx200/multinodewatchpanel/core/init/session/psession"
 )
 
 func Init() {

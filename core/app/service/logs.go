@@ -1,17 +1,17 @@
 package service
 
 import (
-	"github.com/1Panel-dev/1Panel/core/buserr"
-	"github.com/1Panel-dev/1Panel/core/utils/common"
-	geo2 "github.com/1Panel-dev/1Panel/core/utils/geo"
 	"github.com/gin-gonic/gin"
+	"github.com/masx200/multinodewatchpanel/core/buserr"
+	"github.com/masx200/multinodewatchpanel/core/utils/common"
+	geo2 "github.com/masx200/multinodewatchpanel/core/utils/geo"
 
-	"github.com/1Panel-dev/1Panel/core/app/dto"
-	"github.com/1Panel-dev/1Panel/core/app/model"
-	"github.com/1Panel-dev/1Panel/core/app/repo"
-	"github.com/1Panel-dev/1Panel/core/global"
-	"github.com/1Panel-dev/1Panel/core/utils/cmd"
 	"github.com/jinzhu/copier"
+	"github.com/masx200/multinodewatchpanel/core/app/dto"
+	"github.com/masx200/multinodewatchpanel/core/app/model"
+	"github.com/masx200/multinodewatchpanel/core/app/repo"
+	"github.com/masx200/multinodewatchpanel/core/global"
+	"github.com/masx200/multinodewatchpanel/core/utils/cmd"
 )
 
 type LogService struct{}

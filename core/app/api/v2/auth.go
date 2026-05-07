@@ -6,16 +6,16 @@ import (
 	"os"
 	"path"
 
-	"github.com/1Panel-dev/1Panel/core/app/api/v2/helper"
-	"github.com/1Panel-dev/1Panel/core/app/dto"
-	"github.com/1Panel-dev/1Panel/core/app/model"
-	"github.com/1Panel-dev/1Panel/core/buserr"
-	"github.com/1Panel-dev/1Panel/core/constant"
-	"github.com/1Panel-dev/1Panel/core/global"
-	initauth "github.com/1Panel-dev/1Panel/core/init/auth"
-	"github.com/1Panel-dev/1Panel/core/utils/captcha"
-	"github.com/1Panel-dev/1Panel/core/utils/common"
 	"github.com/gin-gonic/gin"
+	"github.com/masx200/multinodewatchpanel/core/app/api/v2/helper"
+	"github.com/masx200/multinodewatchpanel/core/app/dto"
+	"github.com/masx200/multinodewatchpanel/core/app/model"
+	"github.com/masx200/multinodewatchpanel/core/buserr"
+	"github.com/masx200/multinodewatchpanel/core/constant"
+	"github.com/masx200/multinodewatchpanel/core/global"
+	initauth "github.com/masx200/multinodewatchpanel/core/init/auth"
+	"github.com/masx200/multinodewatchpanel/core/utils/captcha"
+	"github.com/masx200/multinodewatchpanel/core/utils/common"
 )
 
 type BaseApi struct{}

@@ -1,8 +1,8 @@
 package migrations
 
 import (
-	"github.com/1Panel-dev/1Panel/core/app/model"
 	"github.com/go-gormigrate/gormigrate/v2"
+	"github.com/masx200/multinodewatchpanel/core/app/model"
 	"gorm.io/gorm"
 )
 

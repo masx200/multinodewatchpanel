@@ -6,10 +6,10 @@ import (
 	"strings"
 	"sync"
 
-	"github.com/1Panel-dev/1Panel/agent/global"
-	"github.com/1Panel-dev/1Panel/agent/i18n"
-	terminalai "github.com/1Panel-dev/1Panel/agent/utils/terminal/ai"
 	"github.com/gorilla/websocket"
+	"github.com/masx200/multinodewatchpanel/agent/global"
+	"github.com/masx200/multinodewatchpanel/agent/i18n"
+	terminalai "github.com/masx200/multinodewatchpanel/agent/utils/terminal/ai"
 	"github.com/pkg/errors"
 )
 

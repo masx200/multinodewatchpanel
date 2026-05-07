@@ -5,10 +5,10 @@ import (
 	"strings"
 	"time"
 
-	"github.com/1Panel-dev/1Panel/agent/app/api/v2/helper"
-	"github.com/1Panel-dev/1Panel/agent/app/dto"
-	"github.com/1Panel-dev/1Panel/agent/utils/common"
 	"github.com/gin-gonic/gin"
+	"github.com/masx200/multinodewatchpanel/agent/app/api/v2/helper"
+	"github.com/masx200/multinodewatchpanel/agent/app/dto"
+	"github.com/masx200/multinodewatchpanel/agent/utils/common"
 )
 
 // @Tags Cronjob

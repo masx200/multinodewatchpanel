@@ -10,10 +10,10 @@ import (
 	"strings"
 	"time"
 
-	"github.com/1Panel-dev/1Panel/agent/utils/xpack"
+	"github.com/masx200/multinodewatchpanel/agent/utils/xpack"
 
-	"github.com/1Panel-dev/1Panel/agent/buserr"
-	"github.com/1Panel-dev/1Panel/agent/global"
+	"github.com/masx200/multinodewatchpanel/agent/buserr"
+	"github.com/masx200/multinodewatchpanel/agent/global"
 )
 
 func HandleGet(url string) (*http.Response, error) {

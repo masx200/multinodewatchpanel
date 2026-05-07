@@ -10,8 +10,8 @@ import (
 	"net/url"
 	"strings"
 
-	"github.com/1Panel-dev/1Panel/core/global"
 	"github.com/go-resty/resty/v2"
+	"github.com/masx200/multinodewatchpanel/core/global"
 )
 
 func loadParamFromVars(key string, vars map[string]interface{}) string {

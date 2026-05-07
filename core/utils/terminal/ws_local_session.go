@@ -5,8 +5,8 @@ import (
 	"encoding/json"
 	"sync"
 
-	"github.com/1Panel-dev/1Panel/core/global"
 	"github.com/gorilla/websocket"
+	"github.com/masx200/multinodewatchpanel/core/global"
 	"github.com/pkg/errors"
 )
 

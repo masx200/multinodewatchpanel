@@ -3,14 +3,14 @@ package helper
 import (
 	"errors"
 	"fmt"
-	"github.com/1Panel-dev/1Panel/core/cmd/server/res"
+	"github.com/masx200/multinodewatchpanel/core/cmd/server/res"
 	"net/http"
 	"strconv"
 
-	"github.com/1Panel-dev/1Panel/core/app/dto"
-	"github.com/1Panel-dev/1Panel/core/global"
-	"github.com/1Panel-dev/1Panel/core/i18n"
 	"github.com/gin-gonic/gin"
+	"github.com/masx200/multinodewatchpanel/core/app/dto"
+	"github.com/masx200/multinodewatchpanel/core/global"
+	"github.com/masx200/multinodewatchpanel/core/i18n"
 )
 
 func ErrorWithDetail(ctx *gin.Context, code int, msgKey string, err error) {

@@ -1,9 +1,9 @@
 package middleware
 
 import (
-	"github.com/1Panel-dev/1Panel/core/app/api/v2/helper"
-	"github.com/1Panel-dev/1Panel/core/app/repo"
 	"github.com/gin-gonic/gin"
+	"github.com/masx200/multinodewatchpanel/core/app/api/v2/helper"
+	"github.com/masx200/multinodewatchpanel/core/app/repo"
 )
 
 func GlobalLoading() gin.HandlerFunc {

@@ -1,9 +1,9 @@
 package v2
 
 import (
-	"github.com/1Panel-dev/1Panel/core/app/api/v2/helper"
-	"github.com/1Panel-dev/1Panel/core/app/dto"
 	"github.com/gin-gonic/gin"
+	"github.com/masx200/multinodewatchpanel/core/app/api/v2/helper"
+	"github.com/masx200/multinodewatchpanel/core/app/dto"
 )
 
 // @Tags System Setting

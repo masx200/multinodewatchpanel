@@ -7,8 +7,8 @@ import (
 	"os"
 	"strings"
 
-	components "github.com/1Panel-dev/1Panel/agent/utils/nginx/components"
-	"github.com/1Panel-dev/1Panel/agent/utils/nginx/parser/flag"
+	components "github.com/masx200/multinodewatchpanel/agent/utils/nginx/components"
+	"github.com/masx200/multinodewatchpanel/agent/utils/nginx/parser/flag"
 )
 
 type Parser struct {

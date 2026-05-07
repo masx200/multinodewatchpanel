@@ -246,7 +246,7 @@ const onSaveSSL = async (formEl: FormInstance | undefined) => {
             // window.location.hostname yields the bare host name and strips
             // surrounding brackets from IPv6 addresses (e.g. '[::1]' -> '::1'),
             // unlike `href.split('//')[1].split(':')[0]` which incorrectly
-            // returns '[' for IPv6 URLs. See 1Panel-dev/1Panel#12646.
+            // returns '[' for IPv6 URLs. See masx200/multinodewatchpanel#12646.
             param.domain = window.location.hostname;
             await updateSSL(param).then(() => {
                 MsgSuccess(i18n.global.t('commons.msg.operationSuccess'));

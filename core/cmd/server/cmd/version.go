@@ -3,9 +3,9 @@ package cmd
 import (
 	"fmt"
 
-	"github.com/1Panel-dev/1Panel/core/cmd/server/conf"
-	"github.com/1Panel-dev/1Panel/core/global"
-	"github.com/1Panel-dev/1Panel/core/i18n"
+	"github.com/masx200/multinodewatchpanel/core/cmd/server/conf"
+	"github.com/masx200/multinodewatchpanel/core/global"
+	"github.com/masx200/multinodewatchpanel/core/i18n"
 	"gopkg.in/yaml.v3"
 
 	"github.com/spf13/cobra"

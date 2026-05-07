@@ -5,8 +5,8 @@ import (
 	"regexp"
 	"strings"
 
-	"github.com/1Panel-dev/1Panel/core/cmd/server/docs"
 	"github.com/gin-gonic/gin"
+	"github.com/masx200/multinodewatchpanel/core/cmd/server/docs"
 	swaggerfiles "github.com/swaggo/files/v2"
 )
 

@@ -5,13 +5,13 @@
   <a href="https://www.producthunt.com/posts/1panel?embed=true&utm_source=badge-featured&utm_medium=badge&utm_souce=badge-1panel" target="_blank"><img src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=639696&theme=light" alt="1Panel - Top&#0045;Rated&#0032;web&#0045;based&#0032;Linux&#0032;server&#0032;management&#0032;tool | Product Hunt" style="width: 180px; height: auto;" /></a>
 </p>
 <p align="center">
-  <a href="https://www.gnu.org/licenses/gpl-3.0.html"><img src="https://shields.io/github/license/1Panel-dev/1Panel?color=%231890FF" alt="License: GPL v3"></a>
-  <a href="https://app.codacy.com/gh/1Panel-dev/1Panel?utm_source=github.com&utm_medium=referral&utm_content=1Panel-dev/1Panel&utm_campaign=Badge_Grade_Dashboard"><img src="https://app.codacy.com/project/badge/Grade/da67574fd82b473992781d1386b937ef" alt="Codacy"></a>
+  <a href="https://www.gnu.org/licenses/gpl-3.0.html"><img src="https://shields.io/github/license/masx200/multinodewatchpanel?color=%231890FF" alt="License: GPL v3"></a>
+  <a href="https://app.codacy.com/gh/masx200/multinodewatchpanel?utm_source=github.com&utm_medium=referral&utm_content=masx200/multinodewatchpanel&utm_campaign=Badge_Grade_Dashboard"><img src="https://app.codacy.com/project/badge/Grade/da67574fd82b473992781d1386b937ef" alt="Codacy"></a>
   <a href="https://discord.gg/bUpUqWqdRr" target="_blank">
         <img src="https://img.shields.io/discord/1318846410149335080?logo=discord&labelColor=%20%235462eb&logoColor=%20%23f5f5f5&color=%20%235462eb"
-            alt="chat on Discord"></a>  
-  <a href="https://github.com/1Panel-dev/1Panel/releases"><img src="https://img.shields.io/github/v/release/1Panel-dev/1Panel" alt="GitHub release"></a>
-  <a href="https://github.com/1Panel-dev/1Panel"><img src="https://img.shields.io/github/stars/1Panel-dev/1Panel?color=%231890FF&style=flat-square" alt="Stars"></a><br>
+            alt="chat on Discord"></a>
+  <a href="https://github.com/masx200/multinodewatchpanel/releases"><img src="https://img.shields.io/github/v/release/masx200/multinodewatchpanel" alt="GitHub release"></a>
+  <a href="https://github.com/masx200/multinodewatchpanel"><img src="https://img.shields.io/github/stars/masx200/multinodewatchpanel?color=%231890FF&style=flat-square" alt="Stars"></a><br>
 </p>
 <p align="center">
   <a href="/README.md"><img alt="English" src="https://img.shields.io/badge/English-d9d9d9"></a>
@@ -30,15 +30,29 @@
   <a href="/docs/README.ms.md"><img alt="Bahasa Melayu" src="https://img.shields.io/badge/Bahasa Melayu-d9d9d9"></a>
 </p>
 
-------------------------------
+---
 
-1Panel, Linux sunucu yönetimi için modern, açık kaynaklı bir web tabanlı kontrol panelidir.
+1Panel, Linux sunucu yönetimi için modern, açık kaynaklı bir web tabanlı kontrol
+panelidir.
 
-- **Verimli Yönetim**: Kullanıcı dostu bir web grafik arayüzü aracılığıyla, 1Panel kullanıcıların Linux sunucularını zahmetsizce yönetmelerini sağlar. Ana özellikler arasında ana bilgisayar izleme, dosya yönetimi, veritabanı yönetimi ve konteyner yönetimi yer alır.
-- **Hızlı Web Sitesi Dağıtımı**: Popüler açık kaynaklı web sitesi oluşturma yazılımı WordPress ile derin entegrasyon sayesinde, 1Panel alan adı bağlama ve SSL sertifikası yapılandırma işlemlerini basitleştirir, hepsi sadece bir tıkla yapılabilir.
-- **Uygulama Mağazası**: 1Panel, yüksek kaliteli açık kaynaklı araçlar ve uygulamalar sunar, kullanıcıların kolayca kurulum yapmalarını ve güncellemelerini sağlar.
-- **Güvenlik ve Güvenilirlik**: Konteynerleştirme ve güvenli uygulama dağıtımı yöntemlerini kullanarak 1Panel, güvenlik açıklarını en aza indirir. Ayrıca, entegre güvenlik duvarı yönetimi ve günlük denetleme özellikleri ile güvenliği artırır.
-- **Tek Tıkla Yedekleme ve Geri Yükleme**: 1Panel’in tek tıkla yedekleme ve geri yükleme işlevi, veri korumasını basitleştirir ve çeşitli bulut depolama çözümleriyle veri bütünlüğü ve erişilebilirliğini sağlar.
+- **Verimli Yönetim**: Kullanıcı dostu bir web grafik arayüzü aracılığıyla,
+  1Panel kullanıcıların Linux sunucularını zahmetsizce yönetmelerini sağlar. Ana
+  özellikler arasında ana bilgisayar izleme, dosya yönetimi, veritabanı yönetimi
+  ve konteyner yönetimi yer alır.
+- **Hızlı Web Sitesi Dağıtımı**: Popüler açık kaynaklı web sitesi oluşturma
+  yazılımı WordPress ile derin entegrasyon sayesinde, 1Panel alan adı bağlama ve
+  SSL sertifikası yapılandırma işlemlerini basitleştirir, hepsi sadece bir tıkla
+  yapılabilir.
+- **Uygulama Mağazası**: 1Panel, yüksek kaliteli açık kaynaklı araçlar ve
+  uygulamalar sunar, kullanıcıların kolayca kurulum yapmalarını ve
+  güncellemelerini sağlar.
+- **Güvenlik ve Güvenilirlik**: Konteynerleştirme ve güvenli uygulama dağıtımı
+  yöntemlerini kullanarak 1Panel, güvenlik açıklarını en aza indirir. Ayrıca,
+  entegre güvenlik duvarı yönetimi ve günlük denetleme özellikleri ile güvenliği
+  artırır.
+- **Tek Tıkla Yedekleme ve Geri Yükleme**: 1Panel’in tek tıkla yedekleme ve geri
+  yükleme işlevi, veri korumasını basitleştirir ve çeşitli bulut depolama
+  çözümleriyle veri bütünlüğü ve erişilebilirliğini sağlar.
 
 ## Hızlı Başlangıç
 
@@ -50,7 +64,8 @@ Aşağıdaki komutu çalıştırın ve 1Panel’i kurmak için yönergeleri taki
 curl -sSL https://resource.1panel.pro/quick_start.sh -o quick_start.sh && bash quick_start.sh
 ```
 
-Daha fazla detay için [dokümantasyonumuza](https://docs.1panel.pro/quick_start/) göz atın.
+Daha fazla detay için [dokümantasyonumuza](https://docs.1panel.pro/quick_start/)
+göz atın.
 
 ## Ekran Görüntüsü
 
@@ -58,16 +73,22 @@ Daha fazla detay için [dokümantasyonumuza](https://docs.1panel.pro/quick_start
 
 ## Yıldız Geçmişi
 
-[![Star History Chart](https://api.star-history.com/svg?repos=1Panel-dev/1Panel&type=Date)](https://star-history.com/#1Panel-dev/1Panel&Date)
+[![Star History Chart](https://api.star-history.com/svg?repos=masx200/multinodewatchpanel&type=Date)](https://star-history.com/#masx200/multinodewatchpanel&Date)
 
 ## Güvenlik Bilgileri
 
-Herhangi bir güvenlik sorunu keşfettiğinizde, lütfen bizimle şu adres üzerinden iletişime geçin: wanghe@fit2cloud.com.
+Herhangi bir güvenlik sorunu keşfettiğinizde, lütfen bizimle şu adres üzerinden
+iletişime geçin: wanghe@fit2cloud.com.
 
 ## Lisans
 
-Bu yazılım, GNU Genel Kamu Lisansı sürüm 3 (GPLv3) ile lisanslanmıştır (bu "Lisans" olarak anılacaktır); bu dosyayı yalnızca Lisans ile uyumlu olarak kullanabilirsiniz. Lisansı şu adresten edinebilirsiniz:
+Bu yazılım, GNU Genel Kamu Lisansı sürüm 3 (GPLv3) ile lisanslanmıştır (bu
+"Lisans" olarak anılacaktır); bu dosyayı yalnızca Lisans ile uyumlu olarak
+kullanabilirsiniz. Lisansı şu adresten edinebilirsiniz:
 
 <https://www.gnu.org/licenses/gpl-3.0.html>
 
-Uygulanan yasalar gereği veya yazılı olarak kabul edilmedikçe, Lisans altında dağıtılan yazılım, HERHANGİ BİR GARANTİ VEYA ŞART olmaksızın "OLDUĞU GİBİ" sunulmaktadır. Lisans, izinler ve sınırlamalar ile ilgili özel dil için Lisans’a bakın.
+Uygulanan yasalar gereği veya yazılı olarak kabul edilmedikçe, Lisans altında
+dağıtılan yazılım, HERHANGİ BİR GARANTİ VEYA ŞART olmaksızın "OLDUĞU GİBİ"
+sunulmaktadır. Lisans, izinler ve sınırlamalar ile ilgili özel dil için Lisans’a
+bakın.

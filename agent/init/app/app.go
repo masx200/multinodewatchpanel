@@ -1,7 +1,7 @@
 package app
 
 import (
-	"github.com/1Panel-dev/1Panel/agent/utils/docker"
+	"github.com/masx200/multinodewatchpanel/agent/utils/docker"
 )
 
 func Init() {

@@ -9,7 +9,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/1Panel-dev/1Panel/core/global"
+	"github.com/masx200/multinodewatchpanel/core/global"
 )
 
 type HTTPProxyDialer struct {

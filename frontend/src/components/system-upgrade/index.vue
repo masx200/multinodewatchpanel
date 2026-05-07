@@ -116,13 +116,13 @@ const toDoc = () => {
 
 const toForum = () => {
     let url = globalStore.isIntl
-        ? 'https://github.com/1Panel-dev/1Panel/discussions'
+        ? 'https://github.com/masx200/multinodewatchpanel/discussions'
         : 'https://bbs.fit2cloud.com/c/1p/7';
     window.open(url, '_blank', 'noopener,noreferrer');
 };
 
 const toGithub = () => {
-    window.open('https://github.com/1Panel-dev/1Panel', '_blank', 'noopener,noreferrer');
+    window.open('https://github.com/masx200/multinodewatchpanel', '_blank', 'noopener,noreferrer');
 };
 
 const onLoadUpgradeInfo = async () => {

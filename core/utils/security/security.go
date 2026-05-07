@@ -8,14 +8,14 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/1Panel-dev/1Panel/core/app/repo"
-	"github.com/1Panel-dev/1Panel/core/app/service"
-	"github.com/1Panel-dev/1Panel/core/cmd/server/res"
-	"github.com/1Panel-dev/1Panel/core/cmd/server/web"
-	"github.com/1Panel-dev/1Panel/core/constant"
-	"github.com/1Panel-dev/1Panel/core/global"
-	"github.com/1Panel-dev/1Panel/core/utils/common"
 	"github.com/gin-gonic/gin"
+	"github.com/masx200/multinodewatchpanel/core/app/repo"
+	"github.com/masx200/multinodewatchpanel/core/app/service"
+	"github.com/masx200/multinodewatchpanel/core/cmd/server/res"
+	"github.com/masx200/multinodewatchpanel/core/cmd/server/web"
+	"github.com/masx200/multinodewatchpanel/core/constant"
+	"github.com/masx200/multinodewatchpanel/core/global"
+	"github.com/masx200/multinodewatchpanel/core/utils/common"
 )
 
 var publicSharePagePattern = regexp.MustCompile(`^/s/[A-Za-z0-9]{10,16}$`)

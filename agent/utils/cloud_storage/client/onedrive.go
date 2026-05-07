@@ -17,8 +17,8 @@ import (
 	"strings"
 	"time"
 
-	"github.com/1Panel-dev/1Panel/agent/utils/files"
 	odsdk "github.com/goh-chunlin/go-onedrive/onedrive"
+	"github.com/masx200/multinodewatchpanel/agent/utils/files"
 	"golang.org/x/oauth2"
 )
 

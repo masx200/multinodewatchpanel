@@ -3,11 +3,11 @@ package nginx
 import (
 	"bytes"
 	"fmt"
-	"github.com/1Panel-dev/1Panel/agent/constant"
+	"github.com/masx200/multinodewatchpanel/agent/constant"
 	"os"
 	"strings"
 
-	"github.com/1Panel-dev/1Panel/agent/utils/nginx/components"
+	"github.com/masx200/multinodewatchpanel/agent/utils/nginx/components"
 )
 
 var (

@@ -7,9 +7,9 @@ import (
 	"os/exec"
 	"strings"
 
-	"github.com/1Panel-dev/1Panel/core/global"
-	"github.com/1Panel-dev/1Panel/core/utils/controller/manager"
-	"github.com/1Panel-dev/1Panel/core/utils/ssh"
+	"github.com/masx200/multinodewatchpanel/core/global"
+	"github.com/masx200/multinodewatchpanel/core/utils/controller/manager"
+	"github.com/masx200/multinodewatchpanel/core/utils/ssh"
 )
 
 type Controller interface {

@@ -1,7 +1,7 @@
 package dto
 
 import (
-	"github.com/1Panel-dev/1Panel/agent/app/model"
+	"github.com/masx200/multinodewatchpanel/agent/app/model"
 )
 
 type SearchTaskLogReq struct {

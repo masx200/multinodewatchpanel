@@ -1,6 +1,6 @@
 package response
 
-import "github.com/1Panel-dev/1Panel/agent/app/model"
+import "github.com/masx200/multinodewatchpanel/agent/app/model"
 
 type PHPExtensionsDTO struct {
 	model.PHPExtensions

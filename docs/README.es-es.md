@@ -5,13 +5,13 @@
   <a href="https://www.producthunt.com/posts/1panel?embed=true&utm_source=badge-featured&utm_medium=badge&utm_souce=badge-1panel" target="_blank"><img src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=639696&theme=light" alt="1Panel - Top&#0045;Rated&#0032;web&#0045;based&#0032;Linux&#0032;server&#0032;management&#0032;tool | Product Hunt" style="width: 180px; height: auto;" /></a>
 </p>
 <p align="center">
-  <a href="https://www.gnu.org/licenses/gpl-3.0.html"><img src="https://shields.io/github/license/1Panel-dev/1Panel?color=%231890FF" alt="License: GPL v3"></a>
-  <a href="https://app.codacy.com/gh/1Panel-dev/1Panel?utm_source=github.com&utm_medium=referral&utm_content=1Panel-dev/1Panel&utm_campaign=Badge_Grade_Dashboard"><img src="https://app.codacy.com/project/badge/Grade/da67574fd82b473992781d1386b937ef" alt="Codacy"></a>
+  <a href="https://www.gnu.org/licenses/gpl-3.0.html"><img src="https://shields.io/github/license/masx200/multinodewatchpanel?color=%231890FF" alt="License: GPL v3"></a>
+  <a href="https://app.codacy.com/gh/masx200/multinodewatchpanel?utm_source=github.com&utm_medium=referral&utm_content=masx200/multinodewatchpanel&utm_campaign=Badge_Grade_Dashboard"><img src="https://app.codacy.com/project/badge/Grade/da67574fd82b473992781d1386b937ef" alt="Codacy"></a>
   <a href="https://discord.gg/bUpUqWqdRr" target="_blank">
         <img src="https://img.shields.io/discord/1318846410149335080?logo=discord&labelColor=%20%235462eb&logoColor=%20%23f5f5f5&color=%20%235462eb"
-            alt="chat on Discord"></a>  
-  <a href="https://github.com/1Panel-dev/1Panel/releases"><img src="https://img.shields.io/github/v/release/1Panel-dev/1Panel" alt="GitHub release"></a>
-  <a href="https://github.com/1Panel-dev/1Panel"><img src="https://img.shields.io/github/stars/1Panel-dev/1Panel?color=%231890FF&style=flat-square" alt="Stars"></a><br>
+            alt="chat on Discord"></a>
+  <a href="https://github.com/masx200/multinodewatchpanel/releases"><img src="https://img.shields.io/github/v/release/masx200/multinodewatchpanel" alt="GitHub release"></a>
+  <a href="https://github.com/masx200/multinodewatchpanel"><img src="https://img.shields.io/github/stars/masx200/multinodewatchpanel?color=%231890FF&style=flat-square" alt="Stars"></a><br>
 </p>
 <p align="center">
   <a href="/README.md"><img alt="English" src="https://img.shields.io/badge/English-d9d9d9"></a>
@@ -30,15 +30,28 @@
   <a href="/docs/README.ms.md"><img alt="Bahasa Melayu" src="https://img.shields.io/badge/Bahasa Melayu-d9d9d9"></a>
 </p>
 
-------------------------------
+---
 
-1Panel es un panel de control moderno y de código abierto basado en web para la gestión de servidores Linux.
+1Panel es un panel de control moderno y de código abierto basado en web para la
+gestión de servidores Linux.
 
-- **Gestión eficiente**: los usuarios pueden gestionar fácilmente servidores Linux a través de una interfaz web, como monitorización de hosts, gestión de archivos, gestión de bases de datos, gestión de contenedores, entre otros;  
-- **Creación rápida de sitios web**: integración profunda con el software de creación de sitios web de código abierto WordPress y Halo, operaciones como vinculación de dominios y configuración de certificados SSL se realizan con un solo clic;  
-- **Tienda de aplicaciones**: selección de diversas herramientas y software de código abierto de alta calidad, ayudando a los usuarios a instalar y actualizar fácilmente;  
-- **Seguro y confiable**: basado en la gestión de contenedores y el despliegue de aplicaciones, se logra la mínima exposición a vulnerabilidades, al tiempo que se ofrecen funciones como protección contra virus, cortafuegos y auditoría de registros;  
-- **Copia de seguridad con un clic**: soporta copias de seguridad y restauraciones con un clic, los usuarios pueden respaldar datos en diversos medios de almacenamiento en la nube, asegurando que nunca se pierdan.
+- **Gestión eficiente**: los usuarios pueden gestionar fácilmente servidores
+  Linux a través de una interfaz web, como monitorización de hosts, gestión de
+  archivos, gestión de bases de datos, gestión de contenedores, entre otros;
+- **Creación rápida de sitios web**: integración profunda con el software de
+  creación de sitios web de código abierto WordPress y Halo, operaciones como
+  vinculación de dominios y configuración de certificados SSL se realizan con un
+  solo clic;
+- **Tienda de aplicaciones**: selección de diversas herramientas y software de
+  código abierto de alta calidad, ayudando a los usuarios a instalar y
+  actualizar fácilmente;
+- **Seguro y confiable**: basado en la gestión de contenedores y el despliegue
+  de aplicaciones, se logra la mínima exposición a vulnerabilidades, al tiempo
+  que se ofrecen funciones como protección contra virus, cortafuegos y auditoría
+  de registros;
+- **Copia de seguridad con un clic**: soporta copias de seguridad y
+  restauraciones con un clic, los usuarios pueden respaldar datos en diversos
+  medios de almacenamiento en la nube, asegurando que nunca se pierdan.
 
 ## Inicio Rápido
 
@@ -48,7 +61,8 @@ Ejecute el siguiente script y siga las indicaciones para instalar 1Panel:
 curl -sSL https://resource.1panel.pro/quick_start.sh -o quick_start.sh && bash quick_start.sh
 ```
 
-Por favor, consulte nuestra [documentación](https://docs.1panel.pro/quick_start/) para más detalles.
+Por favor, consulte nuestra
+[documentación](https://docs.1panel.pro/quick_start/) para más detalles.
 
 ## Captura de Pantalla
 
@@ -56,16 +70,23 @@ Por favor, consulte nuestra [documentación](https://docs.1panel.pro/quick_start
 
 ## Historial de Estrellas
 
-[![Star History Chart](https://api.star-history.com/svg?repos=1Panel-dev/1Panel&type=Date)](https://star-history.com/#1Panel-dev/1Panel&Date)
+[![Star History Chart](https://api.star-history.com/svg?repos=masx200/multinodewatchpanel&type=Date)](https://star-history.com/#masx200/multinodewatchpanel&Date)
 
 ## Información de Seguridad
 
-Si descubre algún problema de seguridad, contáctenos a través de: wanghe@fit2cloud.com.
+Si descubre algún problema de seguridad, contáctenos a través de:
+wanghe@fit2cloud.com.
 
 ## Licencia
 
-Licenciado bajo la Licencia Pública General GNU versión 3 (GPLv3) (la "Licencia"); no puede usar este archivo excepto en cumplimiento con la Licencia. Puede obtener una copia de la Licencia en
+Licenciado bajo la Licencia Pública General GNU versión 3 (GPLv3) (la
+"Licencia"); no puede usar este archivo excepto en cumplimiento con la Licencia.
+Puede obtener una copia de la Licencia en
 
 <https://www.gnu.org/licenses/gpl-3.0.html>
 
-A menos que lo exija la ley aplicable o se acuerde por escrito, el software distribuido bajo la Licencia se distribuye en una BASE "TAL CUAL", SIN GARANTÍAS O CONDICIONES DE NINGÚN TIPO, ya sean expresas o implícitas. Consulte la Licencia para el lenguaje específico que rige los permisos y limitaciones bajo la Licencia.
+A menos que lo exija la ley aplicable o se acuerde por escrito, el software
+distribuido bajo la Licencia se distribuye en una BASE "TAL CUAL", SIN GARANTÍAS
+O CONDICIONES DE NINGÚN TIPO, ya sean expresas o implícitas. Consulte la
+Licencia para el lenguaje específico que rige los permisos y limitaciones bajo
+la Licencia.

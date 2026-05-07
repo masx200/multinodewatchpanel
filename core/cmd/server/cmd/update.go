@@ -9,12 +9,12 @@ import (
 	"strings"
 	"unicode"
 
-	"github.com/1Panel-dev/1Panel/core/constant"
-	"github.com/1Panel-dev/1Panel/core/global"
-	"github.com/1Panel-dev/1Panel/core/i18n"
-	"github.com/1Panel-dev/1Panel/core/utils/cmd"
-	"github.com/1Panel-dev/1Panel/core/utils/common"
-	"github.com/1Panel-dev/1Panel/core/utils/encrypt"
+	"github.com/masx200/multinodewatchpanel/core/constant"
+	"github.com/masx200/multinodewatchpanel/core/global"
+	"github.com/masx200/multinodewatchpanel/core/i18n"
+	"github.com/masx200/multinodewatchpanel/core/utils/cmd"
+	"github.com/masx200/multinodewatchpanel/core/utils/common"
+	"github.com/masx200/multinodewatchpanel/core/utils/encrypt"
 	"github.com/spf13/cobra"
 	"golang.org/x/term"
 )

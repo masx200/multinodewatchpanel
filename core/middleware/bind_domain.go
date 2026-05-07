@@ -3,9 +3,9 @@ package middleware
 import (
 	"strings"
 
-	"github.com/1Panel-dev/1Panel/core/app/api/v2/helper"
-	"github.com/1Panel-dev/1Panel/core/app/repo"
 	"github.com/gin-gonic/gin"
+	"github.com/masx200/multinodewatchpanel/core/app/api/v2/helper"
+	"github.com/masx200/multinodewatchpanel/core/app/repo"
 )
 
 func BindDomain() gin.HandlerFunc {

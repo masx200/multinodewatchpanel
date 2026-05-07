@@ -6,11 +6,11 @@ import (
 	"net/http"
 	"strings"
 
-	"github.com/1Panel-dev/1Panel/agent/app/api/v2/helper"
-	"github.com/1Panel-dev/1Panel/agent/global"
-	"github.com/1Panel-dev/1Panel/agent/utils/cmd"
-	"github.com/1Panel-dev/1Panel/agent/utils/xpack"
 	"github.com/gin-gonic/gin"
+	"github.com/masx200/multinodewatchpanel/agent/app/api/v2/helper"
+	"github.com/masx200/multinodewatchpanel/agent/global"
+	"github.com/masx200/multinodewatchpanel/agent/utils/cmd"
+	"github.com/masx200/multinodewatchpanel/agent/utils/xpack"
 )
 
 func Certificate() gin.HandlerFunc {

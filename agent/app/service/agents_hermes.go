@@ -7,15 +7,15 @@ import (
 	"strings"
 	"time"
 
-	"github.com/1Panel-dev/1Panel/agent/app/dto"
-	"github.com/1Panel-dev/1Panel/agent/app/model"
-	providercatalog "github.com/1Panel-dev/1Panel/agent/app/provider"
-	"github.com/1Panel-dev/1Panel/agent/buserr"
-	"github.com/1Panel-dev/1Panel/agent/constant"
-	"github.com/1Panel-dev/1Panel/agent/utils/common"
-	agentenv "github.com/1Panel-dev/1Panel/agent/utils/env"
-	"github.com/1Panel-dev/1Panel/agent/utils/files"
 	"github.com/joho/godotenv"
+	"github.com/masx200/multinodewatchpanel/agent/app/dto"
+	"github.com/masx200/multinodewatchpanel/agent/app/model"
+	providercatalog "github.com/masx200/multinodewatchpanel/agent/app/provider"
+	"github.com/masx200/multinodewatchpanel/agent/buserr"
+	"github.com/masx200/multinodewatchpanel/agent/constant"
+	"github.com/masx200/multinodewatchpanel/agent/utils/common"
+	agentenv "github.com/masx200/multinodewatchpanel/agent/utils/env"
+	"github.com/masx200/multinodewatchpanel/agent/utils/files"
 	"gopkg.in/yaml.v3"
 )
 

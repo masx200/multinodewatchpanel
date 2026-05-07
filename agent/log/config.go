@@ -2,7 +2,7 @@ package log
 
 import (
 	"errors"
-	"github.com/1Panel-dev/1Panel/agent/constant"
+	"github.com/masx200/multinodewatchpanel/agent/constant"
 	"io"
 	"os"
 	"path"

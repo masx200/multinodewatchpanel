@@ -1,4 +1,4 @@
-module github.com/1Panel-dev/1Panel/agent
+module github.com/masx200/multinodewatchpanel/agent
 
 go 1.25.7
 

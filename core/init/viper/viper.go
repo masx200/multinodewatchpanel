@@ -7,11 +7,11 @@ import (
 	"path"
 	"strings"
 
-	"github.com/1Panel-dev/1Panel/core/cmd/server/conf"
-	"github.com/1Panel-dev/1Panel/core/global"
-	"github.com/1Panel-dev/1Panel/core/utils/cmd"
-	"github.com/1Panel-dev/1Panel/core/utils/common"
 	"github.com/fsnotify/fsnotify"
+	"github.com/masx200/multinodewatchpanel/core/cmd/server/conf"
+	"github.com/masx200/multinodewatchpanel/core/global"
+	"github.com/masx200/multinodewatchpanel/core/utils/cmd"
+	"github.com/masx200/multinodewatchpanel/core/utils/common"
 	"github.com/spf13/viper"
 	"gopkg.in/yaml.v3"
 )

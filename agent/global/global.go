@@ -3,7 +3,7 @@ package global
 import (
 	"context"
 
-	badger_db "github.com/1Panel-dev/1Panel/agent/init/cache/db"
+	badger_db "github.com/masx200/multinodewatchpanel/agent/init/cache/db"
 	"github.com/go-playground/validator/v10"
 	"github.com/nicksnyder/go-i18n/v2/i18n"
 	"github.com/robfig/cron/v3"

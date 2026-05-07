@@ -5,13 +5,13 @@
   <a href="https://www.producthunt.com/posts/1panel?embed=true&utm_source=badge-featured&utm_medium=badge&utm_souce=badge-1panel" target="_blank"><img src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=639696&theme=light" alt="1Panel - Top&#0045;Rated&#0032;web&#0045;based&#0032;Linux&#0032;server&#0032;management&#0032;tool | Product Hunt" style="width: 180px; height: auto;" /></a>
 </p>
 <p align="center">
-  <a href="https://www.gnu.org/licenses/gpl-3.0.html"><img src="https://shields.io/github/license/1Panel-dev/1Panel?color=%231890FF" alt="License: GPL v3"></a>
-  <a href="https://app.codacy.com/gh/1Panel-dev/1Panel?utm_source=github.com&utm_medium=referral&utm_content=1Panel-dev/1Panel&utm_campaign=Badge_Grade_Dashboard"><img src="https://app.codacy.com/project/badge/Grade/da67574fd82b473992781d1386b937ef" alt="Codacy"></a>
+  <a href="https://www.gnu.org/licenses/gpl-3.0.html"><img src="https://shields.io/github/license/masx200/multinodewatchpanel?color=%231890FF" alt="License: GPL v3"></a>
+  <a href="https://app.codacy.com/gh/masx200/multinodewatchpanel?utm_source=github.com&utm_medium=referral&utm_content=masx200/multinodewatchpanel&utm_campaign=Badge_Grade_Dashboard"><img src="https://app.codacy.com/project/badge/Grade/da67574fd82b473992781d1386b937ef" alt="Codacy"></a>
   <a href="https://discord.gg/bUpUqWqdRr" target="_blank">
         <img src="https://img.shields.io/discord/1318846410149335080?logo=discord&labelColor=%20%235462eb&logoColor=%20%23f5f5f5&color=%20%235462eb"
-            alt="chat on Discord"></a>  
-  <a href="https://github.com/1Panel-dev/1Panel/releases"><img src="https://img.shields.io/github/v/release/1Panel-dev/1Panel" alt="GitHub release"></a>
-  <a href="https://github.com/1Panel-dev/1Panel"><img src="https://img.shields.io/github/stars/1Panel-dev/1Panel?color=%231890FF&style=flat-square" alt="Stars"></a><br>
+            alt="chat on Discord"></a>
+  <a href="https://github.com/masx200/multinodewatchpanel/releases"><img src="https://img.shields.io/github/v/release/masx200/multinodewatchpanel" alt="GitHub release"></a>
+  <a href="https://github.com/masx200/multinodewatchpanel"><img src="https://img.shields.io/github/stars/masx200/multinodewatchpanel?color=%231890FF&style=flat-square" alt="Stars"></a><br>
 </p>
 <p align="center">
   <a href="/README.md"><img alt="English" src="https://img.shields.io/badge/English-d9d9d9"></a>
@@ -30,16 +30,25 @@
   <a href="/docs/README.ms.md"><img alt="Bahasa Melayu" src="https://img.shields.io/badge/Bahasa Melayu-d9d9d9"></a>
 </p>
 
-------------------------------
+---
 
 <div dir="rtl">
 1Panel هي لوحة تحكم وتشغيل وتصيان خادمات Linux من الجيل الجديد.
 
-- **الإدارة الفعالة**: من خلال واجهة رسومية ويب مستخدمة بسهولة، يتيح 1Panel للمستخدمين إدارة خادمات Linux الخاصة بهم بلا عناء. وتشمل الميزات الرئيسية مراقبة المضيفات، وإدارة الملفات، وإدارة قواعد البيانات، وإدارة الحاويات. 
-- **استعراض المواقع على الإنترنت بسرعة**: بفضل التكامل العميق مع برنامج WordPress الشهير لبناء المواقع عبر الإنترنت المفتوح المصدر، يعمل 1Panel على تبسيط عملية ربطドومين (المجال) وتكوين شهادات SSL، وكل ذلك يمكن تحقيقه بضغطة زر واحدة. 
-- **مخزن التطبيقات**: يقوم 1Panel بترتيب مجموعة واسعة من الأدوات والتطبيقات المفتوحة المصدر عالية الجودة، مما يسهل عملية التثبيت والتحديثات لاستخدميه.
-- **الأمن والاستقرار**: من خلال الاستفادة من الحاويات وممارسات استقرارية لتوزيع التطبيقات الآمنة، يعمل 1Panel على تقليل تغيرات الحساسية. كما يعزز الأمن بشكل أكبر من خلال إمكانيات إدارة الحماية الحائط والتدقيق في السجلات. 
-- **نسخ واحتياطي و استعادة بضغطة زر واحدة**: حماية البيانات أصبحت بسيطة بفضل وظيفة النسخ واحتياطي واستعادة بضغطة زر واحدة في 1Panel، والتي تدعم حلول تخزين سحابية مختلفة لضمان سلامة البيانات وسهولة الوصول إليها. 
+- **الإدارة الفعالة**: من خلال واجهة رسومية ويب مستخدمة بسهولة، يتيح 1Panel
+  للمستخدمين إدارة خادمات Linux الخاصة بهم بلا عناء. وتشمل الميزات الرئيسية
+  مراقبة المضيفات، وإدارة الملفات، وإدارة قواعد البيانات، وإدارة الحاويات.
+- **استعراض المواقع على الإنترنت بسرعة**: بفضل التكامل العميق مع برنامج WordPress
+  الشهير لبناء المواقع عبر الإنترنت المفتوح المصدر، يعمل 1Panel على تبسيط عملية
+  ربطドومين (المجال) وتكوين شهادات SSL، وكل ذلك يمكن تحقيقه بضغطة زر واحدة.
+- **مخزن التطبيقات**: يقوم 1Panel بترتيب مجموعة واسعة من الأدوات والتطبيقات
+  المفتوحة المصدر عالية الجودة، مما يسهل عملية التثبيت والتحديثات لاستخدميه.
+- **الأمن والاستقرار**: من خلال الاستفادة من الحاويات وممارسات استقرارية لتوزيع
+  التطبيقات الآمنة، يعمل 1Panel على تقليل تغيرات الحساسية. كما يعزز الأمن بشكل
+  أكبر من خلال إمكانيات إدارة الحماية الحائط والتدقيق في السجلات.
+- **نسخ واحتياطي و استعادة بضغطة زر واحدة**: حماية البيانات أصبحت بسيطة بفضل
+  وظيفة النسخ واحتياطي واستعادة بضغطة زر واحدة في 1Panel، والتي تدعم حلول تخزين
+  سحابية مختلفة لضمان سلامة البيانات وسهولة الوصول إليها.
 
 ## بداية سريعة
 
@@ -49,7 +58,8 @@
 curl -sSL https://resource.1panel.pro/quick_start.sh -o quick_start.sh && bash quick_start.sh
 ```
 
-يرجى الرجوع إلى مستنداتنا [هنا](https://docs.1panel.pro/quick_start/) لمزيد من التفاصيل.
+يرجى الرجوع إلى مستنداتنا [هنا](https://docs.1panel.pro/quick_start/) لمزيد من
+التفاصيل.
 
 ## مقاطع شاشة
 
@@ -57,7 +67,7 @@ curl -sSL https://resource.1panel.pro/quick_start.sh -o quick_start.sh && bash q
 
 ## تاريخ النجوم
 
-[![Star History Chart](https://api.star-history.com/svg?repos=1Panel-dev/1Panel&type=Date)](https://star-history.com/#1Panel-dev/1Panel&Date)
+[![Star History Chart](https://api.star-history.com/svg?repos=masx200/multinodewatchpanel&type=Date)](https://star-history.com/#masx200/multinodewatchpanel&Date)
 
 ## معلومات أمنية
 
@@ -65,8 +75,13 @@ curl -sSL https://resource.1panel.pro/quick_start.sh -o quick_start.sh && bash q
 
 ## رخصة
 
-مخول بموجب الرخصة العامة العامة لغنو GPLv3 (الرخصة العامة العامة لغنو GPLv3) (هذه "الرخصة")؛ لن تتمكن من استخدام هذا الملف إلا إذا اتبعت الرخصة. يمكنك الحصول على نسخة من الرخصة من
-<https://www.gnu.org/licenses/gpl-3.0.html>
+مخول بموجب الرخصة العامة العامة لغنو GPLv3 (الرخصة العامة العامة لغنو GPLv3)
+(هذه "الرخصة")؛ لن تتمكن من استخدام هذا الملف إلا إذا اتبعت الرخصة. يمكنك الحصول
+على نسخة من الرخصة من <https://www.gnu.org/licenses/gpl-3.0.html>
 
-ما لم يكن ذلك مطلوبًا بموجب القانون المعمول به أو لم يتم الاتفاق عليه كتابيًا، يتم توزيع البرنامج الموزع بموجب الرخصة على أساس "كما هو"، بلا أي نوع من الضمانات أو الشروط، سواء كانت صريحة أو ضمنية. راجع الرخصة للحصول على اللغة المحددة التي تحكم الصلاحيات والقيود بموجب الرخصة. 
+ما لم يكن ذلك مطلوبًا بموجب القانون المعمول به أو لم يتم الاتفاق عليه كتابيًا، يتم
+توزيع البرنامج الموزع بموجب الرخصة على أساس "كما هو"، بلا أي نوع من الضمانات أو
+الشروط، سواء كانت صريحة أو ضمنية. راجع الرخصة للحصول على اللغة المحددة التي تحكم
+الصلاحيات والقيود بموجب الرخصة.
+
 </div>

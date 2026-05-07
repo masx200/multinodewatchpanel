@@ -4,9 +4,9 @@ import (
 	"errors"
 	"time"
 
-	"github.com/1Panel-dev/1Panel/core/app/model"
-	"github.com/1Panel-dev/1Panel/core/global"
-	"github.com/1Panel-dev/1Panel/core/init/migration/helper"
+	"github.com/masx200/multinodewatchpanel/core/app/model"
+	"github.com/masx200/multinodewatchpanel/core/global"
+	"github.com/masx200/multinodewatchpanel/core/init/migration/helper"
 	"github.com/patrickmn/go-cache"
 	"gorm.io/gorm"
 )

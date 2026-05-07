@@ -1,7 +1,7 @@
 package buserr
 
 import (
-	"github.com/1Panel-dev/1Panel/agent/i18n"
+	"github.com/masx200/multinodewatchpanel/agent/i18n"
 	"github.com/pkg/errors"
 )
 

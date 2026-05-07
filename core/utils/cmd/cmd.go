@@ -20,7 +20,7 @@ func Which(name string) bool {
 	// Prefer Go's built-in PATH lookup so we don't depend on an external
 	// `which` binary, which is not installed by default on minimal
 	// distributions (e.g. Arch Linux, some Alpine images, slim containers).
-	// See 1Panel-dev/1Panel#12605.
+	// See masx200/multinodewatchpanel#12605.
 	if _, err := exec.LookPath(name); err == nil {
 		return true
 	}

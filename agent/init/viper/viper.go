@@ -5,11 +5,11 @@ import (
 	"fmt"
 	"path"
 
-	"github.com/1Panel-dev/1Panel/agent/cmd/server/conf"
-	"github.com/1Panel-dev/1Panel/agent/global"
-	"github.com/1Panel-dev/1Panel/agent/utils/files"
-	"github.com/1Panel-dev/1Panel/agent/utils/xpack"
 	"github.com/fsnotify/fsnotify"
+	"github.com/masx200/multinodewatchpanel/agent/cmd/server/conf"
+	"github.com/masx200/multinodewatchpanel/agent/global"
+	"github.com/masx200/multinodewatchpanel/agent/utils/files"
+	"github.com/masx200/multinodewatchpanel/agent/utils/xpack"
 	"github.com/spf13/viper"
 	"gopkg.in/yaml.v3"
 )

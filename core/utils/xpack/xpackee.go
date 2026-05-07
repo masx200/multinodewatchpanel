@@ -5,10 +5,10 @@ package xpack
 import (
 	"net/http"
 
-	"github.com/1Panel-dev/1Panel/core/app/dto"
-	"github.com/1Panel-dev/1Panel/core/utils/ssh"
-	edition "github.com/1Panel-dev/1Panel/core/xpack-ee/edition"
 	"github.com/gin-gonic/gin"
+	"github.com/masx200/multinodewatchpanel/core/app/dto"
+	"github.com/masx200/multinodewatchpanel/core/utils/ssh"
+	edition "github.com/masx200/multinodewatchpanel/core/xpack-ee/edition"
 )
 
 func Proxy(c *gin.Context, currentNode string) {

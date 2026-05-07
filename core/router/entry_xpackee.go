@@ -3,8 +3,8 @@
 package router
 
 import (
-	xpackEERouter "github.com/1Panel-dev/1Panel/core/xpack-ee/router"
-	xpackRouter "github.com/1Panel-dev/1Panel/core/xpack/router"
+	xpackEERouter "github.com/masx200/multinodewatchpanel/core/xpack-ee/router"
+	xpackRouter "github.com/masx200/multinodewatchpanel/core/xpack/router"
 )
 
 func RouterGroups() []CommonRouter {

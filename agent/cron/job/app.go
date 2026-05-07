@@ -1,8 +1,8 @@
 package job
 
 import (
-	"github.com/1Panel-dev/1Panel/agent/app/service"
-	"github.com/1Panel-dev/1Panel/agent/global"
+	"github.com/masx200/multinodewatchpanel/agent/app/service"
+	"github.com/masx200/multinodewatchpanel/agent/global"
 )
 
 type app struct{}

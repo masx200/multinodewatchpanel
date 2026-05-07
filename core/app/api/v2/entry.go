@@ -1,8 +1,8 @@
 package v2
 
 import (
-	"github.com/1Panel-dev/1Panel/core/app/repo"
-	"github.com/1Panel-dev/1Panel/core/app/service"
+	"github.com/masx200/multinodewatchpanel/core/app/repo"
+	"github.com/masx200/multinodewatchpanel/core/app/service"
 )
 
 type ApiGroup struct {

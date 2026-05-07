@@ -9,8 +9,8 @@ import (
 	"sync/atomic"
 	"time"
 
-	"github.com/1Panel-dev/1Panel/core/constant"
 	"github.com/gin-gonic/gin"
+	"github.com/masx200/multinodewatchpanel/core/constant"
 )
 
 type SessionUser struct {

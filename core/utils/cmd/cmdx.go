@@ -12,9 +12,9 @@ import (
 	"syscall"
 	"time"
 
-	"github.com/1Panel-dev/1Panel/core/app/task"
-	"github.com/1Panel-dev/1Panel/core/buserr"
-	"github.com/1Panel-dev/1Panel/core/constant"
+	"github.com/masx200/multinodewatchpanel/core/app/task"
+	"github.com/masx200/multinodewatchpanel/core/buserr"
+	"github.com/masx200/multinodewatchpanel/core/constant"
 )
 
 type CommandHelper struct {

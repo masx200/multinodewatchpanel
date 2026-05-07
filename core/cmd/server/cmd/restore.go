@@ -7,12 +7,12 @@ import (
 	"sort"
 	"strings"
 
-	"github.com/1Panel-dev/1Panel/core/global"
-	"github.com/1Panel-dev/1Panel/core/i18n"
-	cmdUtils "github.com/1Panel-dev/1Panel/core/utils/cmd"
-	"github.com/1Panel-dev/1Panel/core/utils/common"
-	"github.com/1Panel-dev/1Panel/core/utils/controller"
-	"github.com/1Panel-dev/1Panel/core/utils/files"
+	"github.com/masx200/multinodewatchpanel/core/global"
+	"github.com/masx200/multinodewatchpanel/core/i18n"
+	cmdUtils "github.com/masx200/multinodewatchpanel/core/utils/cmd"
+	"github.com/masx200/multinodewatchpanel/core/utils/common"
+	"github.com/masx200/multinodewatchpanel/core/utils/controller"
+	"github.com/masx200/multinodewatchpanel/core/utils/files"
 
 	"github.com/spf13/cobra"
 )

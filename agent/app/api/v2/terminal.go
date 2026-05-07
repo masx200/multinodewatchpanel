@@ -8,14 +8,14 @@ import (
 	"strconv"
 	"time"
 
-	"github.com/1Panel-dev/1Panel/agent/app/dto"
-	"github.com/1Panel-dev/1Panel/agent/app/service"
-	"github.com/1Panel-dev/1Panel/agent/global"
-	"github.com/1Panel-dev/1Panel/agent/utils/cmd"
-	"github.com/1Panel-dev/1Panel/agent/utils/ssh"
-	"github.com/1Panel-dev/1Panel/agent/utils/terminal"
 	"github.com/gin-gonic/gin"
 	"github.com/gorilla/websocket"
+	"github.com/masx200/multinodewatchpanel/agent/app/dto"
+	"github.com/masx200/multinodewatchpanel/agent/app/service"
+	"github.com/masx200/multinodewatchpanel/agent/global"
+	"github.com/masx200/multinodewatchpanel/agent/utils/cmd"
+	"github.com/masx200/multinodewatchpanel/agent/utils/ssh"
+	"github.com/masx200/multinodewatchpanel/agent/utils/terminal"
 	"github.com/pkg/errors"
 )
 

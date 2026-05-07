@@ -12,10 +12,10 @@ import (
 	"strings"
 	"time"
 
-	"github.com/1Panel-dev/1Panel/core/constant"
-	"github.com/1Panel-dev/1Panel/core/global"
-	"github.com/1Panel-dev/1Panel/core/utils/cmd"
-	"github.com/1Panel-dev/1Panel/core/utils/req_helper"
+	"github.com/masx200/multinodewatchpanel/core/constant"
+	"github.com/masx200/multinodewatchpanel/core/global"
+	"github.com/masx200/multinodewatchpanel/core/utils/cmd"
+	"github.com/masx200/multinodewatchpanel/core/utils/req_helper"
 )
 
 func CopyFile(src, dst string, withName bool) error {

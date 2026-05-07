@@ -8,7 +8,7 @@ import (
 	"time"
 	"unicode/utf8"
 
-	"github.com/1Panel-dev/1Panel/agent/constant"
+	"github.com/masx200/multinodewatchpanel/agent/constant"
 )
 
 const (

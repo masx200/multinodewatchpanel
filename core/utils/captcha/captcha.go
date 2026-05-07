@@ -3,8 +3,8 @@ package captcha
 import (
 	"strings"
 
-	"github.com/1Panel-dev/1Panel/core/app/dto"
 	"github.com/1panel-dev/base64Captcha"
+	"github.com/masx200/multinodewatchpanel/core/app/dto"
 )
 
 var store = base64Captcha.DefaultMemStore

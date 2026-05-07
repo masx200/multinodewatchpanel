@@ -1,7 +1,7 @@
 package service
 
 import (
-	"github.com/1Panel-dev/1Panel/agent/app/dto/response"
+	"github.com/masx200/multinodewatchpanel/agent/app/dto/response"
 	"os/exec"
 )
 

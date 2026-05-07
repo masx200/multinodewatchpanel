@@ -3,7 +3,7 @@ package client
 import (
 	"fmt"
 
-	"github.com/1Panel-dev/1Panel/agent/global"
+	"github.com/masx200/multinodewatchpanel/agent/global"
 )
 
 func loadParamFromVars(key string, vars map[string]interface{}) string {

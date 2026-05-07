@@ -8,8 +8,8 @@ import (
 	"strings"
 	"time"
 
-	"github.com/1Panel-dev/1Panel/core/global"
-	"github.com/1Panel-dev/1Panel/core/log"
+	"github.com/masx200/multinodewatchpanel/core/global"
+	"github.com/masx200/multinodewatchpanel/core/log"
 
 	"github.com/sirupsen/logrus"
 )
@@ -55,7 +55,7 @@ type MineFormatter struct{}
 func (s *MineFormatter) Format(entry *logrus.Entry) ([]byte, error) {
 	detailInfo := ""
 	if entry.Caller != nil {
-		function := strings.ReplaceAll(entry.Caller.Function, "github.com/1Panel-dev/1Panel/core/", "")
+		function := strings.ReplaceAll(entry.Caller.Function, "github.com/masx200/multinodewatchpanel/core/", "")
 		detailInfo = fmt.Sprintf("(%s: %d)", function, entry.Caller.Line)
 	}
 	if len(entry.Data) == 0 {

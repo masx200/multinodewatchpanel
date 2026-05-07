@@ -3,7 +3,7 @@ package schema
 import (
 	"encoding/xml"
 
-	"github.com/1Panel-dev/1Panel/agent/utils/ai_tools/gpu/common"
+	"github.com/masx200/multinodewatchpanel/agent/utils/ai_tools/gpu/common"
 )
 
 func Parse(buf []byte, version string) (*common.GpuInfo, error) {

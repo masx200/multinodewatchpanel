@@ -3,8 +3,8 @@ package cmd
 import (
 	"bytes"
 	"fmt"
-	"github.com/1Panel-dev/1Panel/core/cmd/server/app"
-	"github.com/1Panel-dev/1Panel/core/i18n"
+	"github.com/masx200/multinodewatchpanel/core/cmd/server/app"
+	"github.com/masx200/multinodewatchpanel/core/i18n"
 	"io"
 	"os"
 

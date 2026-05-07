@@ -3,7 +3,7 @@
 package router
 
 import (
-	xpackRouter "github.com/1Panel-dev/1Panel/agent/xpack/router"
+	xpackRouter "github.com/masx200/multinodewatchpanel/agent/xpack/router"
 )
 
 func RouterGroups() []CommonRouter {

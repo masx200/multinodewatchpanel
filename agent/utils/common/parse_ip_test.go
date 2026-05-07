@@ -2,7 +2,7 @@ package common
 
 import "testing"
 
-// Regression test for 1Panel-dev/1Panel#12646: panel SSL self-signed flow
+// Regression test for masx200/multinodewatchpanel#12646: panel SSL self-signed flow
 // rejected IPv6 hosts because net.ParseIP does not accept the bracketed
 // form (e.g. "[::1]") and the upstream caller passes the host portion of
 // a URL rather than a bare IP.

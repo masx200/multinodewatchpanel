@@ -8,7 +8,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/1Panel-dev/1Panel/agent/buserr"
+	"github.com/masx200/multinodewatchpanel/agent/buserr"
 )
 
 type VerifyRequest struct {
