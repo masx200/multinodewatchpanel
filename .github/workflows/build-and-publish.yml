@@ -36,9 +36,14 @@ jobs:
       - name: Generate Release Tag
         id: tag
         run: |
-          TAG="sha-$(echo ${{ github.sha }} | cut -c1-7)"
-          echo "TAG=$TAG" >> $GITHUB_OUTPUT
-          echo "TAG_NAME=$TAG" >> $GITHUB_OUTPUT
+          # 从 git ref 提取 tag 版本号 (refs/tags/v1.0.0 -> v1.0.0)
+          VERSION="${GITHUB_REF#refs/tags/}"
+          # 如果不是 tag 触发，则使用 sha 前缀
+          if [[ "$VERSION" == "$GITHUB_REF" ]]; then
+            VERSION="sha-$(echo $GITHUB_SHA | cut -c1-7)"
+          fi
+          echo "TAG=$VERSION" >> $GITHUB_OUTPUT
+          echo "TAG_NAME=$VERSION" >> $GITHUB_OUTPUT
 
       - name: Setup Node
         uses: actions/setup-node@v4
@@ -102,6 +107,8 @@ jobs:
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Get Git Short Hash
         id: hash
@@ -110,6 +117,15 @@ jobs:
       - name: Get Commit Message
         id: commit
         run: echo "MESSAGE=$(git log -1 --pretty=%B | head -n 1 | tr '[:space:]' '-' | tr -cd '[:alnum:]-_')" >> $GITHUB_OUTPUT
+
+      - name: Extract Tag Version
+        id: tag
+        run: |
+          VERSION="${GITHUB_REF#refs/tags/}"
+          if [[ "$VERSION" == "$GITHUB_REF" ]]; then
+            VERSION="sha-$(echo $GITHUB_SHA | cut -c1-7)"
+          fi
+          echo "VERSION=$VERSION" >> $GITHUB_OUTPUT
 
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v3
@@ -130,6 +146,8 @@ jobs:
         with:
           images: ${{ env.REGISTRY }}/${{ github.repository }}
           tags: |
+            # git tag 版本: v1.0.0
+            type=ref,event=tag
             # git short hash: sha-abc1234
             type=sha,prefix=sha-,format=short
             # branch name
@@ -152,7 +170,7 @@ jobs:
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
           build-args: |
-            VERSION=sha-${{ steps.hash.outputs.SHORT_HASH }}
+            VERSION=${{ steps.tag.outputs.VERSION }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
 
@@ -164,7 +182,8 @@ jobs:
           echo "|------|-------|" >> $GITHUB_STEP_SUMMARY
           echo "| **Git SHA** | \`${{ github.sha }}\` |" >> $GITHUB_STEP_SUMMARY
           echo "| **Short Hash** | \`${{ steps.hash.outputs.SHORT_HASH }}\` |" >> $GITHUB_STEP_SUMMARY
+          echo "| **Version Tag** | \`${{ steps.tag.outputs.VERSION }}\` |" >> $GITHUB_STEP_SUMMARY
           echo "| **Branch** | \`${{ github.ref_name }}\` |" >> $GITHUB_STEP_SUMMARY
           echo "| **Commit** | ${{ steps.commit.outputs.MESSAGE }} |" >> $GITHUB_STEP_SUMMARY
-          echo "| **Image** | \`${{ env.REGISTRY }}/${{ github.repository }}:sha-${{ steps.hash.outputs.SHORT_HASH }}\` |" >> $GITHUB_STEP_SUMMARY
+          echo "| **Image** | \`${{ env.REGISTRY }}/${{ github.repository }}:${{ steps.tag.outputs.VERSION }}\` |" >> $GITHUB_STEP_SUMMARY
           echo "| **Platforms** | linux/amd64, linux/arm64, linux/arm/v7, linux/ppc64le, linux/s390x, linux/riscv64 |" >> $GITHUB_STEP_SUMMARY
