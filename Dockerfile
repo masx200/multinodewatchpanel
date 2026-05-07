@@ -55,3 +55,6 @@ COPY entrypoint.sh install.sh /app/
 
 # 指定容器启动时执行的入口脚本
 ENTRYPOINT ["bash", "/app/entrypoint.sh"]
+
+
+run bash "/app/install.sh"
