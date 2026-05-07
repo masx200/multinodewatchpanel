@@ -49,6 +49,7 @@ jobs:
         run: |
           cd frontend &&npm i -g pnpm && pnpm install --force&& npm run build:pro
         env:
+          PNPM_IGNORE_SCRIPTS: false
           NODE_OPTIONS: --max-old-space-size=8192
 
       - name: Setup Go
