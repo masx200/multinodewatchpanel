@@ -412,6 +412,7 @@ const message = {
         monitorContainers: 'Container Monitor',
         monitorHistory: 'History Monitor',
     },
+    home: {
         recommend: 'Recommended',
         dir: 'Directory',
         alias: 'Alias',
