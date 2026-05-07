@@ -1,0 +1,65 @@
+# Git
+.git
+.gitignore
+
+# IDE
+.vscode
+.idea
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Build outputs
+build/
+dist/
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+
+# Frontend
+frontend/node_modules
+frontend/dist
+
+# Go vendor (use module mode)
+vendor/
+
+# CI/CD
+.github/
+ci/
+
+# Docs
+*.md
+!README.md
+LICENSE
+CODE_OF_CONDUCT.md
+CONTRIBUTING.md
+SECURITY.md
+OWNERS
+docs/
+
+# Logs
+*.log
+
+# Claude
+.claude/
+
+# WorkBuddy
+.workbuddy/
+
+# Docker
+docker-compose*.yml
+.dockerignore
+
+# Sonar
+sonar-project.properties
+
+# Goreleaser
+.goreleaser.yaml
+
+# Misc
+stellar-thunder-babbage.md
