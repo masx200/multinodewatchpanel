@@ -15,4 +15,9 @@ func Init() {
 			global.LOG.Errorf("sync scripts from remote failed, err: %v", err)
 		}
 	}
+
+	// 启动多节点监控数据采集器
+	collector := service.NewICollectorService()
+	collector.Start()
+	global.LOG.Info("Multi-node collector started")
 }

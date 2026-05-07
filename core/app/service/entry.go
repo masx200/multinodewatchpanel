@@ -13,3 +13,6 @@ var (
 	agentRepo  = repo.NewIAgentRepo()
 	scriptRepo = repo.NewIScriptRepo()
 )
+
+// nodeServiceInstance 全局节点服务实例（供 collector 使用）
+var nodeServiceInstance = NewINodeService()

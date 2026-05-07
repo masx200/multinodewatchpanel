@@ -1,0 +1,6 @@
+onlyBuiltDependencies:
+  - '@parcel/watcher'
+  - '@vue-office/docx'
+  - '@vue-office/excel'
+  - esbuild
+  - vue-demi

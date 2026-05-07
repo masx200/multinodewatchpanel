@@ -38,6 +38,10 @@ func Init() {
 		migrations.UpdateAiModelMenuStructure,
 		migrations.AddDocSourceSetting,
 		migrations.AddAppStoreInstallAllowPortSetting,
+		// 多节点监控表
+		migrations.AddNodeMonitorTables,
+		migrations.AddNodeMonitorSettings,
+		migrations.AddNodeSecurityFields,
 	})
 	if err := m.Migrate(); err != nil {
 		global.LOG.Error(err)

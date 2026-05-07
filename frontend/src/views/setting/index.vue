@@ -41,6 +41,14 @@ const buttons = [
         label: i18n.global.t('setting.about'),
         path: '/settings/about',
     },
+    {
+        label: i18n.global.t('monitor.nodeManage'),
+        path: '/settings/nodes',
+    },
+    {
+        label: i18n.global.t('monitor.monitorConfig'),
+        path: '/settings/monitor-config',
+    },
 ];
 
 onMounted(() => {

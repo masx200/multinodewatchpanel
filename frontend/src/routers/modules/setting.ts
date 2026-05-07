@@ -103,6 +103,30 @@ const settingRouter = {
                     },
                 },
                 {
+                    path: 'nodes',
+                    name: 'NodeSetting',
+                    component: () => import('@/views/setting/nodes/index.vue'),
+                    hidden: true,
+                    meta: {
+                        parent: 'menu.settings',
+                        title: 'monitor.nodeManage',
+                        requiresAuth: true,
+                        activeMenu: '/settings',
+                    },
+                },
+                {
+                    path: 'monitor-config',
+                    name: 'MonitorConfig',
+                    component: () => import('@/views/setting/monitor-config/index.vue'),
+                    hidden: true,
+                    meta: {
+                        parent: 'menu.settings',
+                        title: 'monitor.monitorConfig',
+                        requiresAuth: true,
+                        activeMenu: '/settings',
+                    },
+                },
+                {
                     path: 'expired',
                     name: 'Expired',
                     hidden: true,

@@ -1,6 +1,9 @@
 package v2
 
-import "github.com/1Panel-dev/1Panel/core/app/service"
+import (
+	"github.com/1Panel-dev/1Panel/core/app/repo"
+	"github.com/1Panel-dev/1Panel/core/app/service"
+)
 
 type ApiGroup struct {
 	BaseApi
@@ -17,4 +20,8 @@ var (
 	groupService   = service.NewIGroupService()
 	commandService = service.NewICommandService()
 	scriptService  = service.NewIScriptService()
+
+	// 多节点监控
+	nodeService         = service.NewINodeService()
+	monitorRepoInstance = repo.NewIMonitorRepo()
 )
