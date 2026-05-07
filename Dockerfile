@@ -42,6 +42,7 @@ RUN apt-get update && apt-get install -y \
     curl \
     openssl \
     ca-certificates \
+    python3 \
     && ln -snf /usr/share/zoneinfo/$TZ /etc/localtime \
     && echo $TZ > /etc/timezone \
     && apt-get clean \
@@ -57,4 +58,4 @@ COPY entrypoint.sh install.sh /app/
 ENTRYPOINT ["bash", "/app/entrypoint.sh"]
 
 
-run bash "/app/install.sh"
+RUN bash "/app/install.sh"

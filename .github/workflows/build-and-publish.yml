@@ -2,10 +2,10 @@ name: Build And Publish (Git Hash Release)
 
 on:
   push:
-    branches:
-      - main
-      - master
-      - develop
+    # branches:
+    #   - main
+    #   - master
+    #   - develop
     tags:
       - "v*"
 
