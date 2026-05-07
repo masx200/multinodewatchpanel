@@ -66,7 +66,8 @@ services:
       driver: "json-file"
       options: {}
 
-    network_mode: "bridge"
+    networks:
+      - ipv6-net
 
     ports:
       - "9999:9999/tcp"
@@ -92,3 +93,17 @@ services:
     working_dir: "/app"
 
 version: "3.6"
+networks:
+  # IPv6 双栈网络 - 支持容器间 IPv6 通信
+  ipv6-net:
+    external: false
+    name: ipv6-net
+    driver: bridge
+    enable_ipv6: true
+    ipam:
+      driver: default
+      config:
+        - subnet: fc01:1db8:5461::/64
+          gateway: fc01:1db8:5461::1
+        - subnet: 240.18.0.0/24
+          gateway: 240.18.0.1
