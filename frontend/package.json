@@ -20,6 +20,7 @@
         "prettier": "prettier --write ."
     },
     "dependencies": {
+        "@codemirror/commands": "^6.10.3",
         "@codemirror/lang-html": "^6.4.10",
         "@codemirror/lang-json": "^6.0.2",
         "@codemirror/lang-php": "^6.0.2",
