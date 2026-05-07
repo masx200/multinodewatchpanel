@@ -48,7 +48,7 @@ services:
 
     hostname: "5b699a60ac13"
 
-    image: "69aq5glrbl.masx200.ddns-ip.net/masx200/multinodewatchpanel:sha-c459ac0"
+    image: "docker.gh-proxy.org/gcr.io/masx200/multinodewatchpanel:sha-0525183"
 
     ipc: "private"
 
