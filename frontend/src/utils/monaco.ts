@@ -37,7 +37,6 @@ export function setupMonacoEnvironment() {
 export async function loadMonacoLanguageSupport() {
     if (!languageSupportPromise) {
         languageSupportPromise = Promise.all([
-            import('monaco-editor/esm/vs/base/browser/ui/codicons/codiconStyles.js'),
             import('monaco-editor/esm/vs/editor/contrib/folding/browser/folding.js'),
             import('monaco-editor/esm/vs/editor/contrib/contextmenu/browser/contextmenu.js'),
             import('monaco-editor/esm/vs/editor/contrib/clipboard/browser/clipboard.js'),
@@ -45,7 +44,7 @@ export async function loadMonacoLanguageSupport() {
             import('monaco-editor/esm/vs/editor/contrib/find/browser/findController.js'),
             import('monaco-editor/esm/vs/editor/contrib/multicursor/browser/multicursor.js'),
             import('monaco-editor/esm/vs/editor/standalone/browser/quickAccess/standaloneCommandsQuickAccess.js'),
-            import('monaco-editor/esm/vs/basic-languages/monaco.contribution'),
+            import('monaco-editor/esm/vs/basic-languages/_.contribution.js'),
             import('monaco-editor/esm/vs/language/json/monaco.contribution'),
             import('monaco-editor/esm/vs/language/css/monaco.contribution'),
             import('monaco-editor/esm/vs/language/html/monaco.contribution'),
