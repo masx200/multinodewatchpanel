@@ -8,6 +8,7 @@ on:
       - develop
     tags:
       - "!*" # 明确排除 tag 触发的版本
+
 permissions:
   contents: write
 
@@ -31,7 +32,7 @@ jobs:
       - name: Generate Release Tag
         id: tag
         run: |
-          TAG="sha-${SHORT_HASH}"
+          TAG="sha-$(echo ${{ github.sha }} | cut -c1-7)"
           echo "TAG=$TAG" >> $GITHUB_OUTPUT
           echo "TAG_NAME=$TAG" >> $GITHUB_OUTPUT
 
@@ -63,19 +64,17 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Delete Existing Release (if exists)
+      - name: Delete Existing Release (ignore error)
+        run: |
+          gh release delete ${{ steps.tag.outputs.TAG_NAME }} --yes || true
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          if gh release view ${{ steps.tag.outputs.TAG_NAME }} &>/dev/null; then
-            gh release delete ${{ steps.tag.outputs.TAG_NAME }} --yes
-          fi
 
       - name: Upload Assets to GitHub Release
         uses: softprops/action-gh-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          env:
-            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           tag_name: ${{ steps.tag.outputs.TAG_NAME }}
           name: "Build ${{ steps.hash.outputs.SHORT_HASH }}"
           body: |
