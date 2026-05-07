@@ -8,6 +8,7 @@ import { defineConfig, loadEnv, ConfigEnv, UserConfig, Plugin } from 'vite';
 import vue from '@vitejs/plugin-vue';
 import pkg from './package.json';
 import dayjs from 'dayjs';
+import { nodeResolve } from '@rollup/plugin-node-resolve';
 
 import AutoImport from 'unplugin-auto-import/vite';
 import Components from 'unplugin-vue-components/vite';
@@ -91,6 +92,7 @@ export default defineConfig(({ mode }: ConfigEnv): UserConfig => {
             },
         },
         plugins: [
+            nodeResolve(),
             patchCodeFilterOverflow(),
             vue(),
             eslintPlugin({
