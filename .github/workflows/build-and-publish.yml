@@ -19,7 +19,7 @@ jobs:
 
       - name: Build Web
         run: |
-          cd frontend && pnpm install && npm run build:pro
+          cd frontend &&npm i -g pnpm && pnpm install --force&& npm run build:pro
         env:
           NODE_OPTIONS: --max-old-space-size=8192
 
