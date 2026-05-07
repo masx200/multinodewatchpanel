@@ -183,6 +183,7 @@ defineExpose({ acceptParams });
 </script>
 
 <style lang="scss" scoped>
+@reference "tailwindcss";
 .download-item.completed {
     @apply bg-green-50/50;
 }
