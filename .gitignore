@@ -2,6 +2,9 @@
 *.exe
 *.exe~
 *.dll
+
+.claude/settings.local.json
+
 *.so
 *.dylib
 build/1panel-agent
@@ -75,3 +78,4 @@ opencode.json
 superpowers
 .worktrees/
 .workbuddy
+*.log
