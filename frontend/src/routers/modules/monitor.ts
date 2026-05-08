@@ -7,7 +7,7 @@ const monitorRouter = {
     component: Layout,
     redirect: '/monitor/dashboard',
     meta: {
-        icon: 'p-monitor',
+        icon: 'p-monitor-menu',
         title: 'menu.multiMonitor',
     },
     children: [
