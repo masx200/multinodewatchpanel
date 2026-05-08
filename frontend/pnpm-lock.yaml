@@ -14,24 +14,69 @@ importers:
       '@codemirror/commands':
         specifier: ^6.10.3
         version: 6.10.3
+      '@codemirror/lang-angular':
+        specifier: ^0.1.4
+        version: 0.1.4
+      '@codemirror/lang-cpp':
+        specifier: ^6.0.3
+        version: 6.0.3
       '@codemirror/lang-css':
         specifier: ^6.3.1
         version: 6.3.1
+      '@codemirror/lang-go':
+        specifier: ^6.0.1
+        version: 6.0.1
       '@codemirror/lang-html':
         specifier: ^6.4.10
         version: 6.4.11
+      '@codemirror/lang-java':
+        specifier: ^6.0.2
+        version: 6.0.2
       '@codemirror/lang-javascript':
         specifier: ^6.2.5
         version: 6.2.5
+      '@codemirror/lang-jinja':
+        specifier: ^6.0.1
+        version: 6.0.1
       '@codemirror/lang-json':
         specifier: ^6.0.2
         version: 6.0.2
+      '@codemirror/lang-less':
+        specifier: ^6.0.2
+        version: 6.0.2
+      '@codemirror/lang-liquid':
+        specifier: ^6.3.2
+        version: 6.3.2
       '@codemirror/lang-markdown':
         specifier: ^6.5.0
         version: 6.5.0
       '@codemirror/lang-php':
         specifier: ^6.0.2
         version: 6.0.2
+      '@codemirror/lang-python':
+        specifier: ^6.2.1
+        version: 6.2.1
+      '@codemirror/lang-rust':
+        specifier: ^6.0.2
+        version: 6.0.2
+      '@codemirror/lang-sass':
+        specifier: ^6.0.2
+        version: 6.0.2
+      '@codemirror/lang-sql':
+        specifier: ^6.10.0
+        version: 6.10.0
+      '@codemirror/lang-vue':
+        specifier: ^0.1.3
+        version: 0.1.3
+      '@codemirror/lang-wast':
+        specifier: ^6.0.2
+        version: 6.0.2
+      '@codemirror/lang-xml':
+        specifier: ^6.1.0
+        version: 6.1.0
+      '@codemirror/lang-yaml':
+        specifier: ^6.1.3
+        version: 6.1.3
       '@codemirror/language':
         specifier: ^6.12.3
         version: 6.12.3
@@ -62,9 +107,15 @@ importers:
       '@element-plus/icons-vue':
         specifier: ^1.1.4
         version: 1.1.4(vue@3.5.34(typescript@5.9.2))
+      '@floating-ui/core':
+        specifier: ^1.7.5
+        version: 1.7.5
       '@floating-ui/dom':
         specifier: ^1.7.6
         version: 1.7.6
+      '@floating-ui/utils':
+        specifier: ^0.2.11
+        version: 0.2.11
       '@intlify/core-base':
         specifier: ^11.4.2
         version: 11.4.2
@@ -74,6 +125,9 @@ importers:
       '@lezer/common':
         specifier: ^1.5.2
         version: 1.5.2
+      '@lezer/css':
+        specifier: ^1.3.3
+        version: 1.3.3
       '@lezer/highlight':
         specifier: ^1.0.3
         version: 1.2.3
@@ -89,6 +143,9 @@ importers:
       '@lezer/lr':
         specifier: ^1.4.10
         version: 1.4.10
+      '@lezer/markdown':
+        specifier: ^1.6.3
+        version: 1.6.3
       '@lezer/php':
         specifier: ^1.0.5
         version: 1.0.5
@@ -128,6 +185,9 @@ importers:
       '@vue/devtools-kit':
         specifier: ^8.1.2
         version: 8.1.2
+      '@vue/devtools-shared':
+        specifier: ^8.1.2
+        version: 8.1.2
       '@vue/reactivity':
         specifier: ^3.5.34
         version: 3.5.34
@@ -161,6 +221,9 @@ importers:
       axios:
         specifier: ^1.15.2
         version: 1.16.0
+      birpc:
+        specifier: ^4.0.0
+        version: 4.0.0
       call-bind-apply-helpers:
         specifier: ^1.0.2
         version: 1.0.2
@@ -191,6 +254,9 @@ importers:
       element-plus:
         specifier: 2.11.9
         version: 2.11.9(vue@3.5.34(typescript@5.9.2))
+      entities:
+        specifier: ^8.0.0
+        version: 8.0.0
       es-define-property:
         specifier: ^1.0.1
         version: 1.0.1
@@ -218,12 +284,18 @@ importers:
       hasown:
         specifier: ^2.0.3
         version: 2.0.3
+      hookable:
+        specifier: ^6.1.1
+        version: 6.1.1
       js-base64:
         specifier: ^3.7.7
         version: 3.7.8
       jsencrypt:
         specifier: ^3.3.2
         version: 3.5.4
+      linkify-it:
+        specifier: ^5.0.0
+        version: 5.0.0
       lodash-es:
         specifier: ^4.18.1
         version: 4.18.1
@@ -251,6 +323,9 @@ importers:
       md-editor-v3:
         specifier: ^6.5.0
         version: 6.5.0(vue@3.5.34(typescript@5.9.2))
+      mdurl:
+        specifier: ^2.0.0
+        version: 2.0.0
       medium-zoom:
         specifier: ^1.1.0
         version: 1.1.0
@@ -269,6 +344,9 @@ importers:
       object-inspect:
         specifier: ^1.13.4
         version: 1.13.4
+      perfect-debounce:
+        specifier: ^2.1.0
+        version: 2.1.0
       pinia:
         specifier: ^2.1.7
         version: 2.3.1(typescript@5.9.2)(vue@3.5.34(typescript@5.9.2))
@@ -276,6 +354,9 @@ importers:
         specifier: ^4.7.1
         version: 4.7.1(pinia@2.3.1(typescript@5.9.2)(vue@3.5.34(typescript@5.9.2)))
       punycode:
+        specifier: ^2.3.1
+        version: 2.3.1
+      punycode.js:
         specifier: ^2.3.1
         version: 2.3.1
       qs:
@@ -305,6 +386,9 @@ importers:
       tslib:
         specifier: ^2.8.1
         version: 2.8.1
+      uc.micro:
+        specifier: ^2.1.0
+        version: 2.1.0
       uuid:
         specifier: ^10.0.0
         version: 10.0.0
@@ -1868,6 +1952,9 @@ packages:
   birpc@2.6.1:
     resolution: {integrity: sha512-LPnFhlDpdSH6FJhJyn4M0kFO7vtQ5iPw24FnG0y21q09xC7e8+1LeR31S1MAIrDAHp4m7aas4bEkTDTvMAtebQ==}
 
+  birpc@4.0.0:
+    resolution: {integrity: sha512-LShSxJP0KTmd101b6DRyGBj57LZxSDYWKitQNW/mi8GRMvZb078Uf9+pveax1DrVL89vm7mWe+TovdI/UDOuPw==}
+
   bl@4.1.0:
     resolution: {integrity: sha512-1W07cM9gS6DcLperZfFSj+bWLtaPGSOHWhPiGzXmvVJbRLdG82sH/Kn8EtW1VqWVA54AKf2h5k5BbnIbwF3h6w==}
 
@@ -2298,10 +2385,6 @@ packages:
     resolution: {integrity: sha512-otxSQPw4lkOZWkHpB3zaEQs6gWYEsmX4xQF68ElXC/TWvGxGMSGOvoNbaLXm6/cS/fSfHtsEdw90y20PCd+sCA==}
     engines: {node: '>=10.13.0'}
 
-  entities@4.3.0:
-    resolution: {integrity: sha512-/iP1rZrSEJ0DTlPiX+jbzlA3eVkY/e8L8SozroF395fIqE3TYF/Nz7YOMAawta+vLmyJ/hkGNNPcSbMADCCXbg==}
-    engines: {node: '>=0.12'}
-
   entities@4.4.0:
     resolution: {integrity: sha512-oYp7156SP8LkeGD0GF85ad1X9Ai79WtRsZ2gxJqtBuzH+98YUV6jkHEKlZkMbcrjJjIVJNIDP/3WL9wQkoPbWA==}
     engines: {node: '>=0.12'}
@@ -2309,6 +2392,10 @@ packages:
   entities@7.0.1:
     resolution: {integrity: sha512-TWrgLOFUQTH994YUyl1yT4uyavY5nNB5muff+RtWaqNVCAK408b5ZnnbNAUEWLTCpum9w6arT70i1XdQ4UeOPA==}
     engines: {node: '>=0.12'}
+
+  entities@8.0.0:
+    resolution: {integrity: sha512-zwfzJecQ/Uej6tusMqwAqU/6KL2XaB2VZ2Jg54Je6ahNBGNH6Ek6g3jjNCF0fG9EWQKGZNddNjU5F1ZQn/sBnA==}
+    engines: {node: '>=20.19.0'}
 
   env-paths@2.2.1:
     resolution: {integrity: sha512-+h1lkLKhZMTYjog1VEpJNG7NZJWcuc2DDk/qsqSTRRCOXiLjeQ1d1/udrUGhqMxUgAlwKNZ0cf2uqan5GLuS2A==}
@@ -2701,6 +2788,9 @@ packages:
 
   hookable@5.5.3:
     resolution: {integrity: sha512-Yc+BQe8SvoXH1643Qez1zqLRmbA5rCL+sSmk6TVos0LWVfNIB7PGncdlId77WzLGSIB5KaWgTaNTs2lNVEI6VQ==}
+
+  hookable@6.1.1:
+    resolution: {integrity: sha512-U9LYDy1CwhMCnprUfeAZWZGByVbhd54hwepegYTK7Pi5NvqEj63ifz5z+xukznehT7i6NIZRu89Ay1AZmRsLEQ==}
 
   hosted-git-info@2.1.4:
     resolution: {integrity: sha512-4R9eDu2ytsDMdo7nQXHrpK1347y3nu/ThXZ4tjpkUTsZnzoIIQprnPOM65c20oInjmocLuEGBIbPsesYCqibag==}
@@ -5745,6 +5835,8 @@ snapshots:
 
   birpc@2.6.1: {}
 
+  birpc@4.0.0: {}
+
   bl@4.1.0:
     dependencies:
       buffer: 5.7.1
@@ -6191,7 +6283,7 @@ snapshots:
     dependencies:
       domelementtype: 2.3.0
       domhandler: 5.0.2
-      entities: 4.3.0
+      entities: 4.4.0
 
   domelementtype@2.3.0: {}
 
@@ -6264,11 +6356,11 @@ snapshots:
       graceful-fs: 4.2.11
       tapable: 2.3.3
 
-  entities@4.3.0: {}
-
   entities@4.4.0: {}
 
   entities@7.0.1: {}
+
+  entities@8.0.0: {}
 
   env-paths@2.2.1:
     optional: true
@@ -6750,6 +6842,8 @@ snapshots:
 
   hookable@5.5.3: {}
 
+  hookable@6.1.1: {}
+
   hosted-git-info@2.1.4: {}
 
   hosted-git-info@4.0.0:
@@ -6765,7 +6859,7 @@ snapshots:
       domelementtype: 2.3.0
       domhandler: 5.0.2
       domutils: 3.0.1
-      entities: 4.3.0
+      entities: 4.4.0
 
   iconv-lite@0.4.24:
     dependencies:
