@@ -58,6 +58,7 @@ export default defineConfig(({ mode }: ConfigEnv): UserConfig => {
     const isProduction = mode === 'production';
 
     return {
+        
         resolve: {
             preserveSymlinks: true,
             alias: {
@@ -92,7 +93,7 @@ export default defineConfig(({ mode }: ConfigEnv): UserConfig => {
             },
         },
         plugins: [
-            nodeResolve(),
+
             patchCodeFilterOverflow(),
             vue(),
             eslintPlugin({
@@ -102,13 +103,13 @@ export default defineConfig(({ mode }: ConfigEnv): UserConfig => {
             vueJsx(),
             viteEnv.VITE_REPORT && visualizer(),
             viteEnv.VITE_BUILD_GZIP &&
-                viteCompression({
-                    verbose: true,
-                    disable: false,
-                    threshold: 10240,
-                    algorithm: 'gzip',
-                    ext: '.gz',
-                }),
+            viteCompression({
+                verbose: true,
+                disable: false,
+                threshold: 10240,
+                algorithm: 'gzip',
+                ext: '.gz',
+            }),
             AutoImport({
                 imports: ['vue', 'vue-router'],
                 resolvers: [
@@ -139,6 +140,7 @@ export default defineConfig(({ mode }: ConfigEnv): UserConfig => {
             target: 'esnext',
             cssCodeSplit: false,
             rollupOptions: {
+                plugins: [nodeResolve(),],
                 output: {
                     chunkFileNames: 'assets/js/[name]-[hash].js',
                     entryFileNames: 'assets/js/[name]-[hash].js',
