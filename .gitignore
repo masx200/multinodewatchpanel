@@ -72,7 +72,7 @@ agent/.golangci.yml
 
 .opencode
 openspec
-CLAUDE.md
+#CLAUDE.md
 AGENTS.md
 opencode.json
 superpowers
