@@ -1,25 +1,19 @@
 <template>
-    <div class="flex items-center justify-center min-h-screen relative bg-gray-100">
+    <div class="login-page">
         <div class="absolute inset-0 bg-cover bg-center bg-no-repeat" :style="backgroundStyle"></div>
-        <div
-            :style="{ opacity: backgroundOpacity, width: containerWidth, height: containerHeight }"
-            class="bg-white shadow-lg relative z-10 border border-gray-200 flex overflow-hidden"
-            id="login-container"
-        >
-            <div class="grid grid-cols-1 md:grid-cols-2 items-stretch w-full">
-                <div v-if="showLogo" class="flex justify-center" :style="{ height: containerHeight }">
-                    <img
-                        v-show="imgLoaded"
-                        :src="loadImage('loginImage')"
-                        class="max-w-full max-h-full object-cover bg-cover bg-center"
-                        alt="1panel"
-                        @load="onImgLoad"
-                        @error="onImgError"
-                    />
-                </div>
-                <div :class="loginFormClass">
-                    <LoginForm ref="loginRef"></LoginForm>
-                </div>
+        <div class="login-container" id="login-container">
+            <div v-if="showLogo" class="login-image-side">
+                <img
+                    v-show="imgLoaded"
+                    :src="loadImage('loginImage')"
+                    class="login-image"
+                    alt="1panel"
+                    @load="onImgLoad"
+                    @error="onImgError"
+                />
+            </div>
+            <div class="login-form-side">
+                <LoginForm ref="loginRef"></LoginForm>
             </div>
         </div>
     </div>
@@ -27,7 +21,7 @@
 
 <script setup lang="ts">
 import LoginForm from './components/login-form.vue';
-import { ref, onMounted } from 'vue';
+import { ref, computed, onMounted, onUnmounted } from 'vue';
 import { GlobalStore } from '@/store';
 import { preloadImage } from '@/utils/browser';
 defineOptions({ name: 'Login' });
@@ -109,7 +103,6 @@ onMounted(async () => {
 });
 
 const FIXED_WIDTH = 1000;
-const FIXED_HEIGHT = 415;
 const useWindowSize = () => {
     const width = ref(window.innerWidth);
     const height = ref(window.innerHeight);
@@ -126,11 +119,60 @@ const useWindowSize = () => {
 };
 const { width } = useWindowSize();
 const showLogo = computed(() => width.value >= FIXED_WIDTH);
-const containerWidth = computed(() => `${FIXED_WIDTH}px`);
-const containerHeight = computed(() => `${FIXED_HEIGHT}px`);
-const loginFormClass = computed(() => {
-    return showLogo.value
-        ? 'hidden md:flex items-center justify-center p-4'
-        : 'flex items-center justify-center p-4 w-full';
-});
 </script>
+
+<style scoped lang="scss">
+.login-page {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    position: relative;
+    background-color: #f3f4f6;
+}
+
+.login-container {
+    width: 1000px;
+    max-width: 100vw;
+    display: flex;
+    background: #fff;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    position: relative;
+    z-index: 10;
+    border: 1px solid #e5e7eb;
+    overflow: hidden;
+    opacity: v-bind(backgroundOpacity);
+
+    @media (max-width: 999px) {
+        width: 100%;
+    }
+}
+
+.login-image-side {
+    width: 50%;
+    min-height: 420px;
+    overflow: hidden;
+    flex-shrink: 0;
+    display: flex;
+    align-items: stretch;
+
+    @media (max-width: 999px) {
+        display: none;
+    }
+}
+
+.login-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.login-form-side {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+    min-width: 0;
+}
+</style>
