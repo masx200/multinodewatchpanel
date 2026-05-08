@@ -1,5 +1,8 @@
+#修复缓存不成功问题
+
+from docker.gh-proxy.org/ghcr.io/masx200/multinodewatchpanel:sha-0525183
 # 使用 Debian 13 slim 作为基础镜像
-FROM debian:13-slim
+# FROM debian:13-slim
 
 # 构建时确保安装过程无需人工交互
 ARG DEBIAN_FRONTEND=noninteractive
@@ -57,7 +60,7 @@ COPY entrypoint.sh install.sh /app/
 # 指定容器启动时执行的入口脚本
 ENTRYPOINT ["bash", "/app/entrypoint.sh"]
 
-
+run rm -frv /usr/local/bin/1panel-core /usr/local/bin/1panel-agent /usr/bin/1panel-agent /usr/bin/1panel-core
 RUN bash "/app/install.sh"
 
 
