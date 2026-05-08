@@ -98,7 +98,7 @@
         "@xterm/xterm": "^6.0.0",
         "anser": "^2.3.5",
         "async-validator": "^4.2.5",
-        "axios": "^1.15.2",
+        "axios": "^1.16.0",
         "birpc": "^4.0.0",
         "call-bind-apply-helpers": "^1.0.2",
         "call-bound": "^1.0.4",
