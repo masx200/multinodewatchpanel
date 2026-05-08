@@ -217,7 +217,9 @@ const initTerminal = () => {
     });
     term.open(terminalElement.value);
     term.loadAddon(fitAddon);
-    fitAddon.fit();
+    try {
+        fitAddon.fit();
+    } catch {}
     bindXTermEvents();
 };
 
@@ -338,7 +340,9 @@ onMounted(() => {
         initTerminal();
         if (terminalElement.value) {
             resizeObserver.value = new ResizeObserver(() => {
-                fitAddon.fit();
+                try {
+                    fitAddon.fit();
+                } catch {}
             });
             resizeObserver.value.observe(terminalElement.value);
         }

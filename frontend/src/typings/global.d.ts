@@ -21,6 +21,7 @@ declare interface ViteEnv {
     VITE_BUILD_GZIP: boolean;
     VITE_REPORT: boolean;
     PANEL_XPACK: boolean;
+    VITE_API_TARGET: string;
 }
 
 declare interface RouterButton {

@@ -26,7 +26,7 @@ import { GlobalStore, TerminalStore } from '@/store';
 const globalStore = GlobalStore();
 
 const terminalElement = ref<HTMLDivElement | null>(null);
-const fitAddon = new FitAddon();
+const fitAddon = ref<FitAddon>();
 const termReady = ref(false);
 const webSocketReady = ref(false);
 const term = ref();
@@ -186,6 +186,10 @@ function onClose(isKeepShow: boolean = false) {
     try {
         terminalSocket.value?.close();
     } catch {}
+    try {
+        fitAddon.value?.dispose();
+    } catch {}
+    fitAddon.value = undefined;
     if (!isKeepShow) {
         try {
             term.value.dispose();
@@ -203,7 +207,8 @@ const initTerminal = (online: boolean = false): boolean => {
     if (terminalElement.value) {
         term.value.open(terminalElement.value);
         applyTerminalBackground(terminalStore.backgroundColor);
-        term.value.loadAddon(fitAddon);
+        fitAddon.value = new FitAddon();
+        term.value.loadAddon(fitAddon.value);
         window.addEventListener('resize', changeTerminalSize);
         if (online) {
             term.value.onData((data) => onTermData(data));
@@ -214,12 +219,16 @@ const initTerminal = (online: boolean = false): boolean => {
 };
 
 function changeTerminalSize() {
-    if (!terminalElement.value || !term.value) return;
+    if (!terminalElement.value || !term.value || !fitAddon.value) return;
     if (terminalElement.value.clientWidth <= 0 || terminalElement.value.clientHeight <= 0) {
         return;
     }
 
-    fitAddon.fit();
+    try {
+        fitAddon.value.fit();
+    } catch {
+        return;
+    }
     if (isWsOpen()) {
         const { cols, rows } = term.value;
         terminalSocket.value!.send(

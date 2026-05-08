@@ -238,7 +238,9 @@ const acceptParams = () => {
 onMounted(() => {
     previewResizeObserver.value = new ResizeObserver(() => {
         if (!term.value) return;
-        fitAddon.fit();
+        try {
+            fitAddon.fit();
+        } catch {}
     });
     if (terminalElement.value) {
         previewResizeObserver.value.observe(terminalElement.value);
@@ -335,7 +337,9 @@ const iniTerm = () => {
     applyPreviewBackground();
     term.value.loadAddon(fitAddon);
     term.value.write('the first line \r\nthe second line');
-    fitAddon.fit();
+    try {
+        fitAddon.fit();
+    } catch {}
 };
 
 const applyPreviewBackground = () => {
@@ -367,7 +371,9 @@ const changeItem = () => {
     term.value.options.scrollSensitivity = form.scrollSensitivity;
     applyPreviewBackground();
 
-    fitAddon.fit();
+    try {
+        fitAddon.fit();
+    } catch {}
 };
 
 const onSetDefault = () => {
