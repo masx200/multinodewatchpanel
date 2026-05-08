@@ -57,7 +57,7 @@ type SettingInfo struct {
 }
 
 type SettingKey struct {
-	Key string `json:"key" validate:"required,oneof=ScriptSync"`
+	Key string `json:"key" validate:"required,oneof=ScriptSync DataRetentionDays CollectInterval DashboardRefresh"`
 }
 
 type SettingUpdate struct {

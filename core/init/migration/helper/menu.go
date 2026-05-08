@@ -13,6 +13,13 @@ import (
 func LoadMenus() string {
 	item := []dto.ShowMenu{
 		{ID: "1", Disabled: true, Title: "menu.home", IsShow: true, Label: "Home-Menu", Path: "/", Sort: 100},
+		{ID: "14", Disabled: false, Title: "menu.multiMonitor", IsShow: true, Label: "Monitor-Menu", Path: "/monitor/dashboard", Sort: 150,
+			Children: []dto.ShowMenu{
+				{ID: "141", Disabled: false, Title: "menu.monitorDashboard", IsShow: true, Label: "MonitorDashboard", Path: "/monitor/dashboard", Sort: 100},
+				{ID: "142", Disabled: false, Title: "menu.monitorHosts", IsShow: true, Label: "MonitorHosts", Path: "/monitor/hosts", Sort: 200},
+				{ID: "143", Disabled: false, Title: "menu.monitorContainers", IsShow: true, Label: "MonitorContainers", Path: "/monitor/containers", Sort: 300},
+				{ID: "144", Disabled: false, Title: "menu.monitorHistory", IsShow: true, Label: "MonitorHistory", Path: "/monitor/history", Sort: 400},
+			}},
 		{ID: "2", Disabled: true, Title: "menu.apps", IsShow: true, Label: "App-Menu", Path: "/apps/all", Sort: 200},
 		{ID: "3", Disabled: false, Title: "menu.aiTools", IsShow: true, Label: "AI-Menu", Path: "/ai/model/account", Sort: 300,
 			Children: []dto.ShowMenu{
@@ -47,7 +54,7 @@ func LoadMenus() string {
 				{ID: "112", Disabled: false, Title: "xpack.waf.name", IsShow: true, Label: "Dashboard", Path: "/xpack/waf/dashboard", Sort: 200},
 				{ID: "111", Disabled: false, Title: "xpack.node.nodeManagement", IsShow: true, Label: "NodeDashboard", Path: "/xpack/node/dashboard", Sort: 300},
 				{ID: "119", Disabled: false, Title: "xpack.upage", IsShow: true, Label: "Upage", Path: "/xpack/upage", Sort: 400},
-				{ID: "113", Disabled: false, Title: "xpack.monitor.name", IsShow: true, Label: "MonitorDashboard", Path: "/xpack/monitor/dashboard", Sort: 500},
+				{ID: "113", Disabled: false, Title: "xpack.monitor.name", IsShow: true, Label: "XMonitorDashboard", Path: "/xpack/monitor/dashboard", Sort: 500},
 				{ID: "114", Disabled: false, Title: "xpack.tamper.tamper", IsShow: true, Label: "Tamper", Path: "/xpack/tamper", Sort: 600},
 				{ID: "120", Disabled: false, Title: "xpack.cluster.cluster", IsShow: true, Label: "Cluster", Path: "/xpack/cluster", Sort: 700},
 				{ID: "115", Disabled: false, Title: "xpack.exchange.exchange", IsShow: true, Label: "FileExange", Path: "/xpack/exchange/file", Sort: 800},
@@ -63,6 +70,11 @@ func LoadMenus() string {
 func MenuSort() []dto.MenuLabelSort {
 	var MenuLabelsWithSort = []dto.MenuLabelSort{
 		{Label: "Home-Menu", Sort: 100},
+		{Label: "Monitor-Menu", Sort: 150},
+		{Label: "MonitorDashboard", Sort: 100},
+		{Label: "MonitorHosts", Sort: 200},
+		{Label: "MonitorContainers", Sort: 300},
+		{Label: "MonitorHistory", Sort: 400},
 		{Label: "App-Menu", Sort: 200},
 		{Label: "AI-Menu", Sort: 300},
 		{Label: "Agents", Sort: 50},
@@ -90,7 +102,7 @@ func MenuSort() []dto.MenuLabelSort {
 		{Label: "Dashboard", Sort: 200},
 		{Label: "Node", Sort: 300},
 		{Label: "Upage", Sort: 400},
-		{Label: "MonitorDashboard", Sort: 500},
+		{Label: "XMonitorDashboard", Sort: 500},
 		{Label: "Tamper", Sort: 600},
 		{Label: "Cluster", Sort: 700},
 		{Label: "FileExange", Sort: 800},
