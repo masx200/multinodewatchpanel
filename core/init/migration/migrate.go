@@ -42,6 +42,7 @@ func Init() {
 		migrations.AddNodeMonitorTables,
 		migrations.AddNodeMonitorSettings,
 		migrations.AddNodeSecurityFields,
+		migrations.AddMultiMonitorMenu,
 	})
 	if err := m.Migrate(); err != nil {
 		global.LOG.Error(err)
