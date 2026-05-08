@@ -8,9 +8,15 @@ importers:
 
   .:
     dependencies:
+      '@codemirror/autocomplete':
+        specifier: ^6.20.2
+        version: 6.20.2
       '@codemirror/commands':
         specifier: ^6.10.3
         version: 6.10.3
+      '@codemirror/lang-css':
+        specifier: ^6.3.1
+        version: 6.3.1
       '@codemirror/lang-html':
         specifier: ^6.4.10
         version: 6.4.11
@@ -20,15 +26,27 @@ importers:
       '@codemirror/lang-json':
         specifier: ^6.0.2
         version: 6.0.2
+      '@codemirror/lang-markdown':
+        specifier: ^6.5.0
+        version: 6.5.0
       '@codemirror/lang-php':
         specifier: ^6.0.2
         version: 6.0.2
       '@codemirror/language':
         specifier: ^6.12.3
         version: 6.12.3
+      '@codemirror/language-data':
+        specifier: ^6.5.2
+        version: 6.5.2
       '@codemirror/legacy-modes':
         specifier: ^6.5.1
         version: 6.5.2
+      '@codemirror/lint':
+        specifier: ^6.9.6
+        version: 6.9.6
+      '@codemirror/search':
+        specifier: ^6.7.0
+        version: 6.7.0
       '@codemirror/state':
         specifier: ^6.6.0
         version: 6.6.0
@@ -38,18 +56,45 @@ importers:
       '@codemirror/view':
         specifier: ^6.42.0
         version: 6.42.0
+      '@ctrl/tinycolor':
+        specifier: ^4.2.0
+        version: 4.2.0
       '@element-plus/icons-vue':
         specifier: ^1.1.4
         version: 1.1.4(vue@3.5.34(typescript@5.9.2))
+      '@floating-ui/dom':
+        specifier: ^1.7.6
+        version: 1.7.6
       '@intlify/core-base':
         specifier: ^11.4.2
         version: 11.4.2
       '@intlify/shared':
         specifier: ^11.4.2
         version: 11.4.2
+      '@lezer/common':
+        specifier: ^1.5.2
+        version: 1.5.2
+      '@lezer/highlight':
+        specifier: ^1.0.3
+        version: 1.2.3
+      '@lezer/html':
+        specifier: ^1.3.13
+        version: 1.3.13
+      '@lezer/javascript':
+        specifier: ^1.5.4
+        version: 1.5.4
+      '@lezer/json':
+        specifier: ^1.5.2
+        version: 1.0.3
+      '@lezer/lr':
+        specifier: ^1.4.10
+        version: 1.4.10
       '@lezer/php':
         specifier: ^1.0.5
         version: 1.0.5
+      '@marijn/find-cluster-break':
+        specifier: ^1.5.2
+        version: 1.0.2
       '@popperjs/core':
         specifier: ^2.11.8
         version: 2.11.8
@@ -59,6 +104,9 @@ importers:
       '@tailwindcss/postcss':
         specifier: ^4.2.4
         version: 4.2.4
+      '@vavt/copy2clipboard':
+        specifier: ^1.0.3
+        version: 1.0.3
       '@vavt/util':
         specifier: ^2.1.2
         version: 2.1.2
@@ -68,12 +116,21 @@ importers:
       '@vue-office/excel':
         specifier: ^1.7.8
         version: 1.7.14(vue-demi@0.14.10(vue@3.5.34(typescript@5.9.2)))(vue@3.5.34(typescript@5.9.2))
+      '@vue/compiler-core':
+        specifier: ^3.5.34
+        version: 3.5.34
       '@vue/compiler-dom':
         specifier: ^3.5.34
         version: 3.5.34
       '@vue/devtools-api':
         specifier: ^8.1.1
         version: 8.1.1
+      '@vue/devtools-kit':
+        specifier: ^8.1.2
+        version: 8.1.2
+      '@vue/reactivity':
+        specifier: ^3.5.34
+        version: 3.5.34
       '@vue/runtime-core':
         specifier: ^3.5.34
         version: 3.5.34
@@ -98,15 +155,27 @@ importers:
       anser:
         specifier: ^2.3.5
         version: 2.3.5
+      async-validator:
+        specifier: ^4.2.5
+        version: 4.2.5
       axios:
         specifier: ^1.15.2
         version: 1.16.0
+      call-bind-apply-helpers:
+        specifier: ^1.0.2
+        version: 1.0.2
       call-bound:
         specifier: ^1.0.4
         version: 1.0.4
+      clipboard:
+        specifier: ^2.0.11
+        version: 2.0.11
       codemirror:
         specifier: ^6.0.2
         version: 6.0.2
+      crelt:
+        specifier: ^1.0.6
+        version: 1.0.6
       crypto-js:
         specifier: ^4.2.0
         version: 4.2.0
@@ -122,12 +191,33 @@ importers:
       element-plus:
         specifier: 2.11.9
         version: 2.11.9(vue@3.5.34(typescript@5.9.2))
+      es-define-property:
+        specifier: ^1.0.1
+        version: 1.0.1
       es-errors:
         specifier: ^1.3.0
         version: 1.3.0
+      es-object-atoms:
+        specifier: ^1.1.1
+        version: 1.1.1
+      function-bind:
+        specifier: ^1.1.2
+        version: 1.1.2
       get-intrinsic:
         specifier: ^1.3.0
         version: 1.3.0
+      get-proto:
+        specifier: ^1.0.1
+        version: 1.0.1
+      gopd:
+        specifier: ^1.2.0
+        version: 1.2.0
+      has-symbols:
+        specifier: ^1.1.0
+        version: 1.1.0
+      hasown:
+        specifier: ^2.0.3
+        version: 2.0.3
       js-base64:
         specifier: ^3.7.7
         version: 3.7.8
@@ -140,9 +230,33 @@ importers:
       lodash-unified:
         specifier: ^1.0.3
         version: 1.0.3(@types/lodash-es@4.17.12)(lodash-es@4.18.1)(lodash@4.18.1)
+      lucide-vue-next:
+        specifier: ^1.0.0
+        version: 1.0.0(vue@3.5.34(typescript@5.9.2))
+      markdown-it:
+        specifier: ^14.1.1
+        version: 14.1.1
+      markdown-it-image-figures:
+        specifier: ^2.1.1
+        version: 2.1.1(markdown-it@14.1.1)
+      markdown-it-sub:
+        specifier: ^2.0.0
+        version: 2.0.0
+      markdown-it-sup:
+        specifier: ^2.0.0
+        version: 2.0.0
+      math-intrinsics:
+        specifier: ^1.1.0
+        version: 1.1.0
       md-editor-v3:
         specifier: ^6.5.0
         version: 6.5.0(vue@3.5.34(typescript@5.9.2))
+      medium-zoom:
+        specifier: ^1.1.0
+        version: 1.1.0
+      memoize-one:
+        specifier: ^6.0.0
+        version: 6.0.0
       monaco-editor:
         specifier: ^0.55.1
         version: 0.55.1
@@ -185,6 +299,9 @@ importers:
       sortablejs:
         specifier: ^1.15.7
         version: 1.15.7
+      style-mod:
+        specifier: ^1.5.2
+        version: 4.1.3
       tslib:
         specifier: ^2.8.1
         version: 2.8.1
@@ -209,57 +326,60 @@ importers:
       vue-router:
         specifier: ^4.5.1
         version: 4.6.4(vue@3.5.34(typescript@5.9.2))
+      w3c-keyname:
+        specifier: ^1.2.3
+        version: 2.2.8
       zrender:
         specifier: ^6.1.0
         version: 6.1.0
     devDependencies:
       '@types/node':
-        specifier: ^20.14.8
+        specifier: latest
         version: 20.19.39
       '@types/uuid':
-        specifier: ^10.0.0
+        specifier: latest
         version: 10.0.0
       '@typescript-eslint/eslint-plugin':
         specifier: ^8.59.2
         version: 8.59.2(@typescript-eslint/parser@8.59.2(eslint@8.57.0)(typescript@5.9.2))(eslint@8.57.0)(typescript@5.9.2)
       '@typescript-eslint/parser':
-        specifier: ^8.58.1
+        specifier: ^6.20.2
         version: 8.59.2(eslint@8.57.0)(typescript@5.9.2)
       '@vitejs/plugin-vue':
-        specifier: ^6.0.6
+        specifier: latest
         version: 6.0.6(vite@7.3.3(@types/node@20.19.39)(jiti@2.7.0)(lightningcss@1.32.0)(sass@1.99.0)(yaml@2.8.4))(vue@3.5.34(typescript@5.9.2))
       '@vitejs/plugin-vue-jsx':
-        specifier: ^5.1.1
+        specifier: latest
         version: 5.1.5(vite@7.3.3(@types/node@20.19.39)(jiti@2.7.0)(lightningcss@1.32.0)(sass@1.99.0)(yaml@2.8.4))(vue@3.5.34(typescript@5.9.2))
       '@vue/compiler-sfc':
-        specifier: ^3.5.32
+        specifier: ^1.2.3
         version: 3.5.34
       autoprefixer:
-        specifier: ^10.4.7
+        specifier: latest
         version: 10.5.0(postcss@8.5.14)
       commitizen:
-        specifier: ^4.2.4
+        specifier: latest
         version: 4.3.1(@types/node@20.19.39)(typescript@5.9.2)
       esbuild:
-        specifier: ^0.28.0
+        specifier: latest
         version: 0.28.0
       eslint:
-        specifier: ^8.57.0
+        specifier: latest
         version: 8.57.0
       eslint-config-prettier:
-        specifier: ^9.1.2
+        specifier: latest
         version: 9.1.2(eslint@8.57.0)
       eslint-plugin-prettier:
-        specifier: ^5.5.5
+        specifier: latest
         version: 5.5.5(eslint-config-prettier@9.1.2(eslint@8.57.0))(eslint@8.57.0)(prettier@3.8.3)
       eslint-plugin-vue:
-        specifier: ^9.33.0
+        specifier: latest
         version: 9.33.0(eslint@8.57.0)
       lint-staged:
-        specifier: ^17.0.2
+        specifier: latest
         version: 17.0.2
       postcss:
-        specifier: ^8.5.14
+        specifier: latest
         version: 8.5.14
       postcss-html:
         specifier: ^1.4.1
@@ -546,6 +666,10 @@ packages:
   '@ctrl/tinycolor@3.6.1':
     resolution: {integrity: sha512-SITSV6aIXsuVNV3f3O0f2n/cgyEDWoSqtZMYiAmcsYHydcKrOz3gUxB/iXd/Qf08+IZX4KpgNbvUdMBmWz+kcA==}
     engines: {node: '>=10'}
+
+  '@ctrl/tinycolor@4.2.0':
+    resolution: {integrity: sha512-kzyuwOAQnXJNLS9PSyrk0CWk35nWJW/zl/6KvnTBMFK65gm7U1/Z5BqjxeapjZCIhQcM/DsrEmcbRwDyXyXK4A==}
+    engines: {node: '>=14'}
 
   '@element-plus/icons-vue@1.1.4':
     resolution: {integrity: sha512-Iz/nHqdp1sFPmdzRwHkEQQA3lKvoObk8azgABZ81QUOpW9s/lUyQVUSh0tNtEPZXQlKwlSh7SPgoVxzrE0uuVQ==}
@@ -1575,11 +1699,11 @@ packages:
   '@vue/devtools-api@8.1.1':
     resolution: {integrity: sha512-bsDMJ07b3GN1puVwJb/fyFnj/U2imyswK5UQVLZwVl7O05jDrt6BHxeG5XffmOOdasOj/bOmIjxJvGPxU7pcqw==}
 
-  '@vue/devtools-kit@8.1.1':
-    resolution: {integrity: sha512-gVBaBv++i+adg4JpH71k9ppl4soyR7Y2McEqO5YNgv0BI1kMZ7BDX5gnwkZ5COYgiCyhejZG+yGNrBAjj6Coqg==}
+  '@vue/devtools-kit@8.1.2':
+    resolution: {integrity: sha512-f75/upc+GCyjXErpgPGz4582ujS0L/adAltGy+tqXMGUJpgAcfGr6CxnnhpZY8BHuMYt6KpbF8uaFrrQG66rGQ==}
 
-  '@vue/devtools-shared@8.1.1':
-    resolution: {integrity: sha512-+h4ttmJYl/txpxHKaoZcaKpC+pvckgLzIDiSQlaQ7kKthKh8KuwoLW2D8hPJEnqKzXOvu15UHEoGyngAXCz0EQ==}
+  '@vue/devtools-shared@8.1.2':
+    resolution: {integrity: sha512-X9RyVFYAdkBe4IUf5v48TxBF/6QPmF8CmWrDAjXzfUHrgQ/HGfTC1A6TqgXqZ03ye66l3AD51BAGD69IvKM9sw==}
 
   '@vue/language-core@3.2.8':
     resolution: {integrity: sha512-9OiSPQFiAAWNVnXb0d2dcTmcKnFQamhuNES6ayyISrb/mwPWVgoGdAqSfCWqKhQpa3D5gDTcYD+w7ObiheZ81g==}
@@ -2974,6 +3098,11 @@ packages:
 
   lucide-vue-next@0.543.0:
     resolution: {integrity: sha512-Az5kpNm/koKAwSNIKjsZ4uHV2tVfmlQlcHwFBygQ8gc5/jFg7An9OrxgDy/aE5m+HLx7VfLYqDxLr8gWecZbQA==}
+    peerDependencies:
+      vue: '>=3.0.1'
+
+  lucide-vue-next@1.0.0:
+    resolution: {integrity: sha512-V6SPvx1IHTj/UY+FrIYWV5faISsPSb8BnWSFDxAtezWKvWc9ZZ40PDrdu1/Qb5vg4lHWr1hs1BAMGVGm6V1Xdg==}
     peerDependencies:
       vue: '>=3.0.1'
 
@@ -4579,6 +4708,8 @@ snapshots:
 
   '@ctrl/tinycolor@3.6.1': {}
 
+  '@ctrl/tinycolor@4.2.0': {}
+
   '@element-plus/icons-vue@1.1.4(vue@3.5.34(typescript@5.9.2))':
     dependencies:
       vue: 3.5.34(typescript@5.9.2)
@@ -5425,16 +5556,16 @@ snapshots:
 
   '@vue/devtools-api@8.1.1':
     dependencies:
-      '@vue/devtools-kit': 8.1.1
+      '@vue/devtools-kit': 8.1.2
 
-  '@vue/devtools-kit@8.1.1':
+  '@vue/devtools-kit@8.1.2':
     dependencies:
-      '@vue/devtools-shared': 8.1.1
+      '@vue/devtools-shared': 8.1.2
       birpc: 2.6.1
       hookable: 5.5.3
       perfect-debounce: 2.1.0
 
-  '@vue/devtools-shared@8.1.1': {}
+  '@vue/devtools-shared@8.1.2': {}
 
   '@vue/language-core@3.2.8':
     dependencies:
@@ -6962,6 +7093,10 @@ snapshots:
       yallist: 4.0.0
 
   lucide-vue-next@0.543.0(vue@3.5.34(typescript@5.9.2)):
+    dependencies:
+      vue: 3.5.34(typescript@5.9.2)
+
+  lucide-vue-next@1.0.0(vue@3.5.34(typescript@5.9.2)):
     dependencies:
       vue: 3.5.34(typescript@5.9.2)
 
