@@ -9,15 +9,17 @@
 ## 一、技术架构
 
 ### 1.1 技术选型
-| 层级 | 技术 | 说明 |
-|------|------|------|
-| 前端 | Vue 3 + TypeScript + Vite | 复用 1Panel 前端 |
-| UI | Element Plus + Tailwind CSS | 复用 1Panel UI |
-| 后端 | Go + Gin + GORM | 复用 1Panel 后端 |
-| 数据库 | SQLite (开发) / MySQL (生产) | 复用 1Panel 数据库 |
-| 监控协议 | HTTP REST API | 调用 1Panel API |
+
+| 层级     | 技术                         | 说明               |
+| -------- | ---------------------------- | ------------------ |
+| 前端     | Vue 3 + TypeScript + Vite    | 复用 1Panel 前端   |
+| UI       | Element Plus + Tailwind CSS  | 复用 1Panel UI     |
+| 后端     | Go + Gin + GORM              | 复用 1Panel 后端   |
+| 数据库   | SQLite (开发) / MySQL (生产) | 复用 1Panel 数据库 |
+| 监控协议 | HTTP REST API                | 调用 1Panel API    |
 
 ### 1.2 项目结构
+
 ```
 multinode-watchpanel/
 ├── frontend/           # 前端 (1Panel frontend + 自定义视图)
@@ -57,6 +59,7 @@ multinode-watchpanel/
 ## 二、数据库设计
 
 ### 2.1 节点配置表 (host_nodes)
+
 ```sql
 CREATE TABLE host_nodes (
     id           BIGINT PRIMARY KEY AUTO_INCREMENT,
@@ -75,6 +78,7 @@ CREATE TABLE host_nodes (
 ```
 
 ### 2.2 监控历史数据表 (monitor_history)
+
 ```sql
 CREATE TABLE monitor_history (
     id           BIGINT PRIMARY KEY AUTO_INCREMENT,
@@ -88,16 +92,17 @@ CREATE TABLE monitor_history (
 );
 ```
 
-### 2.3 系统配置表 (system_configs)
+### 2.3 系统配置表 (settings)
+
 ```sql
-CREATE TABLE system_configs (
+CREATE TABLE settings (
     key   VARCHAR(64) PRIMARY KEY,
     value TEXT,
     description VARCHAR(255)
 );
 
 -- 初始配置
-INSERT INTO system_configs (key, value, description) VALUES
+INSERT INTO settings (key, value, description) VALUES
 ('data_retention_days', '30', '监控数据保留天数'),
 ('collect_interval', '60', '数据采集间隔(秒)'),
 ('dashboard_refresh', '10', '仪表盘刷新间隔(秒)');
@@ -204,44 +209,44 @@ func GetTopProcesses(c *gin.Context)
 // 新增多机监控路由
 const monitorRouter = {
     sort: 2,
-    path: '/monitor',
-    name: 'Monitor',
+    path: "/monitor",
+    name: "Monitor",
     component: Layout,
-    meta: { title: 'menu.monitor', icon: 'p-monitor' },
+    meta: { title: "menu.monitor", icon: "p-monitor" },
     children: [
         {
-            path: 'dashboard',
-            name: 'MonitorDashboard',
-            component: () => import('@/views/monitor/dashboard/index.vue'),
-            meta: { title: 'menu.monitorDashboard' },
+            path: "dashboard",
+            name: "MonitorDashboard",
+            component: () => import("@/views/monitor/dashboard/index.vue"),
+            meta: { title: "menu.monitorDashboard" },
         },
         {
-            path: 'hosts',
-            name: 'MonitorHosts',
-            component: () => import('@/views/monitor/hosts/index.vue'),
-            meta: { title: 'menu.monitorHosts' },
+            path: "hosts",
+            name: "MonitorHosts",
+            component: () => import("@/views/monitor/hosts/index.vue"),
+            meta: { title: "menu.monitorHosts" },
         },
         {
-            path: 'containers',
-            name: 'MonitorContainers',
-            component: () => import('@/views/monitor/containers/index.vue'),
-            meta: { title: 'menu.monitorContainers' },
+            path: "containers",
+            name: "MonitorContainers",
+            component: () => import("@/views/monitor/containers/index.vue"),
+            meta: { title: "menu.monitorContainers" },
         },
         {
-            path: 'history',
-            name: 'MonitorHistory',
-            component: () => import('@/views/monitor/monitor/index.vue'),
-            meta: { title: 'menu.monitorHistory' },
+            path: "history",
+            name: "MonitorHistory",
+            component: () => import("@/views/monitor/monitor/index.vue"),
+            meta: { title: "menu.monitorHistory" },
         },
     ],
 };
 
 // 节点管理路由
 const nodeSettingRouter = {
-    path: '/settings/nodes',
-    name: 'NodeSetting',
-    component: () => import('@/views/setting/nodes/index.vue'),
-    meta: { title: 'menu.nodeSetting', icon: 'p-host' },
+    path: "/settings/nodes",
+    name: "NodeSetting",
+    component: () => import("@/views/setting/nodes/index.vue"),
+    meta: { title: "menu.nodeSetting", icon: "p-host" },
 };
 ```
 
@@ -381,54 +386,59 @@ const nodeSettingRouter = {
 
 ### 5.1 核心功能
 
-| 功能 | 优先级 | 说明 |
-|------|--------|------|
-| 节点管理 | P0 | 添加/编辑/删除监控节点 |
-| 节点连接测试 | P0 | 验证API连接 |
-| 仪表盘展示 | P0 | 实时CPU/内存/磁盘/网络 |
-| 容器监控 | P0 | 容器列表与状态 |
-| 历史数据 | P1 | 监控历史曲线图 |
-| 数据采集 | P0 | 后台定时采集 |
-| 数据清理 | P1 | 自动清理过期数据 |
-| 多节点聚合 | P2 | 统一视图 |
+| 功能         | 优先级 | 说明                   |
+| ------------ | ------ | ---------------------- |
+| 节点管理     | P0     | 添加/编辑/删除监控节点 |
+| 节点连接测试 | P0     | 验证API连接            |
+| 仪表盘展示   | P0     | 实时CPU/内存/磁盘/网络 |
+| 容器监控     | P0     | 容器列表与状态         |
+| 历史数据     | P1     | 监控历史曲线图         |
+| 数据采集     | P0     | 后台定时采集           |
+| 数据清理     | P1     | 自动清理过期数据       |
+| 多节点聚合   | P2     | 统一视图               |
 
 ### 5.2 设置功能
 
-| 功能 | 优先级 | 说明 |
-|------|--------|------|
-| 数据保留时间 | P0 | 设置监控数据保留天数 |
-| 采集间隔 | P1 | 设置数据采集频率 |
-| 刷新间隔 | P1 | 仪表盘自动刷新 |
-| 节点标签 | P2 | 分组管理 |
+| 功能         | 优先级 | 说明                 |
+| ------------ | ------ | -------------------- |
+| 数据保留时间 | P0     | 设置监控数据保留天数 |
+| 采集间隔     | P1     | 设置数据采集频率     |
+| 刷新间隔     | P1     | 仪表盘自动刷新       |
+| 节点标签     | P2     | 分组管理             |
 
 ---
 
 ## 六、实现步骤
 
 ### Phase 1: 项目初始化
+
 1. 复制 1Panel 前端代码到 `frontend/`
 2. 复制 1Panel 后端代码到 `core/`
 3. 初始化 Git 仓库
 
 ### Phase 2: 数据库扩展
+
 1. 创建 `host_nodes` 表
 2. 创建 `monitor_history` 表
-3. 创建 `system_configs` 表
+3. 创建 `settings` 表
 4. 编写数据库迁移脚本
 
 ### Phase 3: 后端核心模块
+
 1. 实现 `PanelClient` (1Panel API 客户端)
 2. 实现 `NodeService` (节点管理)
 3. 实现 `CollectorService` (数据采集)
 4. 注册路由并测试
 
 ### Phase 4: 前端核心模块
+
 1. 添加节点管理页面
 2. 添加监控仪表盘页面
 3. 添加容器监控页面
 4. 添加设置页面
 
 ### Phase 5: 完善与优化
+
 1. 历史数据图表
 2. 告警功能
 3. 性能优化
@@ -439,29 +449,31 @@ const nodeSettingRouter = {
 ## 七、关键文件清单
 
 ### 后端新增/修改
-| 文件路径 | 说明 |
-|----------|------|
-| `core/app/model/node.go` | 节点模型 |
-| `core/app/model/monitor_history.go` | 历史数据模型 |
-| `core/app/model/system_config.go` | 系统配置模型 |
-| `core/app/service/node_service.go` | 节点管理服务 |
-| `core/app/service/collector_service.go` | 数据采集服务 |
-| `core/app/utils/panel_client.go` | 1Panel API客户端 |
-| `core/app/router/node_router.go` | 节点路由 |
+
+| 文件路径                                | 说明             |
+| --------------------------------------- | ---------------- |
+| `core/app/model/node.go`                | 节点模型         |
+| `core/app/model/monitor_history.go`     | 历史数据模型     |
+| `core/app/model/system_config.go`       | 系统配置模型     |
+| `core/app/service/node_service.go`      | 节点管理服务     |
+| `core/app/service/collector_service.go` | 数据采集服务     |
+| `core/app/utils/panel_client.go`        | 1Panel API客户端 |
+| `core/app/router/node_router.go`        | 节点路由         |
 
 ### 前端新增/修改
-| 文件路径 | 说明 |
-|----------|------|
-| `frontend/src/views/setting/nodes/index.vue` | 节点管理页面 |
-| `frontend/src/views/monitor/dashboard/index.vue` | 监控仪表盘 |
-| `frontend/src/views/monitor/hosts/index.vue` | 主机列表 |
-| `frontend/src/views/monitor/containers/index.vue` | 容器监控 |
-| `frontend/src/views/monitor/monitor/index.vue` | 历史监控 |
-| `frontend/src/api/modules/node.ts` | 节点API |
-| `frontend/src/api/modules/monitor.ts` | 监控API |
-| `frontend/src/store/modules/node.ts` | 节点状态 |
-| `frontend/src/routers/modules/monitor.ts` | 监控路由 |
-| `frontend/src/lang/modules/*.ts` | 国际化文本 |
+
+| 文件路径                                          | 说明         |
+| ------------------------------------------------- | ------------ |
+| `frontend/src/views/setting/nodes/index.vue`      | 节点管理页面 |
+| `frontend/src/views/monitor/dashboard/index.vue`  | 监控仪表盘   |
+| `frontend/src/views/monitor/hosts/index.vue`      | 主机列表     |
+| `frontend/src/views/monitor/containers/index.vue` | 容器监控     |
+| `frontend/src/views/monitor/monitor/index.vue`    | 历史监控     |
+| `frontend/src/api/modules/node.ts`                | 节点API      |
+| `frontend/src/api/modules/monitor.ts`             | 监控API      |
+| `frontend/src/store/modules/node.ts`              | 节点状态     |
+| `frontend/src/routers/modules/monitor.ts`         | 监控路由     |
+| `frontend/src/lang/modules/*.ts`                  | 国际化文本   |
 
 ---
 
@@ -489,6 +501,7 @@ headers := map[string]string{
 ## 九、部署说明
 
 ### 9.1 开发环境
+
 ```bash
 # 启动后端
 cd core
@@ -502,6 +515,7 @@ npm run dev
 ```
 
 ### 9.2 生产环境
+
 - 后端: 编译后部署，监听端口 9999
 - 前端: `npm run build`，输出到 `core/cmd/server/web`
 - 数据库: MySQL 5.7+ 或 SQLite
