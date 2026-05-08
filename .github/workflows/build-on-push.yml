@@ -86,7 +86,13 @@ jobs:
             ## Commit Info
             - **SHA**: ${{ github.sha }}
             - **Branch**: ${{ github.ref_name }}
-            - **Message**: ${{ steps.commit.outputs.MESSAGE }}
+            - **Message**: 
+            
+            ```
+
+            ${{ steps.commit.outputs.MESSAGE }}
+
+            ```
 
             ## Changes
             Triggered by commit `${{ github.sha }}`
