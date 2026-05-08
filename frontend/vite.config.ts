@@ -28,7 +28,13 @@ function patchCodeFilterOverflow(): Plugin {
 }
 const prefix = `monaco-editor/esm/vs`;
 
-function getManualChunkName(id: string): string | undefined {
+function getManualChunkName(id: string): string | undefined {// 在 getManualChunkName 中添加
+    if (id.includes('monaco-editor/esm/vs/') && id.includes('contribution')) {
+        return 'monaco-contributions';
+    }
+    if (id.includes('monaco-editor/esm/vs/basic-languages/')) {
+        return 'monaco-basic-languages';
+    }
     if (id.includes(`${prefix}/language/json/json.worker`)) return 'jsonWorker';
     if (id.includes(`${prefix}/language/css/css.worker`)) return 'cssWorker';
     if (id.includes(`${prefix}/language/html/html.worker`)) return 'htmlWorker';
@@ -58,7 +64,7 @@ export default defineConfig(({ mode }: ConfigEnv): UserConfig => {
     const isProduction = mode === 'production';
 
     return {
-        
+
         resolve: {
             preserveSymlinks: true,
             alias: {
