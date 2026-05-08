@@ -88,6 +88,7 @@ services:
       - "/etc/docker/daemon.json:/etc/docker/daemon.json"
       - "/media/debian/eca4cac3-803e-4567-bc15-44366f11fc1f/data/docker:/media/debian/eca4cac3-803e-4567-bc15-44366f11fc1f/data/docker"
       - "/root/docker/1panel/app/1panel:/app/1panel"
+      - "/root/docker/1panel/app/1panel:/root/docker/1panel/app/1panel"
       - "/var/run/docker.sock:/var/run/docker.sock"
 
     working_dir: "/app"
