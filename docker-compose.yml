@@ -97,7 +97,7 @@ version: "3.6"
 networks:
   # IPv6 双栈网络 - 支持容器间 IPv6 通信
   ipv6-net:
-    external: false
+    external: true
     name: ipv6-net
     driver: bridge
     enable_ipv6: true
