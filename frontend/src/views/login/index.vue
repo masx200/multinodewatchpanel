@@ -60,11 +60,13 @@ const getStatus = async () => {
 const loadImage = (name: string) => {
     const { loginImage, loginBackground, loginBgType } = globalStore.themeConfig;
     if (name === 'loginImage') {
-        return loginImage === 'loginImage' ? loadedLoginImage.value : defaultLoginImage;
+        return loginImage === 'loginImage' && loadedLoginImage.value ? loadedLoginImage.value : defaultLoginImage;
     }
     if (name === 'loginBackground') {
         if (loginBgType === 'image') {
-            return loginBackground === 'loginBackground' ? loadedBackgroundImage.value : defaultLoginBgImage;
+            return loginBackground === 'loginBackground' && loadedBackgroundImage.value
+                ? loadedBackgroundImage.value
+                : defaultLoginBgImage;
         }
         if (loginBgType === 'color') {
             return loginBackground;

@@ -14,11 +14,11 @@ export const toLink = (link: string) => {
     } catch (e) {}
 };
 
-export const preloadImage = (url: string): Promise<string> => {
+export const preloadImage = (url: string): Promise<string | null> => {
     return new Promise((resolve) => {
         const img = new Image();
         img.onload = () => resolve(url);
-        img.onerror = () => resolve(url);
+        img.onerror = () => resolve(null);
         img.src = url;
     });
 };
