@@ -165,6 +165,7 @@ func (b *BaseApi) GetNodeDashboard(c *gin.Context) {
 		dashboard.Uptime = uint64(base.CurrentInfo.Uptime)
 		dashboard.OSVersion = base.PrettyDistro
 	}
+	helper.SuccessWithData(c, dashboard)
 }
 
 // @Tags Node
