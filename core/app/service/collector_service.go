@@ -123,9 +123,21 @@ func (c *CollectorService) collectNode(node model.HostNode) {
 	now := time.Now()
 	_ = c.nodeRepo.UpdateStatus(node.ID, 1, &now)
 
+	// 计算磁盘使用率（与 GetNodeDashboard 相同的逻辑）
+	var diskPercent float64
+	if len(current.DiskData) > 0 {
+		var totalUsed, totalAll float64
+		for _, d := range current.DiskData {
+			totalUsed += d.UsedPercent
+			totalAll++
+		}
+		diskPercent = totalUsed / totalAll
+	}
+
 	records := []model.MonitorHistory{
 		{NodeID: node.ID, MetricType: "cpu", MetricValue: current.CPUUsedPercent, RecordedAt: now},
 		{NodeID: node.ID, MetricType: "memory", MetricValue: current.MemoryUsedPercent, RecordedAt: now},
+		{NodeID: node.ID, MetricType: "disk", MetricValue: diskPercent, RecordedAt: now},
 		{NodeID: node.ID, MetricType: "load1", MetricValue: current.Load1, RecordedAt: now},
 		{NodeID: node.ID, MetricType: "net_upload", MetricValue: float64(current.NetBytesSent), RecordedAt: now},
 		{NodeID: node.ID, MetricType: "net_download", MetricValue: float64(current.NetBytesRecv), RecordedAt: now},
