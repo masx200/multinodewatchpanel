@@ -128,6 +128,7 @@ var WebUrlMap = map[string]struct{}{
 	"/settings/snapshot":      {},
 	"/settings/expired":       {},
 	"/settings/nodes":         {},
+	"/settings/monitor-config":         {},
 
 	"/monitor":            {},
 	"/monitor/dashboard":  {},
