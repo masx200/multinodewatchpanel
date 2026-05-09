@@ -86,33 +86,33 @@ export interface ContainerInfo {
 // ---- Node API ----
 
 export const listNodes = () => {
-    return http.get<NodeInfo[]>('/nodes');
+    return http.get<NodeInfo[]>('/core/nodes');
 };
 
 export const createNode = (req: NodeCreate) => {
-    return http.post('/nodes', req);
+    return http.post('/core/nodes', req);
 };
 
 export const updateNode = (id: number, req: NodeUpdate) => {
-    return http.put(`/nodes/${id}`, req);
+    return http.put(`/core/nodes/${id}`, req);
 };
 
 export const deleteNode = (id: number) => {
-    return http.delete(`/nodes/${id}`);
+    return http.delete(`/core/nodes/${id}`);
 };
 
 export const testNodeConnection = (req: NodeCreate) => {
-    return http.post('/nodes/test', req);
+    return http.post('/core/nodes/test', req);
 };
 
 export const getNodeDashboard = (id: number) => {
-    return http.get<NodeDashboard>(`/nodes/${id}/dashboard`);
+    return http.get<NodeDashboard>(`/core/nodes/${id}/dashboard`);
 };
 
 export const getNodeContainers = (id: number) => {
-    return http.get<ContainerInfo[]>(`/nodes/${id}/containers`);
+    return http.get<ContainerInfo[]>(`/core/nodes/${id}/containers`);
 };
 
 export const searchMonitorHistory = (req: MonitorSearchReq) => {
-    return http.post<MonitorHistoryItem[]>('/nodes/monitor/search', req);
+    return http.post<MonitorHistoryItem[]>('/core/nodes/monitor/search', req);
 };
