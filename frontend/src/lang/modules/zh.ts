@@ -1431,6 +1431,9 @@ const message = {
         nodeAllowInsecureHint: '跳过证书校验（不推荐用于生产）',
         nodePinnedCert: '证书 SHA256',
         nodePinnedCertPlaceholder: '可选，Pin 远端证书 SHA256（hex）',
+        nodeCertPem: '证书 PEM',
+        nodeCertPemPlaceholder: '粘贴 PEM 格式证书内容，自动生成 SHA256',
+        nodeCertPemHint: '填写后将自动计算证书 SHA256，无需手动填写',
         // 监控配置
         monitorConfig: '监控配置',
         dataRetentionDays: '数据保留天数',

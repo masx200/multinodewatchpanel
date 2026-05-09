@@ -27,6 +27,7 @@ export interface NodeCreate {
     security?: string;
     allowInsecure?: boolean;
     pinnedPeerCertSha256?: string;
+    certPem?: string;
 }
 
 export interface NodeUpdate {
@@ -39,6 +40,7 @@ export interface NodeUpdate {
     security?: string;
     allowInsecure?: boolean;
     pinnedPeerCertSha256?: string;
+    certPem?: string;
 }
 
 export interface NodeDashboard {
@@ -127,6 +129,7 @@ export interface NodeTest {
     security?: string;
     allowInsecure?: boolean;
     pinnedPeerCertSha256?: string;
+    certPem?: string;
 }
 
 export const testNodeConnection = (req: NodeTest) => {

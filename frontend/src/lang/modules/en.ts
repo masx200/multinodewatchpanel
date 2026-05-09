@@ -1509,6 +1509,9 @@ const message = {
         nodeAllowInsecureHint: 'Skip certificate verification (not recommended for production)',
         nodePinnedCert: 'Cert SHA256',
         nodePinnedCertPlaceholder: 'Optional, pin remote cert SHA256 (hex)',
+        nodeCertPem: 'Certificate PEM',
+        nodeCertPemPlaceholder: 'Paste PEM certificate to auto-generate SHA256',
+        nodeCertPemHint: 'Auto-computes SHA256 from certificate, no need to fill in manually',
         // monitor config
         monitorConfig: 'Monitor Config',
         dataRetentionDays: 'Data Retention Days',

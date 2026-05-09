@@ -2,6 +2,8 @@ package service
 
 import (
 	"errors"
+	"fmt"
+	"strings"
 	"sync"
 	"time"
 
@@ -38,6 +40,10 @@ func NewINodeService() INodeService {
 }
 
 func (s *NodeService) Create(req dto.NodeCreate) error {
+	pinnedHash, err := resolvePinnedHash(req.CertPem, req.PinnedPeerCertSHA256)
+	if err != nil {
+		return err
+	}
 	node := &model.HostNode{
 		Name:                 req.Name,
 		Host:                 req.Host,
@@ -48,7 +54,7 @@ func (s *NodeService) Create(req dto.NodeCreate) error {
 		ServerName:           req.ServerName,
 		Security:             req.Security,
 		AllowInsecure:        req.AllowInsecure,
-		PinnedPeerCertSHA256: req.PinnedPeerCertSHA256,
+		PinnedPeerCertSHA256: pinnedHash,
 	}
 	if err := s.nodeRepo.Create(node); err != nil {
 		return err
@@ -59,6 +65,10 @@ func (s *NodeService) Create(req dto.NodeCreate) error {
 }
 
 func (s *NodeService) Update(id uint, req dto.NodeUpdate) error {
+	pinnedHash, err := resolvePinnedHash(req.CertPem, req.PinnedPeerCertSHA256)
+	if err != nil {
+		return err
+	}
 	updates := map[string]interface{}{
 		"name":                    req.Name,
 		"host":                    req.Host,
@@ -67,7 +77,7 @@ func (s *NodeService) Update(id uint, req dto.NodeUpdate) error {
 		"server_name":             req.ServerName,
 		"security":                req.Security,
 		"allow_insecure":          req.AllowInsecure,
-		"pinned_peer_cert_sha256": req.PinnedPeerCertSHA256,
+		"pinned_peer_cert_sha256": pinnedHash,
 	}
 	if req.APIKey != "" {
 		updates["api_key"] = req.APIKey
@@ -126,10 +136,14 @@ func (s *NodeService) TestConnection(req dto.NodeTest) error {
 	if apiKey == "" {
 		return errors.New("apiKey is required")
 	}
+	pinnedHash, err := resolvePinnedHash(req.CertPem, req.PinnedPeerCertSHA256)
+	if err != nil {
+		return err
+	}
 	client := utils.NewPanelClientWithOptions(req.Host, req.Port, apiKey, utils.PanelClientOptions{
 		Security:             req.Security,
 		AllowInsecure:        req.AllowInsecure,
-		PinnedPeerCertSHA256: req.PinnedPeerCertSHA256,
+		PinnedPeerCertSHA256: pinnedHash,
 		ServerName:           req.ServerName,
 	})
 	return client.Ping()
@@ -263,4 +277,16 @@ func (s *NodeService) GetHeatmapData() (dto.NodeHeatmapData, error) {
 		Nodes:  nodeNames,
 		Values: values,
 	}, nil
+}
+
+// resolvePinnedHash 如果 certPem 非空则从 PEM 计算 SHA256，否则返回手动填写的 hash
+func resolvePinnedHash(certPem, manualHash string) (string, error) {
+	if strings.TrimSpace(certPem) != "" {
+		hash, err := utils.ComputeCertSHA256(certPem)
+		if err != nil {
+			return "", fmt.Errorf("parse certificate PEM: %w", err)
+		}
+		return hash, nil
+	}
+	return manualHash, nil
 }

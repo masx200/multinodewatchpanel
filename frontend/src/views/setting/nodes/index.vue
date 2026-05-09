@@ -107,6 +107,16 @@
                         <el-switch v-model="nodeForm.allowInsecure" />
                         <span class="ml-2 form-hint">{{ $t('monitor.nodeAllowInsecureHint') }}</span>
                     </el-form-item>
+                    <el-form-item :label="$t('monitor.nodeCertPem')">
+                        <el-input
+                            v-model="nodeForm.certPem"
+                            type="textarea"
+                            :rows="4"
+                            :placeholder="$t('monitor.nodeCertPemPlaceholder')"
+                            clearable
+                        />
+                        <span class="ml-2 form-hint">{{ $t('monitor.nodeCertPemHint') }}</span>
+                    </el-form-item>
                     <el-form-item :label="$t('monitor.nodePinnedCert')">
                         <el-input
                             v-model="nodeForm.pinnedPeerCertSha256"
@@ -170,6 +180,7 @@ const nodeForm = reactive({
     serverName: '',
     allowInsecure: false,
     pinnedPeerCertSha256: '',
+    certPem: '',
 });
 
 const rules = reactive<FormRules>({
@@ -214,6 +225,7 @@ const openDialog = (mode: 'create' | 'edit', row?: NodeInfo) => {
         nodeForm.serverName = '';
         nodeForm.allowInsecure = false;
         nodeForm.pinnedPeerCertSha256 = '';
+        nodeForm.certPem = '';
     } else if (row) {
         editId.value = row.id;
         nodeForm.name = row.name;
@@ -242,6 +254,7 @@ const testConnection = async () => {
             serverName: nodeForm.serverName,
             allowInsecure: nodeForm.allowInsecure,
             pinnedPeerCertSha256: nodeForm.pinnedPeerCertSha256,
+            certPem: nodeForm.certPem,
         });
         ElMessage.success(t('monitor.connectionSuccess'));
     } catch (e: any) {
@@ -267,6 +280,7 @@ const submitForm = async () => {
                 serverName: nodeForm.serverName,
                 allowInsecure: nodeForm.allowInsecure,
                 pinnedPeerCertSha256: nodeForm.pinnedPeerCertSha256,
+                certPem: nodeForm.certPem,
             };
             if (dialogMode.value === 'create') {
                 await createNode(payload);

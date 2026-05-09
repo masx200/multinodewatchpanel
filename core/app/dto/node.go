@@ -13,6 +13,7 @@ type NodeCreate struct {
 	Security            string `json:"security"`            // "none" | "tls"
 	AllowInsecure       bool   `json:"allowInsecure"`
 	PinnedPeerCertSHA256 string `json:"pinnedPeerCertSha256"`
+	CertPem               string `json:"certPem"` // PEM certificate text; auto-computes PinnedPeerCertSHA256 if provided
 }
 
 // NodeTest 测试节点连接请求（编辑时 APIKey 可选，通过 id 回填）
@@ -27,6 +28,7 @@ type NodeTest struct {
 	Security            string `json:"security"`
 	AllowInsecure       bool   `json:"allowInsecure"`
 	PinnedPeerCertSHA256 string `json:"pinnedPeerCertSha256"`
+	CertPem               string `json:"certPem"`
 }
 
 // NodeUpdate 更新节点请求
@@ -40,6 +42,7 @@ type NodeUpdate struct {
 	Security            string `json:"security"`
 	AllowInsecure       bool   `json:"allowInsecure"`
 	PinnedPeerCertSHA256 string `json:"pinnedPeerCertSha256"`
+	CertPem               string `json:"certPem"`
 }
 
 // NodeInfo 节点信息响应
