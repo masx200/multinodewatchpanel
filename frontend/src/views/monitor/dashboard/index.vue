@@ -4,7 +4,7 @@
             <el-select
                 v-model="currentNodeId"
                 :placeholder="$t('monitor.selectNode')"
-                style="width: 200px"
+                style="width: 400px"
                 @change="onNodeChange"
             >
                 <el-option
@@ -34,7 +34,7 @@
                                 type="dashboard"
                                 :percentage="dashboard.cpu"
                                 :color="progressColor(dashboard.cpu)"
-                                :width="80"
+                                :width="160"
                             />
                             <div class="metric-value">{{ dashboard.cpu.toFixed(1) }}%</div>
                         </el-card>
@@ -46,7 +46,7 @@
                                 type="dashboard"
                                 :percentage="dashboard.memory"
                                 :color="progressColor(dashboard.memory)"
-                                :width="80"
+                                :width="160"
                             />
                             <div class="metric-value">{{ dashboard.memory.toFixed(1) }}%</div>
                         </el-card>
@@ -58,7 +58,7 @@
                                 type="dashboard"
                                 :percentage="dashboard.disk"
                                 :color="progressColor(dashboard.disk)"
-                                :width="80"
+                                :width="160"
                             />
                             <div class="metric-value">{{ dashboard.disk.toFixed(1) }}%</div>
                         </el-card>
@@ -82,7 +82,7 @@
                             <template #header>
                                 <span>{{ $t('monitor.systemInfo') }}</span>
                             </template>
-                            <el-descriptions :column="4" border size="small">
+                            <el-descriptions :column="4" border size="large">
                                 <el-descriptions-item :label="$t('monitor.hostname')">
                                     {{ dashboard.hostname || '-' }}
                                 </el-descriptions-item>
@@ -201,29 +201,29 @@ onUnmounted(() => {
 <style scoped>
 .metric-card {
     text-align: center;
-    padding: 8px;
+    padding: 16px;
 }
 .metric-label {
-    font-size: 14px;
+    font-size: 28px;
     color: #909399;
-    margin-bottom: 8px;
+    margin-bottom: 16px;
 }
 .metric-value {
-    font-size: 18px;
+    font-size: 36px;
     font-weight: 600;
-    margin-top: 8px;
+    margin-top: 16px;
 }
 .load-values {
     display: flex;
     flex-direction: column;
-    gap: 4px;
-    font-size: 14px;
-    padding: 16px 0;
+    gap: 8px;
+    font-size: 28px;
+    padding: 32px 0;
 }
 .empty-tip {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 300px;
+    height: 600px;
 }
 </style>
