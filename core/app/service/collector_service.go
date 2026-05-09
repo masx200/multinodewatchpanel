@@ -105,7 +105,7 @@ func (c *CollectorService) collectNode(node model.HostNode) {
 		return
 	}
 
-	current, err := client.GetDashboardCurrent("-", "-")
+	current, err := client.GetDashboardCurrent("all", "all")
 	if err != nil {
 		global.LOG.Warnf("collector: collect node %d failed: %v", node.ID, err)
 		_ = c.nodeRepo.UpdateStatus(node.ID, 2, nil)
