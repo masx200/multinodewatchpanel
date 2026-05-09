@@ -233,6 +233,7 @@ const testConnection = async () => {
     testLoading.value = true;
     try {
         await testNodeConnection({
+            id: dialogMode.value === 'edit' ? editId.value : undefined,
             name: nodeForm.name || 'test',
             host: nodeForm.host,
             port: nodeForm.port,

@@ -15,6 +15,20 @@ type NodeCreate struct {
 	PinnedPeerCertSHA256 string `json:"pinnedPeerCertSha256"`
 }
 
+// NodeTest 测试节点连接请求（编辑时 APIKey 可选，通过 id 回填）
+type NodeTest struct {
+	ID                  uint   `json:"id"`
+	Name                string `json:"name" validate:"required"`
+	Host                string `json:"host" validate:"required"`
+	Port                int    `json:"port" validate:"required,min=1,max=65535"`
+	APIKey              string `json:"apiKey"`
+	Tags                string `json:"tags"`
+	ServerName          string `json:"serverName"`
+	Security            string `json:"security"`
+	AllowInsecure       bool   `json:"allowInsecure"`
+	PinnedPeerCertSHA256 string `json:"pinnedPeerCertSha256"`
+}
+
 // NodeUpdate 更新节点请求
 type NodeUpdate struct {
 	Name                string `json:"name" validate:"required"`

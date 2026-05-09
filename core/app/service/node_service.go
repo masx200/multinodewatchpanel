@@ -18,7 +18,7 @@ type INodeService interface {
 	Delete(id uint) error
 	List() ([]dto.NodeInfo, error)
 	GetByID(id uint) (dto.NodeInfo, error)
-	TestConnection(req dto.NodeCreate) error
+	TestConnection(req dto.NodeTest) error
 	GetClient(nodeID uint) (*utils.PanelClient, error)
 	RefreshStatus()
 }
@@ -112,8 +112,20 @@ func (s *NodeService) GetByID(id uint) (dto.NodeInfo, error) {
 	return toNodeInfo(node), nil
 }
 
-func (s *NodeService) TestConnection(req dto.NodeCreate) error {
-	client := utils.NewPanelClientWithOptions(req.Host, req.Port, req.APIKey, utils.PanelClientOptions{
+func (s *NodeService) TestConnection(req dto.NodeTest) error {
+	apiKey := req.APIKey
+	// 编辑时如果 APIKey 为空，从数据库取已保存的值
+	if apiKey == "" && req.ID > 0 {
+		node, err := s.nodeRepo.GetByID(req.ID)
+		if err != nil {
+			return errors.New("node not found, cannot retrieve saved APIKey")
+		}
+		apiKey = node.APIKey
+	}
+	if apiKey == "" {
+		return errors.New("apiKey is required")
+	}
+	client := utils.NewPanelClientWithOptions(req.Host, req.Port, apiKey, utils.PanelClientOptions{
 		Security:             req.Security,
 		AllowInsecure:        req.AllowInsecure,
 		PinnedPeerCertSHA256: req.PinnedPeerCertSHA256,

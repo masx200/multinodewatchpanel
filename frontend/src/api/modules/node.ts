@@ -108,7 +108,20 @@ export const deleteNode = (id: number) => {
     return http.delete(`/core/nodes/${id}`);
 };
 
-export const testNodeConnection = (req: NodeCreate) => {
+export interface NodeTest {
+    id?: number;
+    name: string;
+    host: string;
+    port: number;
+    apiKey?: string;
+    tags?: string;
+    serverName?: string;
+    security?: string;
+    allowInsecure?: boolean;
+    pinnedPeerCertSha256?: string;
+}
+
+export const testNodeConnection = (req: NodeTest) => {
     return http.post('/core/nodes/test', req);
 };
 

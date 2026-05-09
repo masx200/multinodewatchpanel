@@ -90,12 +90,12 @@ func (b *BaseApi) DeleteNode(c *gin.Context) {
 // @Tags Node
 // @Summary Test node connection
 // @Accept json
-// @Param request body dto.NodeCreate true "request"
+// @Param request body dto.NodeTest true "request"
 // @Success 200
 // @Security ApiKeyAuth
 // @Router /api/v2/nodes/test [post]
 func (b *BaseApi) TestNodeConnection(c *gin.Context) {
-	var req dto.NodeCreate
+	var req dto.NodeTest
 	if err := helper.CheckBindAndValidate(&req, c); err != nil {
 		return
 	}
