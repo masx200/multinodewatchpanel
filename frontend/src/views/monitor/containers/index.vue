@@ -23,6 +23,15 @@
             <div v-if="!currentNodeId" class="empty-tip">
                 <el-empty :description="$t('monitor.noNodeSelected')" />
             </div>
+            <div v-else-if="dockerError" class="docker-error-state">
+                <el-icon :size="48" color="var(--el-color-warning)"><WarningFilled /></el-icon>
+                <p class="docker-error-title">{{ $t('monitor.dockerNotDetected') }}</p>
+                <p class="docker-error-detail">{{ dockerError }}</p>
+                <el-button type="primary" @click="fetchContainers" :loading="loading">
+                    <el-icon class="mr-1"><Refresh /></el-icon>
+                    {{ $t('monitor.retry') }}
+                </el-button>
+            </div>
             <el-table v-else :data="containers" v-loading="loading" border stripe>
                 <el-table-column prop="name" :label="$t('monitor.containerName')" min-width="160" />
                 <el-table-column prop="imageName" :label="$t('monitor.imageName')" min-width="200" />
@@ -51,13 +60,14 @@
 
 <script lang="ts" setup>
 import { ref, onMounted } from 'vue';
-import { Refresh } from '@element-plus/icons-vue';
+import { Refresh, WarningFilled } from '@element-plus/icons-vue';
 import { listNodes, getNodeContainers, type NodeInfo, type ContainerInfo } from '@/api/modules/node';
 
 const loading = ref(false);
 const nodeList = ref<NodeInfo[]>([]);
 const currentNodeId = ref<number | null>(null);
 const containers = ref<ContainerInfo[]>([]);
+const dockerError = ref('');
 
 const fetchNodes = async () => {
     const res = await listNodes();
@@ -72,9 +82,18 @@ const fetchNodes = async () => {
 const fetchContainers = async () => {
     if (!currentNodeId.value) return;
     loading.value = true;
+    dockerError.value = '';
     try {
         const res = await getNodeContainers(currentNodeId.value);
         containers.value = res.data ?? [];
+    } catch (e: any) {
+        const msg = e?.response?.data?.message || e?.message || String(e);
+        if (/docker/i.test(msg)) {
+            dockerError.value = msg;
+            containers.value = [];
+        } else {
+            throw e;
+        }
     } finally {
         loading.value = false;
     }
@@ -96,5 +115,26 @@ onMounted(fetchNodes);
     justify-content: center;
     align-items: center;
     height: 300px;
+}
+.docker-error-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 300px;
+    gap: 12px;
+}
+.docker-error-title {
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--el-text-color-primary);
+    margin: 0;
+}
+.docker-error-detail {
+    font-size: 13px;
+    color: var(--el-text-color-secondary);
+    margin: 0;
+    max-width: 500px;
+    text-align: center;
 }
 </style>

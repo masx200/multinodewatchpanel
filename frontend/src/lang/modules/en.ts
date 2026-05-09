@@ -1495,6 +1495,8 @@ const message = {
         viewDashboard: 'View Dashboard',
         noDataInRange: 'No monitoring data in the selected time range',
         metricLabel: 'Metric',
+        dockerNotDetected: 'Docker service not detected on this node',
+        retry: 'Retry',
         // security fields
         nodeSecurity: 'Transport Security',
         nodeServerName: 'Server Name (SNI)',

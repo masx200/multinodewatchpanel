@@ -1417,6 +1417,8 @@ const message = {
         viewDashboard: '查看仪表盘',
         noDataInRange: '所选时间段内暂无监控数据',
         metricLabel: '指标',
+        dockerNotDetected: '未检测到 Docker 服务',
+        retry: '重试',
         // 安全字段
         nodeSecurity: '传输安全',
         nodeServerName: '服务名称 (SNI)',
