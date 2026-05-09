@@ -103,6 +103,9 @@ const message = {
         search: {
             timeStart: '开始时间',
             timeEnd: '结束时间',
+            startTime: '开始时间',
+            endTime: '结束时间',
+            timeRange: '至',
             date: '日期',
         },
         table: {

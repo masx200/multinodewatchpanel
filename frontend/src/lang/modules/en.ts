@@ -103,6 +103,8 @@ const message = {
         search: {
             timeStart: 'Start time',
             timeEnd: 'End time',
+            startTime: 'Start time',
+            endTime: 'End time',
             timeRange: 'To',
             dateStart: 'Start date',
             dateEnd: 'End date',

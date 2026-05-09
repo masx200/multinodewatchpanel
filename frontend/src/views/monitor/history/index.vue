@@ -27,7 +27,7 @@
                 v-model="timeRange"
                 type="datetimerange"
                 style="width: 360px; margin-left: 8px"
-                :range-separator="$t('commons.table.to')"
+                :range-separator="$t('commons.search.timeRange')"
                 :start-placeholder="$t('commons.search.startTime')"
                 :end-placeholder="$t('commons.search.endTime')"
                 format="YYYY-MM-DD HH:mm:ss"
