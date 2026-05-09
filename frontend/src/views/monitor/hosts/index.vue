@@ -5,10 +5,6 @@
                 <el-icon><Refresh /></el-icon>
                 {{ $t('monitor.refreshStatus') }}
             </el-button>
-            <el-button @click="fetchHeatmap" :loading="heatmapLoading">
-                <el-icon><Refresh /></el-icon>
-                刷新热力图
-            </el-button>
         </template>
 
         <template #main>
@@ -46,7 +42,22 @@
 
             <!-- 热力图 -->
             <div class="heatmap-container">
-                <h3>节点在线状态热力图（最近24小时）</h3>
+                <div class="heatmap-header">
+                    <h3>节点在线状态热力图</h3>
+                    <div class="heatmap-controls">
+                        <el-radio-group v-model="selectedHours" size="small" @change="onHoursChange">
+                            <el-radio-button :value="6">6小时</el-radio-button>
+                            <el-radio-button :value="12">12小时</el-radio-button>
+                            <el-radio-button :value="24">24小时</el-radio-button>
+                            <el-radio-button :value="72">3天</el-radio-button>
+                            <el-radio-button :value="168">7天</el-radio-button>
+                        </el-radio-group>
+                        <el-button @click="fetchHeatmap" :loading="heatmapLoading" size="small" class="ml-4">
+                            <el-icon><Refresh /></el-icon>
+                            刷新
+                        </el-button>
+                    </div>
+                </div>
                 <div ref="heatmapChart" style="width: 100%; height: 400px"></div>
             </div>
         </template>
@@ -61,12 +72,28 @@ import { listNodes, getNodeHeatmap, type NodeInfo, type NodeHeatmapData } from '
 import dayjs from 'dayjs';
 import * as echarts from 'echarts';
 
+const MAX_TIME_SLOTS = 300;
+
 const router = useRouter();
 const loading = ref(false);
 const heatmapLoading = ref(false);
 const nodeList = ref<NodeInfo[]>([]);
 const heatmapChart = ref<HTMLElement | null>(null);
 let chartInstance: echarts.ECharts | null = null;
+
+const selectedHours = ref(24);
+
+// 根据选定的小时数计算合理的 stepMinutes，确保数据点不超过 MAX_TIME_SLOTS
+const calcStepMinutes = (hours: number): number => {
+    let step = 5; // 默认5分钟
+    const slots = (hours * 60) / step;
+    if (slots > MAX_TIME_SLOTS) {
+        step = Math.ceil((hours * 60) / MAX_TIME_SLOTS);
+        // 向上取整到5的倍数，更友好
+        step = Math.ceil(step / 5) * 5;
+    }
+    return step;
+};
 
 const fetchNodes = async () => {
     loading.value = true;
@@ -80,8 +107,9 @@ const fetchNodes = async () => {
 
 const fetchHeatmap = async () => {
     heatmapLoading.value = true;
+    const stepMinutes = calcStepMinutes(selectedHours.value);
     try {
-        const res = await getNodeHeatmap();
+        const res = await getNodeHeatmap({ hours: selectedHours.value, stepMinutes });
         const data: NodeHeatmapData = res.data!;
         renderHeatmap(data);
     } catch (err) {
@@ -89,6 +117,10 @@ const fetchHeatmap = async () => {
     } finally {
         heatmapLoading.value = false;
     }
+};
+
+const onHoursChange = () => {
+    fetchHeatmap();
 };
 
 const renderHeatmap = (data: NodeHeatmapData) => {
@@ -107,6 +139,9 @@ const renderHeatmap = (data: NodeHeatmapData) => {
             }
         }
     }
+
+    // 动态计算x轴label间隔，避免标签过密
+    const labelInterval = Math.max(Math.floor(data.times.length / 20), 0);
 
     const option: echarts.EChartsOption = {
         tooltip: {
@@ -131,6 +166,7 @@ const renderHeatmap = (data: NodeHeatmapData) => {
             axisLabel: {
                 rotate: 45,
                 fontSize: 10,
+                interval: labelInterval,
             },
         },
         yAxis: {
@@ -169,7 +205,7 @@ const renderHeatmap = (data: NodeHeatmapData) => {
         ],
     };
 
-    chartInstance.setOption(option);
+    chartInstance.setOption(option, true);
 };
 
 const statusType = (status: number) => {
@@ -215,9 +251,25 @@ onUnmounted(() => {
     border: 1px solid #e4e7ed;
 }
 
-.heatmap-container h3 {
+.heatmap-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     margin-bottom: 15px;
+}
+
+.heatmap-header h3 {
+    margin-bottom: 0;
     color: #303133;
     font-size: 16px;
+}
+
+.heatmap-controls {
+    display: flex;
+    align-items: center;
+}
+
+.ml-4 {
+    margin-left: 16px;
 }
 </style>

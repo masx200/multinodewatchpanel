@@ -24,7 +24,7 @@ type INodeService interface {
 	TestConnection(req dto.NodeTest) error
 	GetClient(nodeID uint) (*utils.PanelClient, error)
 	RefreshStatus()
-	GetHeatmapData() (dto.NodeHeatmapData, error)
+	GetHeatmapData(hours, stepMinutes int) (dto.NodeHeatmapData, error)
 }
 
 type NodeService struct {
@@ -221,36 +221,56 @@ func toNodeInfo(n model.HostNode) dto.NodeInfo {
 	return info
 }
 
-// GetHeatmapData 获取节点热力图数据（最近24小时在线状态）
-func (s *NodeService) GetHeatmapData() (dto.NodeHeatmapData, error) {
+// GetHeatmapData 获取节点热力图数据（可配置时间范围和粒度）
+func (s *NodeService) GetHeatmapData(hours, stepMinutes int) (dto.NodeHeatmapData, error) {
+	if hours <= 0 {
+		hours = 24
+	}
+	if stepMinutes <= 0 {
+		stepMinutes = 5
+	}
+
+	// 限制最大数据点数为300，自动调整stepMinutes
+	totalSlots := hours * 60 / stepMinutes
+	if totalSlots > 300 {
+		stepMinutes = hours * 60 / 300
+		if stepMinutes < 1 {
+			stepMinutes = 1
+		}
+		totalSlots = hours * 60 / stepMinutes
+	}
+
 	nodes, err := s.nodeRepo.List()
 	if err != nil {
 		return dto.NodeHeatmapData{}, err
 	}
 
-	// 生成时间轴：最近24小时，每小时一个点，格式 "MM-DD HH:00"
+	// 生成时间轴：按 stepMinutes 粒度，格式 "MM-DD HH:mm"
 	now := time.Now()
-	times := make([]string, 0, 24)
-	timeKeys := make([]string, 0, 24) // 用于映射的key: "MM-DD HH"
-	for i := 23; i >= 0; i-- {
-		t := now.Add(time.Duration(-i) * time.Hour)
-		times = append(times, t.Format("01-02 15:00"))
-		timeKeys = append(timeKeys, t.Format("01-02 15"))
+	times := make([]string, 0, totalSlots)
+	timeKeys := make([]string, 0, totalSlots) // 用于映射的key
+	for i := totalSlots - 1; i >= 0; i-- {
+		t := now.Add(time.Duration(-i*stepMinutes) * time.Minute)
+		times = append(times, t.Format("01-02 15:04"))
+		timeKeys = append(timeKeys, t.Format("01-02 15:04"))
 	}
 
 	// 查询时间范围
-	startTime := now.Add(-24 * time.Hour)
+	startTime := now.Add(time.Duration(-hours) * time.Hour)
 	endTime := now
 
 	values := make([][]int, len(nodes))
 	for i, n := range nodes {
-		// 初始化该节点的状态映射（key: "MM-DD HH" -> status）
+		// 初始化该节点的状态映射（key: "MM-DD HH:mm" -> status）
 		statusMap := make(map[string]int)
 		records, err := s.monitorRepo.ListByNodeAndType(n.ID, "status", startTime, endTime)
 		if err == nil {
 			for _, r := range records {
-				key := r.RecordedAt.Format("01-02 15")
-				// 取每个小时最后一条记录（因为是按时间升序，直接覆盖即可）
+				// 将记录归入最近的 stepMinutes 时间槽
+				minutes := r.RecordedAt.Minute()
+				slotMinute := (minutes / stepMinutes) * stepMinutes
+				key := r.RecordedAt.Format("01-02 15:") + fmt.Sprintf("%02d", slotMinute)
+				// 取每个时间槽最后一条记录（按时间升序，直接覆盖）
 				statusMap[key] = int(r.MetricValue) // 0 or 1
 			}
 		}

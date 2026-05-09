@@ -154,6 +154,11 @@ export interface NodeHeatmapData {
     values: number[][];
 }
 
-export const getNodeHeatmap = () => {
-    return http.get<NodeHeatmapData>('/core/nodes/heatmap');
+export interface NodeHeatmapParams {
+    hours?: number;
+    stepMinutes?: number;
+}
+
+export const getNodeHeatmap = (params?: NodeHeatmapParams) => {
+    return http.get<NodeHeatmapData>('/core/nodes/heatmap', { params });
 };

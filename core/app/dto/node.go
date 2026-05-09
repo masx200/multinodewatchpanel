@@ -109,9 +109,15 @@ type NodeDashboard struct {
 	IPAddress string `json:"ipAddress"`
 }
 
+// NodeHeatmapReq 节点热力图请求
+type NodeHeatmapReq struct {
+	Hours        int `form:"hours" json:"hours"`               // 时间范围（小时），默认24
+	StepMinutes  int `form:"stepMinutes" json:"stepMinutes"`   // 时间粒度（分钟），默认5
+}
+
 // NodeHeatmapData 节点热力图数据
 type NodeHeatmapData struct {
-	Times []string  `json:"times"` // 时间轴，如 ["00:00", "01:00", ...]
+	Times []string  `json:"times"` // 时间轴，如 ["01-02 15:00", "01-02 15:05", ...]
 	Nodes []string  `json:"nodes"` // 节点名称列表
 	Values [][]int  `json:"values"` // 二维数组，values[nodeIndex][timeIndex] = 0/1/2
 }

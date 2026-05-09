@@ -271,11 +271,24 @@ func (b *BaseApi) SearchMonitorHistory(c *gin.Context) {
 
 // @Tags Node
 // @Summary Get node heatmap data
+// @Param hours query int false "时间范围（小时），默认24" default(24)
+// @Param stepMinutes query int false "时间粒度（分钟），默认5" default(5)
 // @Success 200 {object} dto.NodeHeatmapData
 // @Security ApiKeyAuth
 // @Router /api/v2/nodes/heatmap [get]
 func (b *BaseApi) GetNodeHeatmapData(c *gin.Context) {
-	data, err := nodeService.GetHeatmapData()
+	var req dto.NodeHeatmapReq
+	if err := c.ShouldBindQuery(&req); err != nil {
+		helper.BadRequest(c, err)
+		return
+	}
+	if req.Hours <= 0 {
+		req.Hours = 24
+	}
+	if req.StepMinutes <= 0 {
+		req.StepMinutes = 5
+	}
+	data, err := nodeService.GetHeatmapData(req.Hours, req.StepMinutes)
 	if err != nil {
 		helper.InternalServer(c, err)
 		return
