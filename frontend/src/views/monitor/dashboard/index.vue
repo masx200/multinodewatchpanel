@@ -89,8 +89,22 @@
                                 <el-descriptions-item :label="$t('monitor.osVersion')">
                                     {{ dashboard.osVersion || '-' }}
                                 </el-descriptions-item>
+                                <el-descriptions-item :label="$t('monitor.ipAddress')">
+                                    {{ dashboard.ipAddress || '-' }}
+                                </el-descriptions-item>
                                 <el-descriptions-item :label="$t('monitor.uptime')">
                                     {{ formatUptime(dashboard.uptime) }}
+                                </el-descriptions-item>
+                                <el-descriptions-item :label="$t('monitor.memoryDetail')">
+                                    {{ formatBytes(dashboard.memoryUsed) }} / {{ formatBytes(dashboard.memoryTotal) }}
+                                    ({{ dashboard.memory.toFixed(1) }}%)
+                                </el-descriptions-item>
+                                <el-descriptions-item :label="$t('monitor.swapDetail')">
+                                    {{ dashboard.swapTotal > 0 ? `${formatBytes(dashboard.swapUsed)} / ${formatBytes(dashboard.swapTotal)}` : '-' }}
+                                </el-descriptions-item>
+                                <el-descriptions-item :label="$t('monitor.diskDetail')">
+                                    {{ dashboard.diskTotal > 0 ? `${formatBytes(dashboard.diskUsed)} / ${formatBytes(dashboard.diskTotal)}` : '-' }}
+                                    ({{ dashboard.disk.toFixed(1) }}%)
                                 </el-descriptions-item>
                                 <el-descriptions-item :label="$t('monitor.netUpload')">
                                     {{ formatBytes(dashboard.netUp) }}/s ↑
@@ -138,6 +152,14 @@ const dashboard = ref<NodeDashboard>({
     hostname: '',
     osVersion: '',
     uptime: 0,
+    memoryTotal: 0,
+    memoryUsed: 0,
+    memoryAvail: 0,
+    swapTotal: 0,
+    swapUsed: 0,
+    diskTotal: 0,
+    diskUsed: 0,
+    ipAddress: '',
 });
 
 let timer: ReturnType<typeof setInterval> | null = null;

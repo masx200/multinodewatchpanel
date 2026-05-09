@@ -92,6 +92,18 @@ type NodeDashboard struct {
 	Hostname  string  `json:"hostname"`
 	OSVersion string  `json:"osVersion"`
 	Uptime    uint64  `json:"uptime"`
+
+	MemoryTotal int64 `json:"memoryTotal"`
+	MemoryUsed  int64 `json:"memoryUsed"`
+	MemoryAvail int64 `json:"memoryAvail"`
+
+	SwapTotal int64 `json:"swapTotal"`
+	SwapUsed  int64 `json:"swapUsed"`
+
+	DiskTotal int64 `json:"diskTotal"`
+	DiskUsed  int64 `json:"diskUsed"`
+
+	IPAddress string `json:"ipAddress"`
 }
 
 // NodeHeatmapData 节点热力图数据

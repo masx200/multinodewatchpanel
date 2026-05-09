@@ -58,6 +58,14 @@ export interface NodeDashboard {
     hostname: string;
     osVersion: string;
     uptime: number;
+    memoryTotal: number;
+    memoryUsed: number;
+    memoryAvail: number;
+    swapTotal: number;
+    swapUsed: number;
+    diskTotal: number;
+    diskUsed: number;
+    ipAddress: string;
 }
 
 export interface MonitorSearchReq {

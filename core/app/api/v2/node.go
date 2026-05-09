@@ -137,23 +137,33 @@ func (b *BaseApi) GetNodeDashboard(c *gin.Context) {
 	base, _ := client.GetDashboardBase("all", "all")
 
 	dashboard := dto.NodeDashboard{
-		NodeID:   nodeInfo.ID,
-		NodeName: nodeInfo.Name,
-		Status:   nodeInfo.Status,
-		CPU:      current.CPUUsedPercent,
-		Memory:   current.MemoryUsedPercent,
-		Load1:    current.Load1,
-		Load5:    current.Load5,
-		Load15:   current.Load15,
+		NodeID:       nodeInfo.ID,
+		NodeName:     nodeInfo.Name,
+		Status:       nodeInfo.Status,
+		CPU:          current.CPUUsedPercent,
+		Memory:       current.MemoryUsedPercent,
+		MemoryTotal:  current.MemoryTotal,
+		MemoryUsed:   current.MemoryUsed,
+		MemoryAvail:  current.MemoryAvailable,
+		SwapTotal:    current.SwapMemoryTotal,
+		SwapUsed:     current.SwapMemoryUsed,
+		Load1:        current.Load1,
+		Load5:        current.Load5,
+		Load15:       current.Load15,
 	}
 	// 从 DiskData 计算总体磁盘使用率
 	if len(current.DiskData) > 0 {
 		var totalUsed, totalAll float64
+		var diskTotalSum, diskUsedSum int64
 		for _, d := range current.DiskData {
 			totalUsed += d.UsedPercent
 			totalAll++
+			diskTotalSum += d.Total
+			diskUsedSum += d.Used
 		}
 		dashboard.Disk = totalUsed / totalAll
+		dashboard.DiskTotal = diskTotalSum
+		dashboard.DiskUsed = diskUsedSum
 	}
 	dashboard.NetUp = float64(current.NetBytesSent)
 	dashboard.NetDown = float64(current.NetBytesRecv)
@@ -164,6 +174,7 @@ func (b *BaseApi) GetNodeDashboard(c *gin.Context) {
 		dashboard.Hostname = base.Hostname
 		dashboard.Uptime = uint64(base.CurrentInfo.Uptime)
 		dashboard.OSVersion = base.PrettyDistro
+		dashboard.IPAddress = base.IPv4Addr
 	}
 	helper.SuccessWithData(c, dashboard)
 }
