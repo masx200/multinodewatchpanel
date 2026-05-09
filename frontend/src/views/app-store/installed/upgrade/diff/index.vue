@@ -30,9 +30,9 @@ const oldContent = ref('');
 const em = defineEmits(['confirm']);
 
 let monaco: MonacoEditorApi | null = null;
-let originalModel: MonacoEditorApi['editor']['ITextModel'] | null = null;
-let modifiedModel: MonacoEditorApi['editor']['ITextModel'] | null = null;
-let editor: MonacoEditorApi['editor']['IStandaloneDiffEditor'] | null = null;
+let originalModel: any = null;
+let modifiedModel: any = null;
+let editor: any = null;
 
 const container = ref();
 

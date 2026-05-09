@@ -102,6 +102,10 @@ func (c *CollectorService) collectNode(node model.HostNode) {
 	if err != nil {
 		global.LOG.Errorf("collector: get client for node %d failed: %v", node.ID, err)
 		_ = c.nodeRepo.UpdateStatus(node.ID, 2, nil)
+		// 记录离线状态
+		_ = c.monitorRepo.BatchCreate([]model.MonitorHistory{
+			{NodeID: node.ID, MetricType: "status", MetricValue: 0, RecordedAt: time.Now()},
+		})
 		return
 	}
 
@@ -109,6 +113,10 @@ func (c *CollectorService) collectNode(node model.HostNode) {
 	if err != nil {
 		global.LOG.Warnf("collector: collect node %d failed: %v", node.ID, err)
 		_ = c.nodeRepo.UpdateStatus(node.ID, 2, nil)
+		// 记录离线状态
+		_ = c.monitorRepo.BatchCreate([]model.MonitorHistory{
+			{NodeID: node.ID, MetricType: "status", MetricValue: 0, RecordedAt: time.Now()},
+		})
 		return
 	}
 
@@ -123,6 +131,8 @@ func (c *CollectorService) collectNode(node model.HostNode) {
 		{NodeID: node.ID, MetricType: "net_download", MetricValue: float64(current.NetBytesRecv), RecordedAt: now},
 		{NodeID: node.ID, MetricType: "io_read", MetricValue: float64(current.IOReadBytes), RecordedAt: now},
 		{NodeID: node.ID, MetricType: "io_write", MetricValue: float64(current.IOWriteBytes), RecordedAt: now},
+		// 记录节点在线状态：1=在线，0=离线
+		{NodeID: node.ID, MetricType: "status", MetricValue: 1, RecordedAt: now},
 	}
 
 	if err := c.monitorRepo.BatchCreate(records); err != nil {

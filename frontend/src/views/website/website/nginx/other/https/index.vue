@@ -32,6 +32,7 @@ const form = reactive({
     operate: 'enable',
     sslRejectHandshake: false,
 });
+const rules = ref<any>({});
 
 const getStatus = async () => {
     try {

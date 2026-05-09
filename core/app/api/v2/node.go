@@ -257,3 +257,17 @@ func (b *BaseApi) SearchMonitorHistory(c *gin.Context) {
 	}
 	helper.SuccessWithData(c, items)
 }
+
+// @Tags Node
+// @Summary Get node heatmap data
+// @Success 200 {object} dto.NodeHeatmapData
+// @Security ApiKeyAuth
+// @Router /api/v2/nodes/heatmap [get]
+func (b *BaseApi) GetNodeHeatmapData(c *gin.Context) {
+	data, err := nodeService.GetHeatmapData()
+	if err != nil {
+		helper.InternalServer(c, err)
+		return
+	}
+	helper.SuccessWithData(c, data)
+}

@@ -626,7 +626,7 @@ const search = async (column?: any) => {
     }
 
     if (statusResult.status === 'fulfilled') {
-        updateTags(statusResult.value.data || {});
+        updateTags((statusResult.value.data || {}) as Record<string, number>);
     }
 };
 

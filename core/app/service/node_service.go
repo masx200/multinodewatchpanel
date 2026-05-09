@@ -21,6 +21,7 @@ type INodeService interface {
 	TestConnection(req dto.NodeTest) error
 	GetClient(nodeID uint) (*utils.PanelClient, error)
 	RefreshStatus()
+	GetHeatmapData() (dto.NodeHeatmapData, error)
 }
 
 type NodeService struct {
@@ -203,4 +204,63 @@ func toNodeInfo(n model.HostNode) dto.NodeInfo {
 		info.LastSeen = n.LastSeen
 	}
 	return info
+}
+
+// GetHeatmapData 获取节点热力图数据（最近24小时在线状态）
+func (s *NodeService) GetHeatmapData() (dto.NodeHeatmapData, error) {
+	nodes, err := s.nodeRepo.List()
+	if err != nil {
+		return dto.NodeHeatmapData{}, err
+	}
+
+	// 生成时间轴：最近24小时，每小时一个点，格式 "MM-DD HH:00"
+	now := time.Now()
+	times := make([]string, 0, 24)
+	timeKeys := make([]string, 0, 24) // 用于映射的key: "MM-DD HH"
+	for i := 23; i >= 0; i-- {
+		t := now.Add(time.Duration(-i) * time.Hour)
+		times = append(times, t.Format("01-02 15:00"))
+		timeKeys = append(timeKeys, t.Format("01-02 15"))
+	}
+
+	// 查询时间范围
+	startTime := now.Add(-24 * time.Hour)
+	endTime := now
+
+	values := make([][]int, len(nodes))
+	for i, n := range nodes {
+		// 初始化该节点的状态映射（key: "MM-DD HH" -> status）
+		statusMap := make(map[string]int)
+		records, err := s.monitorRepo.ListByNodeAndType(n.ID, "status", startTime, endTime)
+		if err == nil {
+			for _, r := range records {
+				key := r.RecordedAt.Format("01-02 15")
+				// 取每个小时最后一条记录（因为是按时间升序，直接覆盖即可）
+				statusMap[key] = int(r.MetricValue) // 0 or 1
+			}
+		}
+
+		// 构建该节点的状态数组
+		nodeValues := make([]int, len(timeKeys))
+		for j, key := range timeKeys {
+			if status, ok := statusMap[key]; ok {
+				nodeValues[j] = status
+			} else {
+				nodeValues[j] = -1 // 无数据
+			}
+		}
+		values[i] = nodeValues
+	}
+
+	// 构建节点名称列表
+	nodeNames := make([]string, len(nodes))
+	for i, n := range nodes {
+		nodeNames[i] = n.Name
+	}
+
+	return dto.NodeHeatmapData{
+		Times:  times,
+		Nodes:  nodeNames,
+		Values: values,
+	}, nil
 }

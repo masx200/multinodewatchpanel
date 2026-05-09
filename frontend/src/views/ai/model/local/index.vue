@@ -9,7 +9,7 @@
                         class="tag-button"
                         :class="currentTab === button.value ? '' : 'no-active'"
                         :type="currentTab === button.value ? 'primary' : ''"
-                        @click="handleChange(button.value)"
+                        @click="handleChange(button.value as LocalTab)"
                     >
                         {{ button.label }}
                     </el-button>

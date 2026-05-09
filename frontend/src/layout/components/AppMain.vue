@@ -16,7 +16,7 @@ const key = computed(() => {
     return Math.random();
 });
 const include = computed(() => {
-    return props.keepAlive || cacheRouter;
+    return ((props.keepAlive as string[]) || cacheRouter) as (string | RegExp)[];
 });
 const props = defineProps({
     keepAlive: {

@@ -23,5 +23,6 @@ func (n *NodeRouter) InitRouter(Router *gin.RouterGroup) {
 		nodeRouter.GET("/:id/dashboard", baseApi.GetNodeDashboard)
 		nodeRouter.GET("/:id/containers", baseApi.GetNodeContainers)
 		nodeRouter.POST("/monitor/search", baseApi.SearchMonitorHistory)
+		nodeRouter.GET("/heatmap", baseApi.GetNodeHeatmapData)
 	}
 }

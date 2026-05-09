@@ -136,3 +136,13 @@ export const getNodeContainers = (id: number) => {
 export const searchMonitorHistory = (req: MonitorSearchReq) => {
     return http.post<MonitorHistoryItem[]>('/core/nodes/monitor/search', req);
 };
+
+export interface NodeHeatmapData {
+    times: string[];
+    nodes: string[];
+    values: number[][];
+}
+
+export const getNodeHeatmap = () => {
+    return http.get<NodeHeatmapData>('/core/nodes/heatmap');
+};

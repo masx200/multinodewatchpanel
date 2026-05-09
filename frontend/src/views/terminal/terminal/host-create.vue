@@ -170,7 +170,7 @@ const submitAddHost = (formEl: FormInstance | undefined, ops: string) => {
         if (!valid) return;
         switch (ops) {
             case 'testConn':
-                await testByInfo(form).then((res) => {
+                await testByInfo({ ...form, localSSHConnShow: '' }).then((res) => {
                     if (res.data) {
                         isOK.value = true;
                         MsgSuccess(i18n.global.t('terminal.connTestOk'));

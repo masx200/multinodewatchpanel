@@ -297,7 +297,7 @@ const rules = computed<FormRules>(() => {
     }
     if (props.uniqueFieldProp) {
         config[props.uniqueFieldProp] = [
-            ...(config[props.uniqueFieldProp] || []),
+            ...((config[props.uniqueFieldProp] as any[]) || []),
             {
                 validator: (_rule, value, callback) => {
                     const exists = props.bots.some(

@@ -93,3 +93,10 @@ type NodeDashboard struct {
 	OSVersion string  `json:"osVersion"`
 	Uptime    uint64  `json:"uptime"`
 }
+
+// NodeHeatmapData 节点热力图数据
+type NodeHeatmapData struct {
+	Times []string  `json:"times"` // 时间轴，如 ["00:00", "01:00", ...]
+	Nodes []string  `json:"nodes"` // 节点名称列表
+	Values [][]int  `json:"values"` // 二维数组，values[nodeIndex][timeIndex] = 0/1/2
+}

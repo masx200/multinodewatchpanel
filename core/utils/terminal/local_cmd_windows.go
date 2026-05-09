@@ -1,4 +1,4 @@
-//go:build !windows
+//go:build windows
 
 package terminal
 
@@ -7,11 +7,8 @@ import (
 	"os/exec"
 	"syscall"
 	"time"
-	"unsafe"
 
-	"github.com/creack/pty"
 	"github.com/masx200/multinodewatchpanel/core/global"
-	"github.com/pkg/errors"
 )
 
 const (
@@ -24,76 +21,47 @@ type LocalCommand struct {
 	closeTimeout time.Duration
 
 	cmd *exec.Cmd
-	pty *os.File
+	pty  *os.File
 }
 
 func NewCommand(script string) (*LocalCommand, error) {
-	cmd := exec.Command("bash")
+	cmd := exec.Command("cmd.exe")
 	if term := os.Getenv("TERM"); term != "" {
 		cmd.Env = append(os.Environ(), "TERM="+term)
-	} else {
-		cmd.Env = append(os.Environ(), "TERM=xterm")
-	}
-	cmd.Env = append(cmd.Env, "INIT_SCRIPT="+script)
-	pty, err := pty.Start(cmd)
-	if err != nil {
-		return nil, errors.Wrapf(err, "failed to start command")
-	}
-	if len(script) != 0 {
-		time.Sleep(100 * time.Millisecond)
-		_, _ = pty.Write([]byte("bash -c \"$INIT_SCRIPT\"\n"))
 	}
 
 	lcmd := &LocalCommand{
 		closeSignal:  DefaultCloseSignal,
 		closeTimeout: DefaultCloseTimeout,
+		cmd:          cmd,
+		pty:           nil,
+	}
 
-		cmd: cmd,
-		pty: pty,
+	if err := cmd.Start(); err != nil {
+		return nil, err
 	}
 
 	return lcmd, nil
 }
 
 func (lcmd *LocalCommand) Read(p []byte) (n int, err error) {
-	return lcmd.pty.Read(p)
+	return 0, nil // Windows 上暂不支持
 }
 
 func (lcmd *LocalCommand) Write(p []byte) (n int, err error) {
-	return lcmd.pty.Write(p)
+	return len(p), nil // Windows 上暂不支持
 }
 
 func (lcmd *LocalCommand) Close() error {
 	if lcmd.cmd != nil && lcmd.cmd.Process != nil {
 		_ = lcmd.cmd.Process.Kill()
 	}
-	_ = lcmd.pty.Close()
 	return nil
 }
 
 func (lcmd *LocalCommand) ResizeTerminal(width int, height int) error {
-	window := struct {
-		row uint16
-		col uint16
-		x   uint16
-		y   uint16
-	}{
-		uint16(height),
-		uint16(width),
-		0,
-		0,
-	}
-	_, _, errno := syscall.Syscall(
-		syscall.SYS_IOCTL,
-		lcmd.pty.Fd(),
-		syscall.TIOCSWINSZ,
-		uintptr(unsafe.Pointer(&window)),
-	)
-	if errno != 0 {
-		return errno
-	} else {
-		return nil
-	}
+	// Windows 上暂不支持 pty 调整大小
+	return nil
 }
 
 func (lcmd *LocalCommand) Wait(quitChan chan bool) {
@@ -101,5 +69,4 @@ func (lcmd *LocalCommand) Wait(quitChan chan bool) {
 		global.LOG.Errorf("ssh session wait failed, err: %v", err)
 		setQuit(quitChan)
 	}
-	setQuit(quitChan)
 }
