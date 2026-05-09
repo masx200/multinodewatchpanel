@@ -195,6 +195,25 @@ func (b *BaseApi) GetNodeContainers(c *gin.Context) {
 		helper.InternalServer(c, err)
 		return
 	}
+
+	// 获取所有运行容器的统计信息
+	statsList, err := client.GetContainerStatsList()
+	if err == nil && len(statsList) > 0 {
+		// 构建 containerID -> stats 映射
+		statsMap := make(map[string]utils.ContainerStats)
+		for _, stats := range statsList {
+			statsMap[stats.ContainerID] = stats
+		}
+		// 合并统计信息到容器列表
+		for i := range containers {
+			if stats, ok := statsMap[containers[i].ContainerID]; ok {
+				containers[i].CPUPercent = stats.CPUPercent
+				containers[i].MemUsage = float64(stats.MemoryUsage)
+				containers[i].MemLimit = float64(stats.MemoryLimit)
+			}
+		}
+	}
+
 	helper.SuccessWithData(c, containers)
 }
 

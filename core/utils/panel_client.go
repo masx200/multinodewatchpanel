@@ -331,6 +331,7 @@ type ContainerInfo struct {
 
 // ContainerStats 容器资源统计
 type ContainerStats struct {
+	ContainerID   string  `json:"containerID"`
 	CPUTotalUsage int64   `json:"cpuTotalUsage"`
 	SystemUsage   int64   `json:"systemUsage"`
 	CPUPercent    float64 `json:"cpuPercent"`
