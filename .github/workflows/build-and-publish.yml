@@ -52,7 +52,7 @@ jobs:
 
       - name: Build Web
         run: |
-          cd frontend &&npm i -g pnpm@10.30.3 &&pnpm config set ignore-scripts false&& pnpm install --force&& npm run build:pro
+          cd frontend &&npm i -g pnpm@10.30.3 &&pnpm config set ignore-scripts false&& pnpm install --force&& npx vue-tsc --noEmit&& npm run build:pro
         env:
           PNPM_IGNORE_SCRIPTS: false
           NODE_OPTIONS: --max-old-space-size=8192

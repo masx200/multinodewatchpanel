@@ -65,17 +65,17 @@ const handleChange = (tab: any) => {
 
 const loadTerminalSetting = async () => {
     await getTerminalInfo().then((res) => {
-        terminalStore.$patch({
-            lineHeight: Number(res.data.lineHeight),
-            letterSpacing: Number(res.data.letterSpacing),
-            fontSize: Number(res.data.fontSize),
-            fontFamily: res.data.fontFamily || "Monaco, Menlo, Consolas, 'Courier New', monospace",
-            backgroundColor: res.data.backgroundColor || '#000000',
-            foregroundColor: res.data.foregroundColor || '#f5f5f5',
-            cursorBlink: res.data.cursorBlink,
-            cursorStyle: res.data.cursorStyle,
-            scrollback: Number(res.data.scrollback),
-            scrollSensitivity: Number(res.data.scrollSensitivity),
+        terminalStore.$patch((state) => {
+            state.lineHeight = Number(res.data.lineHeight);
+            state.letterSpacing = Number(res.data.letterSpacing);
+            state.fontSize = Number(res.data.fontSize);
+            state.fontFamily = res.data.fontFamily || "Monaco, Menlo, Consolas, 'Courier New', monospace";
+            state.backgroundColor = res.data.backgroundColor || '#000000';
+            state.foregroundColor = res.data.foregroundColor || '#f5f5f5';
+            state.cursorBlink = res.data.cursorBlink;
+            state.cursorStyle = res.data.cursorStyle;
+            state.scrollback = Number(res.data.scrollback);
+            state.scrollSensitivity = Number(res.data.scrollSensitivity);
         });
     });
 };

@@ -91,9 +91,9 @@ class RequestHttp {
                     return;
                 }
                 if (data.code == ResultEnum.ERRGLOBALLOADING) {
-                    globalStore.$patch({
-                        isLoading: true,
-                        loadingText: data.message,
+                    globalStore.$patch((state) => {
+                        state.isLoading = true;
+                        state.loadingText = data.message;
                     });
                     return;
                 } else {

@@ -415,17 +415,17 @@ const onSave = () => {
             };
             await UpdateTerminalInfo(param);
             MsgSuccess(i18n.global.t('commons.msg.operationSuccess'));
-            terminalStore.$patch({
-                lineHeight: form.lineHeight,
-                letterSpacing: form.letterSpacing,
-                fontSize: form.fontSize,
-                fontFamily: form.fontFamily,
-                backgroundColor: form.backgroundColor,
-                foregroundColor: form.foregroundColor,
-                cursorBlink: form.cursorBlink,
-                cursorStyle: form.cursorStyle,
-                scrollback: form.scrollback,
-                scrollSensitivity: form.scrollSensitivity,
+            terminalStore.$patch((state) => {
+                state.lineHeight = form.lineHeight;
+                state.letterSpacing = form.letterSpacing;
+                state.fontSize = form.fontSize;
+                state.fontFamily = form.fontFamily;
+                state.backgroundColor = form.backgroundColor;
+                state.foregroundColor = form.foregroundColor;
+                state.cursorBlink = form.cursorBlink;
+                state.cursorStyle = form.cursorStyle;
+                state.scrollback = form.scrollback;
+                state.scrollSensitivity = form.scrollSensitivity;
             });
         } finally {
             loading.value = false;
