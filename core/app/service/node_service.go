@@ -11,6 +11,7 @@ import (
 	"github.com/masx200/multinodewatchpanel/core/app/model"
 	"github.com/masx200/multinodewatchpanel/core/app/repo"
 	"github.com/masx200/multinodewatchpanel/core/utils"
+	"github.com/masx200/multinodewatchpanel/core/utils/tlsutil"
 	"gorm.io/gorm"
 )
 
@@ -282,7 +283,7 @@ func (s *NodeService) GetHeatmapData() (dto.NodeHeatmapData, error) {
 // resolvePinnedHash 如果 certPem 非空则从 PEM 计算 SHA256，否则返回手动填写的 hash
 func resolvePinnedHash(certPem, manualHash string) (string, error) {
 	if strings.TrimSpace(certPem) != "" {
-		hash, err := utils.ComputeCertSHA256(certPem)
+		hash, err := tlsutil.PinnedPeerCertSHA256FromPEM([]byte(certPem))
 		if err != nil {
 			return "", fmt.Errorf("parse certificate PEM: %w", err)
 		}
