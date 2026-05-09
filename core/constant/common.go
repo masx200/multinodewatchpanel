@@ -127,6 +127,13 @@ var WebUrlMap = map[string]struct{}{
 	"/settings/alert":         {},
 	"/settings/snapshot":      {},
 	"/settings/expired":       {},
+	"/settings/nodes":         {},
+
+	"/monitor":            {},
+	"/monitor/dashboard":  {},
+	"/monitor/hosts":      {},
+	"/monitor/containers": {},
+	"/monitor/history":    {},
 
 	"/toolbox":              {},
 	"/toolbox/device":       {},
