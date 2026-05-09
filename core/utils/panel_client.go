@@ -325,7 +325,7 @@ type ContainerInfo struct {
 	IPAddress   string  `json:"ipAddress"`
 	Ports       []string `json:"ports"`
 	CreateTime  string  `json:"createTime"`
-	IsFromApp   string  `json:"isFromApp"`
+	IsFromApp   bool    `json:"isFromApp"`
 	Compose     string  `json:"compose"`
 }
 
