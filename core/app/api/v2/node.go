@@ -129,12 +129,12 @@ func (b *BaseApi) GetNodeDashboard(c *gin.Context) {
 		return
 	}
 
-	current, err := client.GetDashboardCurrent("-", "-")
+	current, err := client.GetDashboardCurrent("all", "all")
 	if err != nil {
 		helper.InternalServer(c, err)
 		return
 	}
-	base, _ := client.GetDashboardBase("-", "-")
+	base, _ := client.GetDashboardBase("all", "all")
 
 	dashboard := dto.NodeDashboard{
 		NodeID:   nodeInfo.ID,
