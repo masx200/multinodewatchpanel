@@ -323,7 +323,7 @@ type ContainerInfo struct {
 	MemLimit    float64 `json:"memLimit"`
 	NetworkMode string  `json:"networkMode"`
 	IPAddress   string  `json:"ipAddress"`
-	Ports       string  `json:"ports"`
+	Ports       []string `json:"ports"`
 	CreateTime  string  `json:"createTime"`
 	IsFromApp   string  `json:"isFromApp"`
 	Compose     string  `json:"compose"`

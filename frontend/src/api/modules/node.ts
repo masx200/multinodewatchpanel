@@ -75,12 +75,19 @@ export interface MonitorHistoryItem {
 export interface ContainerInfo {
     containerID: string;
     name: string;
+    imageID: string;
     imageName: string;
     state: string;
     status: string;
     cpuPercent: number;
     memUsage: number;
     memLimit: number;
+    networkMode: string;
+    ipAddress: string;
+    ports: string[];
+    createTime: string;
+    isFromApp: string;
+    compose: string;
 }
 
 // ---- Node API ----
