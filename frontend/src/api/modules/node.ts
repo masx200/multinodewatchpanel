@@ -160,5 +160,5 @@ export interface NodeHeatmapParams {
 }
 
 export const getNodeHeatmap = (params?: NodeHeatmapParams) => {
-    return http.get<NodeHeatmapData>('/core/nodes/heatmap', { params });
+    return http.get<NodeHeatmapData>('/core/nodes/heatmap', params);
 };
