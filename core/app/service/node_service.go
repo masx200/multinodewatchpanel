@@ -245,18 +245,28 @@ func (s *NodeService) GetHeatmapData(hours, stepMinutes int) (dto.NodeHeatmapDat
 		return dto.NodeHeatmapData{}, err
 	}
 
-	// 生成时间轴：按 stepMinutes 粒度，格式 "MM-DD HH:mm"
 	now := time.Now()
+
+	// 将 now 向下对齐到最近的 stepMinutes 时间槽，确保时间轴与数据库记录槽位命名一致
+	// 例如 now=09:37, stepMinutes=5 → alignedNow=09:35
+	nowMinute := now.Minute()
+	alignedNow := now.Truncate(time.Minute).Add(
+		-time.Duration(nowMinute%stepMinutes) * time.Minute,
+	)
+
+	// 生成时间轴：从 alignedNow 往前 totalSlots 个槽，每槽间隔 stepMinutes 分钟
+	// 所有 key 都是自然分钟对齐值，与数据写入时的槽位算法完全一致
 	times := make([]string, 0, totalSlots)
-	timeKeys := make([]string, 0, totalSlots) // 用于映射的key
+	timeKeys := make([]string, 0, totalSlots)
 	for i := totalSlots - 1; i >= 0; i-- {
-		t := now.Add(time.Duration(-i*stepMinutes) * time.Minute)
-		times = append(times, t.Format("01-02 15:04"))
-		timeKeys = append(timeKeys, t.Format("01-02 15:04"))
+		t := alignedNow.Add(time.Duration(-i*stepMinutes) * time.Minute)
+		label := t.Format("01-02 15:04")
+		times = append(times, label)
+		timeKeys = append(timeKeys, label)
 	}
 
-	// 查询时间范围
-	startTime := now.Add(time.Duration(-hours) * time.Hour)
+	// 查询时间范围（额外多查一个 stepMinutes，避免边界漏数据）
+	startTime := alignedNow.Add(time.Duration(-(totalSlots)*stepMinutes) * time.Minute)
 	endTime := now
 
 	values := make([][]int, len(nodes))
@@ -266,12 +276,12 @@ func (s *NodeService) GetHeatmapData(hours, stepMinutes int) (dto.NodeHeatmapDat
 		records, err := s.monitorRepo.ListByNodeAndType(n.ID, "status", startTime, endTime)
 		if err == nil {
 			for _, r := range records {
-				// 将记录归入最近的 stepMinutes 时间槽
-				minutes := r.RecordedAt.Minute()
-				slotMinute := (minutes / stepMinutes) * stepMinutes
+				// 将记录归入最近的 stepMinutes 时间槽（自然分钟向下对齐）
+				recMinute := r.RecordedAt.Minute()
+				slotMinute := (recMinute / stepMinutes) * stepMinutes
 				key := r.RecordedAt.Format("01-02 15:") + fmt.Sprintf("%02d", slotMinute)
-				// 取每个时间槽最后一条记录（按时间升序，直接覆盖）
-				statusMap[key] = int(r.MetricValue) // 0 or 1
+				// 按时间升序，直接覆盖 → 取每个槽最新一条记录
+				statusMap[key] = int(r.MetricValue) // 0=离线 or 1=在线
 			}
 		}
 
