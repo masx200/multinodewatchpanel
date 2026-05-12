@@ -161,7 +161,7 @@
     "vue-clipboard3": "^2.0.0",
     "vue-codemirror": "^6.1.1",
     "vue-demi": "^0.14.6",
-    "vue-i18n": "^10.0.5",
+    "vue-i18n": "^11.4.2",
     "vue-router": "^4.5.1",
     "w3c-keyname": "2.2.8",
     "zrender": "^6.1.0"
