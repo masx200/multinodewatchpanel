@@ -87,17 +87,24 @@ export interface ContainerInfo {
     name: string;
     imageID: string;
     imageName: string;
-    state: string;
-    status: string;
-    cpuPercent: number;
-    memUsage: number;
-    memLimit: number;
-    networkMode: string;
-    ipAddress: string;
-    ports: string[];
     createTime: string;
-    isFromApp: string;
-    compose: string;
+    state: string;
+    runTime: string;          // 运行时长，如 "Up 2 hours"
+    network: string[];         // IP 地址列表
+    ports: string[];          // 端口映射
+
+    isFromApp: boolean;
+    isFromCompose: boolean;
+    appName: string;
+    appInstallName: string;
+    websites: string[];
+    isPinned: boolean;
+    description: string;
+
+    // 运行时资源统计
+    cpuPercent: number;
+    memUsage: number;          // int64 字节
+    memLimit: number;
 }
 
 // ---- Node API ----

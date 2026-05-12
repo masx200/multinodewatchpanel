@@ -42,7 +42,30 @@
                         </el-tag>
                     </template>
                 </el-table-column>
-                <el-table-column prop="status" :label="$t('monitor.containerStatus')" min-width="140" />
+                <el-table-column prop="runTime" label="运行时长" width="140" />
+                <el-table-column prop="network" label="IP地址" width="150">
+                    <template #default="{ row }">
+                        <span v-if="row.network && row.network.length > 0">
+                            {{ row.network.filter(ip => ip).join(', ') }}
+                        </span>
+                        <span v-else class="text-gray">-</span>
+                    </template>
+                </el-table-column>
+                <el-table-column prop="ports" label="端口映射" min-width="200">
+                    <template #default="{ row }">
+                        <template v-if="row.ports && row.ports.length > 0">
+                            <el-tooltip
+                                v-if="row.ports.length > 2"
+                                :content="row.ports.join('\n')"
+                                placement="top"
+                            >
+                                <span>{{ row.ports.slice(0, 2).join(', ') }}... (+{{ row.ports.length - 2 }})</span>
+                            </el-tooltip>
+                            <span v-else>{{ row.ports.join(', ') }}</span>
+                        </template>
+                        <span v-else class="text-gray">-</span>
+                    </template>
+                </el-table-column>
                 <el-table-column prop="cpuPercent" label="CPU%" width="90">
                     <template #default="{ row }">
                         {{ row.cpuPercent?.toFixed(2) ?? '0.00' }}%
@@ -136,5 +159,8 @@ onMounted(fetchNodes);
     margin: 0;
     max-width: 500px;
     text-align: center;
+}
+.text-gray {
+    color: var(--el-text-color-placeholder);
 }
 </style>

@@ -219,8 +219,8 @@ func (b *BaseApi) GetNodeContainers(c *gin.Context) {
 		for i := range containers {
 			if stats, ok := statsMap[containers[i].ContainerID]; ok {
 				containers[i].CPUPercent = stats.CPUPercent
-				containers[i].MemUsage = float64(stats.MemoryUsage)
-				containers[i].MemLimit = float64(stats.MemoryLimit)
+				containers[i].MemUsage = stats.MemoryUsage
+				containers[i].MemLimit = stats.MemoryLimit
 			}
 		}
 	}

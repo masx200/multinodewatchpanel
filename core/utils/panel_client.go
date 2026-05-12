@@ -310,23 +310,33 @@ type ContainerStatus struct {
 	RepoCount           int `json:"repoCount"`
 }
 
-// ContainerInfo 容器详情
+// ContainerInfo 容器详情（与 agent/app/dto/container.go 的 ContainerInfo 保持一致）
+// GET /containers/search 返回的数据结构
 type ContainerInfo struct {
-	ContainerID string  `json:"containerID"`
-	Name        string  `json:"name"`
-	ImageID     string  `json:"imageID"`
-	ImageName   string  `json:"imageName"`
-	State       string  `json:"state"`
-	Status      string  `json:"status"`
-	CPUPercent  float64 `json:"cpuPercent"`
-	MemUsage    float64 `json:"memUsage"`
-	MemLimit    float64 `json:"memLimit"`
-	NetworkMode string  `json:"networkMode"`
-	IPAddress   string  `json:"ipAddress"`
-	Ports       []string `json:"ports"`
-	CreateTime  string  `json:"createTime"`
-	IsFromApp   bool    `json:"isFromApp"`
-	Compose     string  `json:"compose"`
+	ContainerID  string   `json:"containerID"`
+	Name         string   `json:"name"`
+	ImageID      string   `json:"imageID"`
+	ImageName    string   `json:"imageName"`
+	CreateTime   string   `json:"createTime"`
+	State        string   `json:"state"`
+	RunTime      string   `json:"runTime"`    // 运行时长，如 "Up 2 hours"
+	Network      []string `json:"network"`    // IP 地址列表
+	Ports        []string `json:"ports"`      // 端口映射
+
+	IsFromApp     bool `json:"isFromApp"`
+	IsFromCompose bool `json:"isFromCompose"`
+
+	AppName        string   `json:"appName"`
+	AppInstallName string   `json:"appInstallName"`
+	Websites       []string `json:"websites"`
+
+	IsPinned    bool   `json:"isPinned"`
+	Description string `json:"description"`
+
+	// 运行时资源统计（从 /containers/list/stats 合并）
+	CPUPercent float64 `json:"cpuPercent"`
+	MemUsage   int64   `json:"memUsage"`
+	MemLimit   int64   `json:"memLimit"`
 }
 
 // ContainerStats 容器资源统计
