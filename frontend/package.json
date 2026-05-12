@@ -185,7 +185,7 @@
     "postcss": "latest",
     "postcss-html": "^1.4.1",
     "prettier": "^3.8.2",
-    "rollup-plugin-visualizer": "^5.5.4",
+    "rollup-plugin-visualizer": "^7.0.1",
     "sass": "^1.83.0",
     "standard-version": "^9.5.0",
     "tailwindcss": "^4.2.4",
