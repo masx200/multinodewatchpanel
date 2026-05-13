@@ -134,6 +134,7 @@ var WebUrlMap = map[string]struct{}{
 	"/monitor/dashboard":  {},
 	"/monitor/hosts":      {},
 	"/monitor/containers": {},
+	"/monitor/process":    {},
 	"/monitor/history":    {},
 
 	"/toolbox":              {},

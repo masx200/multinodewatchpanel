@@ -549,6 +549,57 @@ func (c *PanelClient) GetContainerStats(containerID string) (*ContainerStats, er
 	return &result, nil
 }
 
+// PsProcessData 进程数据（与 agent/utils/websocket/process_data.go PsProcessData 一致）
+type PsProcessData struct {
+	PID            int32  `json:"PID"`
+	Name           string `json:"name"`
+	PPID           int32  `json:"PPID"`
+	Username       string `json:"username"`
+	Status         string `json:"status"`
+	StartTime      string `json:"startTime"`
+	NumThreads     int32  `json:"numThreads"`
+	NumConnections int    `json:"numConnections"`
+	CpuPercent     string `json:"cpuPercent"`
+	DiskRead       string `json:"diskRead"`
+	DiskWrite      string `json:"diskWrite"`
+	CmdLine        string `json:"cmdLine"`
+	Rss            string `json:"rss"`
+	VMS            string `json:"vms"`
+	HWM            string `json:"hwm"`
+	Data           string `json:"data"`
+	Stack          string `json:"stack"`
+	Locked         string `json:"locked"`
+	Swap           string `json:"swap"`
+	Dirty          string `json:"dirty"`
+	PSS            string `json:"pss"`
+	USS            string `json:"uss"`
+	Shared         string `json:"shared"`
+	Text           string `json:"text"`
+	CpuValue       float64 `json:"cpuValue"`
+	RssValue       uint64  `json:"rssValue"`
+}
+
+// PsProcessConfig 进程过滤条件
+type PsProcessConfig struct {
+	Pid      int32  `json:"pid"`
+	Name     string `json:"name"`
+	Username string `json:"username"`
+}
+
+// GetProcesses 获取节点进程列表
+// POST /process/list
+func (c *PanelClient) GetProcesses(filter PsProcessConfig) ([]PsProcessData, error) {
+	data, err := c.doRequest("POST", "/process/list", filter)
+	if err != nil {
+		return nil, err
+	}
+	var result []PsProcessData
+	if err := parseResponse(data, &result); err != nil {
+		return nil, err
+	}
+	return result, nil
+}
+
 // SearchMonitor 查询历史监控数据
 // POST /hosts/monitor/search
 // param: cpu | memory | load | disk | io | network | gpu

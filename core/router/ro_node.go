@@ -22,6 +22,7 @@ func (n *NodeRouter) InitRouter(Router *gin.RouterGroup) {
 		nodeRouter.POST("/test", baseApi.TestNodeConnection)
 		nodeRouter.GET("/:id/dashboard", baseApi.GetNodeDashboard)
 		nodeRouter.GET("/:id/containers", baseApi.GetNodeContainers)
+		nodeRouter.GET("/:id/processes", baseApi.GetNodeProcesses)
 		nodeRouter.POST("/monitor/search", baseApi.SearchMonitorHistory)
 		nodeRouter.GET("/heatmap", baseApi.GetNodeHeatmapData)
 	}

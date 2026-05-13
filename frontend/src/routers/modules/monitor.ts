@@ -42,6 +42,16 @@ const monitorRouter = {
             },
         },
         {
+            path: '/monitor/process',
+            name: 'MonitorProcess',
+            component: () => import('@/views/monitor/process/index.vue'),
+            meta: {
+                icon: 'p-process-menu',
+                title: 'menu.monitorProcess',
+                requiresAuth: false,
+            },
+        },
+        {
             path: '/monitor/history',
             name: 'MonitorHistory',
             component: () => import('@/views/monitor/history/index.vue'),

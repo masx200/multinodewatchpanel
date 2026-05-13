@@ -229,6 +229,31 @@ func (b *BaseApi) GetNodeContainers(c *gin.Context) {
 }
 
 // @Tags Node
+// @Summary Get node processes
+// @Param id path int true "Node ID"
+// @Success 200 {array} utils.PsProcessData
+// @Security ApiKeyAuth
+// @Router /api/v2/nodes/:id/processes [get]
+func (b *BaseApi) GetNodeProcesses(c *gin.Context) {
+	id, err := helper.GetParamID(c)
+	if err != nil {
+		helper.BadRequest(c, err)
+		return
+	}
+	client, err := nodeService.GetClient(id)
+	if err != nil {
+		helper.InternalServer(c, err)
+		return
+	}
+	procs, err := client.GetProcesses(utils.PsProcessConfig{})
+	if err != nil {
+		helper.InternalServer(c, err)
+		return
+	}
+	helper.SuccessWithData(c, procs)
+}
+
+// @Tags Node
 // @Summary Search monitor history
 // @Accept json
 // @Param request body dto.MonitorSearchReq true "request"

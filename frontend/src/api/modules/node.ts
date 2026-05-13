@@ -107,6 +107,25 @@ export interface ContainerInfo {
     memLimit: number;
 }
 
+export interface PsProcessData {
+    PID: number;
+    name: string;
+    PPID: number;
+    username: string;
+    status: string;
+    startTime: string;
+    numThreads: number;
+    numConnections: number;
+    cpuPercent: string;
+    cpuValue: number;
+    rss: string;
+    rssValue: number;
+    vms: string;
+    diskRead: string;
+    diskWrite: string;
+    cmdLine: string;
+}
+
 // ---- Node API ----
 
 export const listNodes = () => {
@@ -149,6 +168,10 @@ export const getNodeDashboard = (id: number) => {
 
 export const getNodeContainers = (id: number) => {
     return http.get<ContainerInfo[]>(`/core/nodes/${id}/containers`);
+};
+
+export const getNodeProcesses = (id: number) => {
+    return http.get<PsProcessData[]>(`/core/nodes/${id}/processes`);
 };
 
 export const searchMonitorHistory = (req: MonitorSearchReq) => {
