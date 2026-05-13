@@ -108,8 +108,8 @@ importers:
         specifier: ^4.2.0
         version: 4.2.0
       '@element-plus/icons-vue':
-        specifier: ^1.1.4
-        version: 1.1.4(vue@3.5.34(typescript@5.9.2))
+        specifier: ^2.3.2
+        version: 2.3.2(vue@3.5.34(typescript@5.9.2))
       '@floating-ui/core':
         specifier: ^1.7.5
         version: 1.7.5
@@ -784,11 +784,6 @@ packages:
   '@ctrl/tinycolor@4.2.0':
     resolution: {integrity: sha512-kzyuwOAQnXJNLS9PSyrk0CWk35nWJW/zl/6KvnTBMFK65gm7U1/Z5BqjxeapjZCIhQcM/DsrEmcbRwDyXyXK4A==}
     engines: {node: '>=14'}
-
-  '@element-plus/icons-vue@1.1.4':
-    resolution: {integrity: sha512-Iz/nHqdp1sFPmdzRwHkEQQA3lKvoObk8azgABZ81QUOpW9s/lUyQVUSh0tNtEPZXQlKwlSh7SPgoVxzrE0uuVQ==}
-    peerDependencies:
-      vue: ^3.2.0
 
   '@element-plus/icons-vue@2.3.2':
     resolution: {integrity: sha512-OzIuTaIfC8QXEPmJvB4Y4kw34rSXdCJzxcD1kFStBvr8bK6X1zQAYDo0CNMjojnfTqRQCJ0I7prlErcoRiET2A==}
@@ -4803,10 +4798,6 @@ snapshots:
   '@ctrl/tinycolor@3.6.1': {}
 
   '@ctrl/tinycolor@4.2.0': {}
-
-  '@element-plus/icons-vue@1.1.4(vue@3.5.34(typescript@5.9.2))':
-    dependencies:
-      vue: 3.5.34(typescript@5.9.2)
 
   '@element-plus/icons-vue@2.3.2(vue@3.5.34(typescript@5.9.2))':
     dependencies:
