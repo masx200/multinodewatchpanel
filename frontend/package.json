@@ -109,7 +109,7 @@
     "dayjs": "^1.11.20",
     "dompurify": "^3.4.1",
     "dunder-proto": "^1.0.1",
-    "echarts": "^5.5.0",
+    "echarts": "^6.0.0",
     "element-plus": "2.11.9",
     "entities": "^8.0.0",
     "es-define-property": "^1.0.1",
