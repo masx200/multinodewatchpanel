@@ -74,7 +74,7 @@ func TestPinnedPeerCertSHA256(t *testing.T) {
 	t.Run("PanelClientOptions配置", func(t *testing.T) {
 		client := NewPanelClientWithOptions("example.com", 9999, "test-api-key",
 			PanelClientOptions{
-				Security:            "tls",
+				Security:             "tls",
 				PinnedPeerCertSHA256: expected,
 			})
 
@@ -159,7 +159,7 @@ func TestBuildTransport(t *testing.T) {
 		{
 			name: "TLS_证书固定",
 			opts: PanelClientOptions{
-				Security:            "tls",
+				Security:             "tls",
 				PinnedPeerCertSHA256: "070ba0fa8f6b0dcf067889e07cd929ee0c84c5283420da152b3d19d216c94deb",
 			},
 			desc: "TLS 并使用证书固定",

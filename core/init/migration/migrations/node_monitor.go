@@ -90,6 +90,7 @@ var AddMultiMonitorMenu = &gormigrate.Migration{
 				{ID: "142", Disabled: false, Title: "menu.monitorHosts", IsShow: true, Label: "MonitorHosts", Path: "/monitor/hosts", Sort: 200},
 				{ID: "143", Disabled: false, Title: "menu.monitorContainers", IsShow: true, Label: "MonitorContainers", Path: "/monitor/containers", Sort: 300},
 				{ID: "144", Disabled: false, Title: "menu.monitorHistory", IsShow: true, Label: "MonitorHistory", Path: "/monitor/history", Sort: 400},
+				{ID: "145", Disabled: false, Title: "menu.monitorProcess", IsShow: true, Label: "MonitorProcess", Path: "/monitor/process", Sort: 350},
 			},
 		}
 
@@ -111,5 +112,22 @@ var AddMultiMonitorMenu = &gormigrate.Migration{
 			return tx.Model(&model.Setting{}).Where("key = ?", "HideMenu").Update("value", helper.LoadMenus()).Error
 		}
 		return tx.Model(&model.Setting{}).Where("key = ?", "HideMenu").Update("value", string(updatedJSON)).Error
+	},
+}
+
+// AddMonitorProcessMenu 添加多机进程监控菜单项（145）到已有的 Monitor-Menu
+var AddMonitorProcessMenu = &gormigrate.Migration{
+	ID: "20260513-add-monitor-process-menu",
+	Migrate: func(tx *gorm.DB) error {
+		processMenu := dto.ShowMenu{
+			ID:       "145",
+			Disabled: false,
+			Title:    "menu.monitorProcess",
+			IsShow:   true,
+			Label:    "MonitorProcess",
+			Path:     "/monitor/process",
+			Sort:     350,
+		}
+		return helper.AddMenu(processMenu, "14", tx)
 	},
 }

@@ -18,7 +18,7 @@ func LoadMenus() string {
 				{ID: "141", Disabled: false, Title: "menu.monitorDashboard", IsShow: true, Label: "MonitorDashboard", Path: "/monitor/dashboard", Sort: 100},
 				{ID: "142", Disabled: false, Title: "menu.monitorHosts", IsShow: true, Label: "MonitorHosts", Path: "/monitor/hosts", Sort: 200},
 				{ID: "143", Disabled: false, Title: "menu.monitorContainers", IsShow: true, Label: "MonitorContainers", Path: "/monitor/containers", Sort: 300},
-					{ID: "145", Disabled: false, Title: "menu.monitorProcess", IsShow: true, Label: "MonitorProcess", Path: "/monitor/process", Sort: 350},
+				{ID: "145", Disabled: false, Title: "menu.monitorProcess", IsShow: true, Label: "MonitorProcess", Path: "/monitor/process", Sort: 350},
 				{ID: "144", Disabled: false, Title: "menu.monitorHistory", IsShow: true, Label: "MonitorHistory", Path: "/monitor/history", Sort: 400},
 			}},
 		{ID: "2", Disabled: true, Title: "menu.apps", IsShow: true, Label: "App-Menu", Path: "/apps/all", Sort: 200},

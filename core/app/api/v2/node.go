@@ -137,19 +137,19 @@ func (b *BaseApi) GetNodeDashboard(c *gin.Context) {
 	base, _ := client.GetDashboardBase("all", "all")
 
 	dashboard := dto.NodeDashboard{
-		NodeID:       nodeInfo.ID,
-		NodeName:     nodeInfo.Name,
-		Status:       nodeInfo.Status,
-		CPU:          current.CPUUsedPercent,
-		Memory:       current.MemoryUsedPercent,
-		MemoryTotal:  current.MemoryTotal,
-		MemoryUsed:   current.MemoryUsed,
-		MemoryAvail:  current.MemoryAvailable,
-		SwapTotal:    current.SwapMemoryTotal,
-		SwapUsed:     current.SwapMemoryUsed,
-		Load1:        current.Load1,
-		Load5:        current.Load5,
-		Load15:       current.Load15,
+		NodeID:      nodeInfo.ID,
+		NodeName:    nodeInfo.Name,
+		Status:      nodeInfo.Status,
+		CPU:         current.CPUUsedPercent,
+		Memory:      current.MemoryUsedPercent,
+		MemoryTotal: current.MemoryTotal,
+		MemoryUsed:  current.MemoryUsed,
+		MemoryAvail: current.MemoryAvailable,
+		SwapTotal:   current.SwapMemoryTotal,
+		SwapUsed:    current.SwapMemoryUsed,
+		Load1:       current.Load1,
+		Load5:       current.Load5,
+		Load15:      current.Load15,
 	}
 	// 从 DiskData 计算总体磁盘使用率
 	if len(current.DiskData) > 0 {

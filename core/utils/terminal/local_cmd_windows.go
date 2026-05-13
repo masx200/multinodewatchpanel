@@ -21,7 +21,7 @@ type LocalCommand struct {
 	closeTimeout time.Duration
 
 	cmd *exec.Cmd
-	pty  *os.File
+	pty *os.File
 }
 
 func NewCommand(script string) (*LocalCommand, error) {
@@ -34,7 +34,7 @@ func NewCommand(script string) (*LocalCommand, error) {
 		closeSignal:  DefaultCloseSignal,
 		closeTimeout: DefaultCloseTimeout,
 		cmd:          cmd,
-		pty:           nil,
+		pty:          nil,
 	}
 
 	if err := cmd.Start(); err != nil {

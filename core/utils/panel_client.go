@@ -18,13 +18,13 @@ import (
 // PanelClientOptions 创建客户端的可选参数
 type PanelClientOptions struct {
 	// Security: "none" | "tls"
-	Security            string
+	Security string
 	// AllowInsecure 跳过证书校验（仅 tls 时有效）
-	AllowInsecure       bool
+	AllowInsecure bool
 	// PinnedPeerCertSHA256 pin 证书 SHA256（hex，大小写不敏感），空则不校验
 	PinnedPeerCertSHA256 string
 	// ServerName TLS SNI（覆盖 Host）
-	ServerName          string
+	ServerName string
 }
 
 // PanelClient 1Panel Agent API 客户端
@@ -190,65 +190,65 @@ type OsInfo struct {
 // DashboardBase 仪表盘基础信息
 // GET /dashboard/base/:ioOption/:netOption
 type DashboardBase struct {
-	AppInstalledNumber  int               `json:"appInstalledNumber"`
-	CPUCores            int               `json:"cpuCores"`
-	CPULogicalCores     int               `json:"cpuLogicalCores"`
-	CPUMhz              float64           `json:"cpuMhz"`
-	CPUModelName        string            `json:"cpuModelName"`
-	CronjobNumber       int               `json:"cronjobNumber"`
-	CurrentInfo         *DashboardCurrent `json:"currentInfo"`
-	DatabaseNumber      int               `json:"databaseNumber"`
-	Hostname            string            `json:"hostname"`
-	IPv4Addr            string            `json:"ipV4Addr"`
-	KernelArch          string            `json:"kernelArch"`
-	KernelVersion       string            `json:"kernelVersion"`
-	OS                  string            `json:"os"`
-	Platform            string            `json:"platform"`
-	PlatformFamily      string            `json:"platformFamily"`
-	PlatformVersion     string            `json:"platformVersion"`
-	PrettyDistro        string            `json:"prettyDistro"`
-	SystemProxy         string            `json:"systemProxy"`
-	VirtualizationSystem string           `json:"virtualizationSystem"`
-	WebsiteNumber       int               `json:"websiteNumber"`
+	AppInstalledNumber   int               `json:"appInstalledNumber"`
+	CPUCores             int               `json:"cpuCores"`
+	CPULogicalCores      int               `json:"cpuLogicalCores"`
+	CPUMhz               float64           `json:"cpuMhz"`
+	CPUModelName         string            `json:"cpuModelName"`
+	CronjobNumber        int               `json:"cronjobNumber"`
+	CurrentInfo          *DashboardCurrent `json:"currentInfo"`
+	DatabaseNumber       int               `json:"databaseNumber"`
+	Hostname             string            `json:"hostname"`
+	IPv4Addr             string            `json:"ipV4Addr"`
+	KernelArch           string            `json:"kernelArch"`
+	KernelVersion        string            `json:"kernelVersion"`
+	OS                   string            `json:"os"`
+	Platform             string            `json:"platform"`
+	PlatformFamily       string            `json:"platformFamily"`
+	PlatformVersion      string            `json:"platformVersion"`
+	PrettyDistro         string            `json:"prettyDistro"`
+	SystemProxy          string            `json:"systemProxy"`
+	VirtualizationSystem string            `json:"virtualizationSystem"`
+	WebsiteNumber        int               `json:"websiteNumber"`
 }
 
 // DashboardCurrent 仪表盘实时指标
 // GET /dashboard/current/:ioOption/:netOption
 type DashboardCurrent struct {
-	CPUTotal             int             `json:"cpuTotal"`
-	CPUUsed              float64         `json:"cpuUsed"`
-	CPUUsedPercent       float64         `json:"cpuUsedPercent"`
-	CPUDetailedPercent   []float64       `json:"cpuDetailedPercent"`
-	MemoryTotal          int64           `json:"memoryTotal"`
-	MemoryUsed           int64           `json:"memoryUsed"`
-	MemoryUsedPercent    float64         `json:"memoryUsedPercent"`
-	MemoryAvailable      int64           `json:"memoryAvailable"`
-	MemoryCache          int64           `json:"memoryCache"`
-	MemoryFree           int64           `json:"memoryFree"`
-	MemoryShard          int64           `json:"memoryShard"`
-	SwapMemoryTotal      int64           `json:"swapMemoryTotal"`
-	SwapMemoryUsed       int64           `json:"swapMemoryUsed"`
-	SwapMemoryUsedPercent float64        `json:"swapMemoryUsedPercent"`
-	SwapMemoryAvailable  int64           `json:"swapMemoryAvailable"`
-	IOReadBytes          int64           `json:"ioReadBytes"`
-	IOWriteBytes         int64           `json:"ioWriteBytes"`
-	IOReadTime           int64           `json:"ioReadTime"`
-	IOWriteTime          int64           `json:"ioWriteTime"`
-	IOCount              int             `json:"ioCount"`
-	LoadUsagePercent     float64         `json:"loadUsagePercent"`
-	Load1                float64         `json:"load1"`
-	Load5                float64         `json:"load5"`
-	Load15               float64         `json:"load15"`
-	NetBytesRecv         int64           `json:"netBytesRecv"`
-	NetBytesSent         int64           `json:"netBytesSent"`
-	Procs                int             `json:"procs"`
-	Uptime               int64           `json:"uptime"`
-	TimeSinceUptime      string          `json:"timeSinceUptime"`
-	ShotTime             string          `json:"shotTime"`
-	DiskData             []DiskInfo      `json:"diskData"`
-	GPUData              []GPUInfo       `json:"gpuData"`
-	TopCPUItems          []Process       `json:"topCPUItems"`
-	TopMemItems          []Process       `json:"topMemItems"`
+	CPUTotal              int        `json:"cpuTotal"`
+	CPUUsed               float64    `json:"cpuUsed"`
+	CPUUsedPercent        float64    `json:"cpuUsedPercent"`
+	CPUDetailedPercent    []float64  `json:"cpuDetailedPercent"`
+	MemoryTotal           int64      `json:"memoryTotal"`
+	MemoryUsed            int64      `json:"memoryUsed"`
+	MemoryUsedPercent     float64    `json:"memoryUsedPercent"`
+	MemoryAvailable       int64      `json:"memoryAvailable"`
+	MemoryCache           int64      `json:"memoryCache"`
+	MemoryFree            int64      `json:"memoryFree"`
+	MemoryShard           int64      `json:"memoryShard"`
+	SwapMemoryTotal       int64      `json:"swapMemoryTotal"`
+	SwapMemoryUsed        int64      `json:"swapMemoryUsed"`
+	SwapMemoryUsedPercent float64    `json:"swapMemoryUsedPercent"`
+	SwapMemoryAvailable   int64      `json:"swapMemoryAvailable"`
+	IOReadBytes           int64      `json:"ioReadBytes"`
+	IOWriteBytes          int64      `json:"ioWriteBytes"`
+	IOReadTime            int64      `json:"ioReadTime"`
+	IOWriteTime           int64      `json:"ioWriteTime"`
+	IOCount               int        `json:"ioCount"`
+	LoadUsagePercent      float64    `json:"loadUsagePercent"`
+	Load1                 float64    `json:"load1"`
+	Load5                 float64    `json:"load5"`
+	Load15                float64    `json:"load15"`
+	NetBytesRecv          int64      `json:"netBytesRecv"`
+	NetBytesSent          int64      `json:"netBytesSent"`
+	Procs                 int        `json:"procs"`
+	Uptime                int64      `json:"uptime"`
+	TimeSinceUptime       string     `json:"timeSinceUptime"`
+	ShotTime              string     `json:"shotTime"`
+	DiskData              []DiskInfo `json:"diskData"`
+	GPUData               []GPUInfo  `json:"gpuData"`
+	TopCPUItems           []Process  `json:"topCPUItems"`
+	TopMemItems           []Process  `json:"topMemItems"`
 }
 
 // DiskInfo 磁盘信息
@@ -294,34 +294,34 @@ type Process struct {
 // ContainerStatus 容器状态汇总
 // GET /containers/status
 type ContainerStatus struct {
-	ContainerCount      int `json:"containerCount"`
-	Running             int `json:"running"`
-	Paused              int `json:"paused"`
-	Exited              int `json:"exited"`
-	Created             int `json:"created"`
-	Dead                int `json:"dead"`
-	Restarting          int `json:"restarting"`
-	Removing            int `json:"removing"`
-	ImageCount          int `json:"imageCount"`
-	NetworkCount        int `json:"networkCount"`
-	VolumeCount         int `json:"volumeCount"`
-	ComposeCount        int `json:"composeCount"`
+	ContainerCount       int `json:"containerCount"`
+	Running              int `json:"running"`
+	Paused               int `json:"paused"`
+	Exited               int `json:"exited"`
+	Created              int `json:"created"`
+	Dead                 int `json:"dead"`
+	Restarting           int `json:"restarting"`
+	Removing             int `json:"removing"`
+	ImageCount           int `json:"imageCount"`
+	NetworkCount         int `json:"networkCount"`
+	VolumeCount          int `json:"volumeCount"`
+	ComposeCount         int `json:"composeCount"`
 	ComposeTemplateCount int `json:"composeTemplateCount"`
-	RepoCount           int `json:"repoCount"`
+	RepoCount            int `json:"repoCount"`
 }
 
 // ContainerInfo 容器详情（与 agent/app/dto/container.go 的 ContainerInfo 保持一致）
 // GET /containers/search 返回的数据结构
 type ContainerInfo struct {
-	ContainerID  string   `json:"containerID"`
-	Name         string   `json:"name"`
-	ImageID      string   `json:"imageID"`
-	ImageName    string   `json:"imageName"`
-	CreateTime   string   `json:"createTime"`
-	State        string   `json:"state"`
-	RunTime      string   `json:"runTime"`    // 运行时长，如 "Up 2 hours"
-	Network      []string `json:"network"`    // IP 地址列表
-	Ports        []string `json:"ports"`      // 端口映射
+	ContainerID string   `json:"containerID"`
+	Name        string   `json:"name"`
+	ImageID     string   `json:"imageID"`
+	ImageName   string   `json:"imageName"`
+	CreateTime  string   `json:"createTime"`
+	State       string   `json:"state"`
+	RunTime     string   `json:"runTime"` // 运行时长，如 "Up 2 hours"
+	Network     []string `json:"network"` // IP 地址列表
+	Ports       []string `json:"ports"`   // 端口映射
 
 	IsFromApp     bool `json:"isFromApp"`
 	IsFromCompose bool `json:"isFromCompose"`
@@ -375,9 +375,9 @@ type PageContainerReq struct {
 	Page            int    `json:"page"`
 	PageSize        int    `json:"pageSize"`
 	Name            string `json:"name"`
-	State           string `json:"state"`     // required, oneof: all|created|running|paused|restarting|removing|exited|dead
-	OrderBy         string `json:"orderBy"`    // required, oneof: name|createdAt|state
-	Order           string `json:"order"`      // required, oneof: null|ascending|descending
+	State           string `json:"state"`   // required, oneof: all|created|running|paused|restarting|removing|exited|dead
+	OrderBy         string `json:"orderBy"` // required, oneof: name|createdAt|state
+	Order           string `json:"order"`   // required, oneof: null|ascending|descending
 	Filters         string `json:"filters"`
 	ExcludeAppStore bool   `json:"excludeAppStore"`
 }
@@ -551,30 +551,30 @@ func (c *PanelClient) GetContainerStats(containerID string) (*ContainerStats, er
 
 // PsProcessData 进程数据（与 agent/utils/websocket/process_data.go PsProcessData 一致）
 type PsProcessData struct {
-	PID            int32  `json:"PID"`
-	Name           string `json:"name"`
-	PPID           int32  `json:"PPID"`
-	Username       string `json:"username"`
-	Status         string `json:"status"`
-	StartTime      string `json:"startTime"`
-	NumThreads     int32  `json:"numThreads"`
-	NumConnections int    `json:"numConnections"`
-	CpuPercent     string `json:"cpuPercent"`
-	DiskRead       string `json:"diskRead"`
-	DiskWrite      string `json:"diskWrite"`
-	CmdLine        string `json:"cmdLine"`
-	Rss            string `json:"rss"`
-	VMS            string `json:"vms"`
-	HWM            string `json:"hwm"`
-	Data           string `json:"data"`
-	Stack          string `json:"stack"`
-	Locked         string `json:"locked"`
-	Swap           string `json:"swap"`
-	Dirty          string `json:"dirty"`
-	PSS            string `json:"pss"`
-	USS            string `json:"uss"`
-	Shared         string `json:"shared"`
-	Text           string `json:"text"`
+	PID            int32   `json:"PID"`
+	Name           string  `json:"name"`
+	PPID           int32   `json:"PPID"`
+	Username       string  `json:"username"`
+	Status         string  `json:"status"`
+	StartTime      string  `json:"startTime"`
+	NumThreads     int32   `json:"numThreads"`
+	NumConnections int     `json:"numConnections"`
+	CpuPercent     string  `json:"cpuPercent"`
+	DiskRead       string  `json:"diskRead"`
+	DiskWrite      string  `json:"diskWrite"`
+	CmdLine        string  `json:"cmdLine"`
+	Rss            string  `json:"rss"`
+	VMS            string  `json:"vms"`
+	HWM            string  `json:"hwm"`
+	Data           string  `json:"data"`
+	Stack          string  `json:"stack"`
+	Locked         string  `json:"locked"`
+	Swap           string  `json:"swap"`
+	Dirty          string  `json:"dirty"`
+	PSS            string  `json:"pss"`
+	USS            string  `json:"uss"`
+	Shared         string  `json:"shared"`
+	Text           string  `json:"text"`
 	CpuValue       float64 `json:"cpuValue"`
 	RssValue       uint64  `json:"rssValue"`
 }
