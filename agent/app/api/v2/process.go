@@ -72,3 +72,23 @@ func (b *BaseApi) GetListeningProcess(c *gin.Context) {
 	}
 	helper.SuccessWithData(c, procs)
 }
+
+// @Tags Process
+// @Summary List Processes
+// @Accept json
+// @Param request body websocket.PsProcessConfig false "filter"
+// @Success 200 {array} websocket.PsProcessData
+// @Security ApiKeyAuth
+// @Security Timestamp
+// @Router /process/list [post]
+func (b *BaseApi) ListProcesses(c *gin.Context) {
+	var filter websocket2.PsProcessConfig
+	// Filter is optional, bind it if present
+	_ = c.ShouldBindJSON(&filter)
+	procs, err := processService.ListProcesses(filter)
+	if err != nil {
+		helper.BadRequest(c, err)
+		return
+	}
+	helper.SuccessWithData(c, procs)
+}

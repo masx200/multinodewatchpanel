@@ -15,6 +15,7 @@ func (f *ProcessRouter) InitRouter(Router *gin.RouterGroup) {
 		processRouter.GET("/ws", baseApi.ProcessWs)
 		processRouter.POST("/stop", baseApi.StopProcess)
 		processRouter.POST("/listening", baseApi.GetListeningProcess)
+		processRouter.POST("/list", baseApi.ListProcesses)
 		processRouter.GET("/:pid", baseApi.GetProcessInfoByPID)
 	}
 }

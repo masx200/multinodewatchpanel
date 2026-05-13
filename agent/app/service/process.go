@@ -23,6 +23,7 @@ type IProcessService interface {
 	StopProcess(req request.ProcessReq) error
 	GetProcessInfoByPID(pid int32) (*websocket.PsProcessData, error)
 	GetListeningProcess(c context.Context) ([]ListeningProcess, error)
+	ListProcesses(filter websocket.PsProcessConfig) ([]websocket.PsProcessData, error)
 }
 
 func NewIProcessService() IProcessService {
@@ -341,4 +342,85 @@ func readSmaps(pid int32, mem *MemoryDetail) error {
 	}
 
 	return scanner.Err()
+}
+
+func (ps *ProcessService) ListProcesses(filter websocket.PsProcessConfig) ([]websocket.PsProcessData, error) {
+	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
+	defer cancel()
+
+	processes, err := process.ProcessesWithContext(ctx)
+	if err != nil {
+		return nil, err
+	}
+
+	connections, err := net.ConnectionsMaxWithContext(ctx, "all", 32768)
+	if err != nil {
+		return nil, err
+	}
+
+	pidConnections := make(map[int32][]net.ConnectionStat, len(processes))
+	for _, conn := range connections {
+		if conn.Pid == 0 {
+			continue
+		}
+		pidConnections[conn.Pid] = append(pidConnections[conn.Pid], conn)
+	}
+
+	result := make([]websocket.PsProcessData, 0, len(processes))
+
+	for _, proc := range processes {
+		procData := handleProcessDataForService(proc, &filter, pidConnections)
+		if procData != nil {
+			result = append(result, *procData)
+		}
+	}
+
+	return result, nil
+}
+
+func handleProcessDataForService(proc *process.Process, filter *websocket.PsProcessConfig, pidConnections map[int32][]net.ConnectionStat) *websocket.PsProcessData {
+	if filter.Pid > 0 && filter.Pid != proc.Pid {
+		return nil
+	}
+	procData := websocket.PsProcessData{
+		PID: proc.Pid,
+	}
+	if procName, err := proc.Name(); err == nil {
+		procData.Name = procName
+	} else {
+		procData.Name = "<UNKNOWN>"
+	}
+	if filter.Name != "" && !strings.Contains(procData.Name, filter.Name) {
+		return nil
+	}
+	if username, err := proc.Username(); err == nil {
+		procData.Username = username
+	}
+	if filter.Username != "" && !strings.Contains(procData.Username, filter.Username) {
+		return nil
+	}
+	procData.PPID, _ = proc.Ppid()
+	statusArray, _ := proc.Status()
+	if len(statusArray) > 0 {
+		procData.Status = strings.Join(statusArray, ",")
+	}
+	createTime, procErr := proc.CreateTime()
+	if procErr == nil {
+		t := time.Unix(createTime/1000, 0)
+		procData.StartTime = t.Format("2006-01-02 15:04:05")
+	}
+	procData.NumThreads, _ = proc.NumThreads()
+	procData.CpuValue, _ = proc.CPUPercent()
+	procData.CpuPercent = fmt.Sprintf("%.2f%%", procData.CpuValue)
+
+	if memInfo, err := proc.MemoryInfo(); err == nil {
+		procData.RssValue = memInfo.RSS
+		procData.Rss = common.FormatBytes(memInfo.RSS)
+	}
+
+	if connections, ok := pidConnections[proc.Pid]; ok {
+		procData.NumConnections = len(connections)
+	}
+
+	return &procData
 }
