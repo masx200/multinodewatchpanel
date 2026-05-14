@@ -125,7 +125,7 @@
     "js-base64": "^3.7.7",
     "jsencrypt": "^3.3.2",
     "linkify-it": "^5.0.0",
-    "lodash": "4.18.0",
+    "lodash": "4.18.1",
     "lodash-es": "^4.18.1",
     "lodash-unified": "^1.0.3",
     "lucide-vue-next": "^1.0.0",
@@ -171,7 +171,7 @@
     "zrender": "^6.1.0"
   },
   "devDependencies": {
-    "lodash": "4.18.0",
+    "lodash": "4.18.1",
     "@types/node": "latest",
     "@types/uuid": "latest",
     "@typescript-eslint/eslint-plugin": "^8.59.2",
@@ -223,13 +223,13 @@
     }
   },
   "resolutions": {
-    "lodash": "4.18.0",
+    "lodash": "4.18.1",
     "svgo": ">=3.3.3",
     "minimatch": ">=9.0.7",
     "picomatch": ">=4.0.4"
   },
   "overrides": {
-    "lodash": "4.18.0",
+    "lodash": "4.18.1",
     "svgo": ">=3.3.3",
     "minimatch": ">=9.0.7",
     "fast-uri": ">=3.1.2",
