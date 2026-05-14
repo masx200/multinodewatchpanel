@@ -455,6 +455,7 @@ import { getRandomStr } from '@/utils/id';
 import { getRuntimeLabel } from '@/utils/app-store';
 import { dateFormatSimple } from '@/utils/date';
 import { getAppService } from '@/api/modules/app';
+//@ts-ignore
 import { v4 as uuidv4 } from 'uuid';
 import { getAccountName } from '@/utils/ssl';
 import { Website } from '@/api/interface/website';

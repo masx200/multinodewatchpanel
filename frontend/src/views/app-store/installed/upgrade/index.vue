@@ -106,6 +106,7 @@ import { computed, onBeforeUnmount, reactive, ref } from 'vue';
 import { MsgSuccess } from '@/utils/message';
 import { Rules } from '@/global/form-rules';
 import bus from '@/global/bus';
+//@ts-ignore
 import { v4 as uuidv4 } from 'uuid';
 import { useGlobalStore } from '@/composables/useGlobalStore';
 const { currentNode } = useGlobalStore();

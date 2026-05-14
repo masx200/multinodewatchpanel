@@ -140,6 +140,7 @@ import { Plus } from '@element-plus/icons-vue';
 import { MsgWarning, MsgSuccess } from '@/utils/message';
 import { convertFiles, convertLogs, getFileContent } from '@/api/modules/files';
 import { getFileType, isConvertible } from '@/utils/file';
+//@ts-ignore
 import { v4 as uuidv4 } from 'uuid';
 import TaskLog from '@/components/log/task/index.vue';
 import { TabsPaneContext } from 'element-plus';

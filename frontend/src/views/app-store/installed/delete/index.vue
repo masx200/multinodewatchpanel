@@ -58,6 +58,7 @@ import { getAppStoreConfig } from '@/api/modules/setting';
 import i18n from '@/lang';
 import bus from '@/global/bus';
 import TaskLog from '@/components/log/task/index.vue';
+//@ts-ignore
 import { v4 as uuidv4 } from 'uuid';
 
 const deleteReq = ref({
