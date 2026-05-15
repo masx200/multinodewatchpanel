@@ -203,7 +203,7 @@
     "vite": "^7.3.2",
     "vite-plugin-compression": "^0.5.1",
     "vite-plugin-eslint2": "^5.0.3",
-    "vite-svg-loader": "^5.1.0",
+    "vite-svg-loader": "^5.1.1",
     "vue-tsc": "^3.2.8"
   },
   "trustedDependencies": [
