@@ -221,6 +221,17 @@ func toNodeInfo(n model.HostNode) dto.NodeInfo {
 	return info
 }
 
+// slotKey 将时间 t 按 stepMinutes 对齐到"全局分钟数取模"槽位，
+// 返回格式 "MM-DD HH:mm" 的槽位 key。
+// 对齐方式：epochMinutes = Unix秒 / 60，slot = epochMinutes - (epochMinutes % stepMinutes)
+// 此算法与 stepMinutes 是否整除 60 无关，保证时间轴与数据归槽使用完全相同的槽位。
+func slotKey(t time.Time, stepMinutes int) string {
+	epochMinutes := t.Unix() / 60
+	slotEpochMinutes := epochMinutes - (epochMinutes % int64(stepMinutes))
+	slotTime := time.Unix(slotEpochMinutes*60, 0).In(t.Location())
+	return slotTime.Format("01-02 15:04")
+}
+
 // GetHeatmapData 获取节点热力图数据（可配置时间范围和粒度）
 func (s *NodeService) GetHeatmapData(hours, stepMinutes int) (dto.NodeHeatmapData, error) {
 	if hours <= 0 {
@@ -247,15 +258,15 @@ func (s *NodeService) GetHeatmapData(hours, stepMinutes int) (dto.NodeHeatmapDat
 
 	now := time.Now()
 
-	// 将 now 向下对齐到最近的 stepMinutes 时间槽，确保时间轴与数据库记录槽位命名一致
-	// 例如 now=09:37, stepMinutes=5 → alignedNow=09:35
-	nowMinute := now.Minute()
-	alignedNow := now.Truncate(time.Minute).Add(
-		-time.Duration(nowMinute%stepMinutes) * time.Minute,
-	)
+	// 将 now 向下对齐到最近的全局槽位（epoch minutes 取模），
+	// 确保时间轴起点与数据库记录的槽位 key 完全一致，
+	// 对任意 stepMinutes（含不整除 60 的值如 35）均正确。
+	epochMinutes := now.Unix() / 60
+	alignedEpochMinutes := epochMinutes - (epochMinutes % int64(stepMinutes))
+	alignedNow := time.Unix(alignedEpochMinutes*60, 0).In(now.Location())
 
 	// 生成时间轴：从 alignedNow 往前 totalSlots 个槽，每槽间隔 stepMinutes 分钟
-	// 所有 key 都是自然分钟对齐值，与数据写入时的槽位算法完全一致
+	// 所有 key 均通过 slotKey() 生成，与数据归槽算法完全一致
 	times := make([]string, 0, totalSlots)
 	timeKeys := make([]string, 0, totalSlots)
 	for i := totalSlots - 1; i >= 0; i-- {
@@ -266,7 +277,7 @@ func (s *NodeService) GetHeatmapData(hours, stepMinutes int) (dto.NodeHeatmapDat
 	}
 
 	// 查询时间范围（额外多查一个 stepMinutes，避免边界漏数据）
-	startTime := alignedNow.Add(time.Duration(-(totalSlots)*stepMinutes) * time.Minute)
+	startTime := alignedNow.Add(time.Duration(-totalSlots*stepMinutes) * time.Minute)
 	endTime := now
 
 	values := make([][]int, len(nodes))
@@ -276,10 +287,8 @@ func (s *NodeService) GetHeatmapData(hours, stepMinutes int) (dto.NodeHeatmapDat
 		records, err := s.monitorRepo.ListByNodeAndType(n.ID, "status", startTime, endTime)
 		if err == nil {
 			for _, r := range records {
-				// 将记录归入最近的 stepMinutes 时间槽（自然分钟向下对齐）
-				recMinute := r.RecordedAt.Minute()
-				slotMinute := (recMinute / stepMinutes) * stepMinutes
-				key := r.RecordedAt.Format("01-02 15:") + fmt.Sprintf("%02d", slotMinute)
+				// 将记录归入所属槽位：使用 epoch minutes 取模，与时间轴 key 算法完全一致
+				key := slotKey(r.RecordedAt, stepMinutes)
 				// 按时间升序，直接覆盖 → 取每个槽最新一条记录
 				statusMap[key] = int(r.MetricValue) // 0=离线 or 1=在线
 			}
