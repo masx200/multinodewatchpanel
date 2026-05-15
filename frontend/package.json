@@ -175,7 +175,7 @@
     "@types/node": "latest",
     "@types/uuid": "latest",
     "@typescript-eslint/eslint-plugin": "^8.59.2",
-    "@typescript-eslint/parser": "^8.59.2",
+    "@typescript-eslint/parser": "^8.59.3",
     "@vitejs/plugin-vue": "latest",
     "@vitejs/plugin-vue-jsx": "latest",
     "@vue/compiler-sfc": "3.5.34",
